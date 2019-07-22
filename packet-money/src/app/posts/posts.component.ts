@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../post';
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-posts',
@@ -7,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
   postList = [
-    {title: "task 1", content: "content 1"},
-    {title: "task 2", content: "content 2"},
-    {title: "task 3", content: "content 3"}
+    new Post("Bubble tea delivery", "Can you deliver an iced large black suger milk tea from ABS to the entry of 1411 du Fort before this 4pm?", 10),
+    new Post("Package pick up", "Pick up my package from canada post", 15),
+    new Post("Type c charger", "anyone near H building has type c charger? i need it for 2 hrs", 10),
   ];
   constructor() { }
 
   ngOnInit() {
   }
+  onClick(post:Post){
+    post.toggleContent();
+  }
+  
 
 }
