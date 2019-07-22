@@ -1,0 +1,63 @@
+<div class="search-sec">
+<div class="container">
+    
+        <div class="row">
+            <div class="col col-lg-12">
+                    <button type="button" class="col col-sm-12 col-md-12 col-lg-12 btn btn-danger wrn-btn">
+                        Post Ad
+                    </button>
+            </div>
+            
+        </div>
+        <form #formValue="ngForm" (ngSubmit)="onSubmit(formValue)">
+        <div class="row">
+            
+            
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 form-group">
+                        <input ngModel type="text" class="form-control search-slt" name="keyword" placeholder="Enter keyword">
+                </div>
+                <!-- <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                        <button class="search-slt btn wrn-btn btn-danger" type="button" data-toggle="collapse" data-target="#mainContent" aria-expended="false" aria-controls="mainContent">
+                            Category {{ selectedCategory | categoryformat }}
+                        </button>
+                        
+                </div> -->
+                <div class="col col-lg-4 col-md-4 col-sm-12 col-12 form-group">
+                    <!-- <div class="wrap-drop" id="noble-gases">
+                        <span>All Categories</span>
+                        <ul class="drop">
+                            <li class="selected"><a>All categories</a></li>
+                            <li *ngFor="let category of categoryList">
+                                <a [routerLink]="['/category', category]">
+                                    {{ category }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>      -->
+                    <select ngModel class="form-control search-slt selectpicker" name="category">
+                        <option>Select Category</option>
+                        <option *ngFor="let category of categoryList">{{ category | categoryformat }}</option>
+                    </select>    
+                </div>
+           
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 form-group">
+                    <select ngModel class="form-control search-slt selectpicker" name="location">
+                        <option >Select Location</option>
+                        <option *ngFor="let location of locationList">{{ location | categoryformat }}</option>
+                    </select>
+                </div>
+                <div class="col col-lg-2 col-md-2 col-sm-12 col-12">
+                    <button type="submit" class="btn btn-danger wrn-btn"
+                            routerLink="/posts"
+                            [queryParams]=formValue.value>
+                        Search
+                    </button>
+                </div>
+            
+        </div>
+    </form>
+    
+    
+</div>
+</div>
+

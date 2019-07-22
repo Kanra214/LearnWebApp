@@ -1,0 +1,38 @@
+
+.search-sec {
+    padding : 2rem;
+    position : relative;
+    background : #343A40;
+    top:0px;
+}
+.search-slt{
+    padding:0;
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    
+}
+.btn {
+    background-color : blanchedalmond; 
+    color : #343A40;
+}
+.row {
+    padding:10px;
+}
+.col {
+    padding:2px;
+    border: 1px;
+}
