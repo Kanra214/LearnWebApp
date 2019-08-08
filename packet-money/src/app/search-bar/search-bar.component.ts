@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { GetpostsService } from '../../services/getposts.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,28 +9,34 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+  
   categoryList = [
-    "car-washing",
-    "coffee-holding",
+    "car washing",
+    "coffee holding",
     "tutoring",
-    "dog-walking"
+    "dog walking"
   ];
+
 
   locationList = [
-    "downtown-montreal",
-    "laval",
-    "longueuil",
-    "south-shore"
+    "Downtown Montreal",
+    "Laval",
+    "Longueuil",
+    "South Shore"
   ];
 
-  onSubmit(value:any){
-    console.log(value);
+  onSubmit(f:NgForm){
+    console.log(f);
+    this.getPostsService.getPosts(f.value);
+    
+    
   }
 
-  constructor() { }
+  constructor(private getPostsService: GetpostsService) { }
 
   ngOnInit() {
     
   }
+
 
 }

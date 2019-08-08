@@ -1,6 +1,6 @@
 <div class="index-content">
     <div class="container">
-            <a *ngFor="let post of postList">
+            <a *ngFor="let post of getPostsService.posts">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 item">
                     <div class="card">
                         <h5 class="card-header">Bounty: ${{ post.bounty }}</h5>

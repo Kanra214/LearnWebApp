@@ -9,7 +9,7 @@
             </div>
             
         </div>
-        <form #formValue="ngForm" (ngSubmit)="onSubmit(formValue)">
+        <form id="search-form" #formValue="ngForm" (ngSubmit)="onSubmit(formValue)">
         <div class="row">
             
             
@@ -35,15 +35,15 @@
                         </ul>
                     </div>      -->
                     <select ngModel class="form-control search-slt selectpicker" name="category">
-                        <option>Select Category</option>
+                        <option value="">Select Category</option>
                         <option *ngFor="let category of categoryList">{{ category | categoryformat }}</option>
                     </select>    
                 </div>
            
                 <div class="col col-lg-3 col-md-3 col-sm-12 col-12 form-group">
                     <select ngModel class="form-control search-slt selectpicker" name="location">
-                        <option >Select Location</option>
-                        <option *ngFor="let location of locationList">{{ location | categoryformat }}</option>
+                        <option value="" >Select Location</option>
+                        <option *ngFor="let location of locationList">{{ location }}</option>
                     </select>
                 </div>
                 <div class="col col-lg-2 col-md-2 col-sm-12 col-12">
