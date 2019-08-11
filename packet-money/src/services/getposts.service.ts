@@ -8,7 +8,7 @@ import {Observable, of} from 'rxjs';
 })
 export class GetpostsService {
   posts: Post[];
-  url:string = 'http://localhost:3000/posts';
+  url:string = 'http://localhost:3000/api/posts';
   constructor(private http: HttpClient) { }
   getPosts(queryObj){
     const params = new HttpParams({fromObject: queryObj});

@@ -17,18 +17,7 @@
     border: 1px solid #ccc;
     height: calc(3rem + 2px) !important;
 }
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    
-}
-.btn {
-    background-color : blanchedalmond; 
-    color : #343A40;
-}
+
 .row {
     padding:10px;
 }

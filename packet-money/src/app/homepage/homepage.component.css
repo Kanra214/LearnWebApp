@@ -1,0 +1,16 @@
+.intro {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 4%;
+    margin-bottom: 20%;
+    border: 2px;
+    padding-left: 5%;
+    padding-right:5%;
+}
+.intro p {
+    font-size:80px;
+    font-family: 'Barriecito', cursive;
+    line-height: 200%;
+    text-align: center;
+    
+}

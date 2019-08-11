@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import $ from '../../../node_modules/jquery/dist/jquery';
+declare var $:any;
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -10,7 +10,7 @@ export class HomepageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $(document).find('#search-form')[0].reset();
+    $('#search-form')[0].reset();
     
   }
 

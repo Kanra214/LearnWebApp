@@ -22,14 +22,25 @@ body {
     height: calc(3rem + 2px) !important;
     border-radius:0;
 }
-.wrn-btn{
+.btn-danger {
     width: 100%;
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
+    height: calc(3rem + 2px) ;
+    background-color : blanchedalmond !important;
+    border-color: blanchedalmond !important;
+    color : #343A40 !important;
+    border-radius:.25rem;
 }
+.btn-danger:hover {
+    background-color : #ffe0b3 !important;
+    color : #343A40 !important;
+    border-color: #ffe0b3 !important;
+    border-radius:.25rem;
+    
+}
+
 @media (min-width: 992px){
     .search-sec{
         position: relative;
@@ -42,20 +53,4 @@ body {
     .search-sec{
         background: #1A4668;
     }
-}
-.intro {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 4%;
-    margin-bottom: 20%;
-    border: 2px;
-    padding-left: 5%;
-    padding-right:5%;
-}
-.intro p {
-    font-size:80px;
-    font-family: 'Barriecito', cursive;
-    line-height: 200%;
-    text-align: center;
-    
 }

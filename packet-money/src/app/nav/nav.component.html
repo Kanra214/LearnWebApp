@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-sm bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">Lunch Money</a>
+    </div>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="toggleModal('signup-modal')"> Sign Up </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="toggleModal('login-modal')"> Login </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<app-modal id="signup-modal">
+  <ng-container class="modal-heading">Sign up for new account</ng-container>>
+  <ng-container class="modal-inputs">
+      <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your username</label>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+          
+        </div>
+        <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <input type="email" id="orangeForm-email" class="form-control validate">
+          
+        </div>
+
+        <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <input type="password" id="orangeForm-pass" class="form-control validate">
+          
+        </div>
+
+        <div class="md-form mb-4">
+            <label data-error="wrong" data-success="right" for="orangeForm-pass-verification">Verify your password</label>
+            <input type="password" id="orangeForm-pass-verification" class="form-control validate">
+            
+          </div>
+  </ng-container>
+  <ng-container class="modal-submit"><button class="btn btn-deep-orange">Sign up</button></ng-container>
+</app-modal>
+<app-modal id="login-modal">
+  <ng-container class="modal-heading">Log in to your account</ng-container>
+  <ng-container class="modal-inputs">
+      <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+          <input type="email" id="defaultForm-email" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-4">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          
+        </div>
+  </ng-container>
+  <ng-container class="modal-submit"><button class="btn btn-default">Login</button></ng-container>
+</app-modal>
+
