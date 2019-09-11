@@ -1,48 +1,19 @@
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-
-
-    <div class="modal-dialog">
-        <div class="modal-container">
-            <header style="background-color:#000;color:#fff;">
-                <span (click)="close()" class="close-button topright">&times;</span>
-            </header>
-            <h1>
-                <ng-content select=".modal-heading"></ng-content>
-            </h1><br>
-            <form>
-                <ng-content select=".modal-inputs"></ng-content>
-            </form>
-
-            <div class="modal-help">
-                <ng-content select=".modal-help-links"></ng-content>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><ng-content select=".modal-heading"></ng-content></h4>
+        <h4 class="modal-title w-100 font-weight-bold">
+          <ng-content select=".modal-heading"></ng-content>
+        </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
-        <ng-content select=".modal-inputs"></ng-content>
+      <ng-content select=".modal-form">
 
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <ng-content select=".modal-submit"></ng-content>
-      </div>
+      </ng-content>
+
     </div>
   </div>
 </div>
-
-<!-- <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
-    Modal Login Form</a>
-</div> -->

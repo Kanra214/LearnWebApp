@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from 'src/services/modal.service';
 import * as $ from 'jquery';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import * as $ from 'jquery';
     PostsComponent,
     AbstractPipe,
     ModalComponent,
+    LoginComponent,
 
   ],
   imports: [
