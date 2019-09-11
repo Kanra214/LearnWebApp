@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const debug = require(debug)('app:db');
 
 mongoose.connect('mongodb://localhost/packet_money_database')
     .then(()=>{
@@ -21,7 +22,7 @@ const Post = mongoose.model('Post', postSchema);
 async function getPosts(queryParams){
     const result = await Post.find(queryParams)
             .sort('-date');
-    console.log(result);
+    debug("Returning the query result: ", result);
     return result;
 
 }

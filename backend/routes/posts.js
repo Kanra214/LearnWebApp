@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const clean = require('../util/clean-null-from-object');
+const clean = require('../util/clean-query');
 const post = require('../models/post');
+const debug = require('debug')('app:posts');
 
 
 router.get('/', async (req, res) =>{
     try{
-        console.log(req.query);
+        debug("receive query params: ", req.query);
         const queryParam = clean(req.query);
-        console.log(queryParam);
+        debug("cleaned the param: ", queryParam);
         const result = await post.getPosts(queryParam);
+        debug("Sending the result: ", result);
         res.send(result);
     }
     catch(error){
-        console.log('err:',error);
+        debug('err:',error);
 
     }
 

@@ -11,7 +11,11 @@ app.get('/*',function(req,res,next){
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     next();
 });
-app.use('/posts', posts);
 
-app.listen(3000);
-console.log("listening on 3000");
+app.use('/api/posts', posts);
+
+const port = process.env.PORT || 3000;
+app.listen(port, ()=> {
+    console.log("listening on " + port);
+
+});
