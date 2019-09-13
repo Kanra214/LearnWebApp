@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   authenticationUrl:string = 'http://localhost:3000/api/authentication';
   
+  
   constructor() { }
 }
