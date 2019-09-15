@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const debug = require(debug)('app:db');
+const debug = require('debug')('app:db');
 
 mongoose.connect('mongodb://localhost/packet_money_database')
     .then(()=>{
@@ -15,6 +15,7 @@ const postSchema = new mongoose.Schema({
     content: String,
     location: String,
     bounty: Number,
+    category: String,
     date: {type: Date, default: Date.now}
 
 });

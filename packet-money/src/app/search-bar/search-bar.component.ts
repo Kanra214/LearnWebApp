@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { GetpostsService } from '../../services/getposts.service';
 
@@ -14,7 +13,9 @@ export class SearchBarComponent implements OnInit {
     "car washing",
     "coffee holding",
     "tutoring",
-    "dog walking"
+    "dog walking",
+    "delivery",
+    
   ];
 
 

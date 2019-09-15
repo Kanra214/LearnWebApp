@@ -1,16 +1,20 @@
 <app-modal id="signup-modal">
         <ng-container class="modal-heading">Sign up for new account</ng-container>>
         <ng-container class="modal-form">
-          <form #formValue1="ngForm" (ngSubmit)="signup(formValue1)">
+          <form #formValue1="ngForm" (ngSubmit)="signup(formValue1) [formGroup]="signupForm">
             <div class="modal-body mx-3">
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-name-signup">Your username</label>
-                <input required ngModel #username="ngModel" name="username" type="text" id="orangeForm-name-singup" class="form-control validate">
-                <!-- <div class="alert alert-danger" *ngIf="username.touched && !username.valid">Username is required</div> -->
+                <input formControlName="username" name="username" type="text" id="orangeForm-name-singup" class="form-control validate">
+                <div class="alert alert-danger" *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid">Username is required</div>
               </div>
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-email-signup">Your email</label>
-                <input required ngModel name="email" type="email" id="orangeForm-email-singup" class="form-control validate">
+                <input formControlName="email" name="email" type="email" id="orangeForm-email-singup" class="form-control validate">
+                <div class="alert alert-danger" *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
+                  <div *ngIf="signupForm.get('email').errors.required">Email is required</div>
+                  <div *ngIf="signupForm.get('email').errors.email">Invalid email format</div>
+                </div>
               </div>
       
               <div class="md-form mb-4">

@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CategoryformatPipe } from '../pipes/categoryformat.pipe';
 import { PostsComponent } from './posts/posts.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AbstractPipe } from '../pipes/abstract.pipe';
 import { GetpostsService } from '../services/getposts.service';
 import { HttpClientModule } from '@angular/common/http'; 
@@ -36,6 +36,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path:"", component: HomepageComponent },
       { path:"posts", component: PostsComponent },
