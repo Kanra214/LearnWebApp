@@ -1,12 +1,16 @@
 <app-modal id="signup-modal">
         <ng-container class="modal-heading">Sign up for new account</ng-container>>
         <ng-container class="modal-form">
-          <form #formValue1="ngForm" (ngSubmit)="signup(formValue1) [formGroup]="signupForm">
+          <form [formGroup]="signupForm" (ngSubmit)="signup()">
             <div class="modal-body mx-3">
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-name-signup">Your username</label>
                 <input formControlName="username" name="username" type="text" id="orangeForm-name-singup" class="form-control validate">
-                <div class="alert alert-danger" *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid">Username is required</div>
+                <div class="alert alert-danger" *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid">
+                  <div *ngIf="signupForm.get('username').errors.required">Username is required.</div>
+                  <div *ngIf="signupForm.get('username').errors.notUnique">This username is already taken.</div>
+                </div>
+
               </div>
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-email-signup">Your email</label>
@@ -19,17 +23,17 @@
       
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-pass-signup">Your password</label>
-                <input required ngModel name="password" type="password" id="orangeForm-pass-signup" class="form-control validate">
+                <input fromControlName="password" name="password" type="password" id="orangeForm-pass-signup" class="form-control validate">
       
               </div>
       
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-pass-verification">Verify your password</label>
-                <input required ngModel name="password-verification" type="password" id="orangeForm-pass-verification" class="form-control validate">
+                <input fromControlName="confirmPassword" name="password-verification" type="password" id="orangeForm-pass-verification" class="form-control validate">
       
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button [disabled]="!formValue1.valid" type="submit" class="btn btn-default" routerLink="/">Sign up</button>
+                <button [disabled]="signupForm.invalid" type="submit" class="btn btn-default" routerLink="/">Sign up</button>
               </div>
       
       
@@ -41,26 +45,26 @@
       <app-modal id="login-modal">
         <ng-container class="modal-heading">Log in to your account</ng-container>
         <ng-container class="modal-form" (ngSubmit)="login(formValue2)">
-          <form #formValue2="ngForm">
+          <form [formGroup]="loginForm" (onSubmit)="login()">
             <div class="modal-body mx-3">
                 <div class="md-form mb-4">
                     <label data-error="wrong" data-success="right" for="orangeForm-name-login">Your username</label>
-                    <input required ngModel name="username" type="text" id="orangeForm-name-login" class="form-control validate">
+                    <input fromControlName="username" name="username" type="text" id="orangeForm-name-login" class="form-control validate">
           
                   </div>
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-email-login">Your email</label>
-                <input required ngModel name="email" type="email" id="orangeForm-email-login" class="form-control validate">
+                <input fromControlName="email" name="email" type="email" id="orangeForm-email-login" class="form-control validate">
       
               </div>
       
               <div class="md-form mb-4">
                 <label data-error="wrong" data-success="right" for="orangeForm-pass-login">Your password</label>
-                <input required ngModel name="password" type="password" id="orangeForm-pass-login" class="form-control validate">
+                <input fromControlName="password" name="password" type="password" id="orangeForm-pass-login" class="form-control validate">
       
               </div>
               <div class="modal-footer d-flex justify-content-center">
-                <button [disabled]="!formValue2.valid" type="submit" class="btn btn-default" routerLink="/">Login</button>
+                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-default" routerLink="/">Login</button>
               </div>
       
       

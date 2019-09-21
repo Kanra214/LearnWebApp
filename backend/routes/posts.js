@@ -11,7 +11,7 @@ router.get('/', async (req, res) =>{
         const queryParam = clean(req.query);
         debug("cleaned the param: ", queryParam);
         const result = await post.getPosts(queryParam);
-        debug("Sending the result: ", result);
+        debug("sending the result: ", result);
         res.send(result);
     }
     catch(error){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,29 +8,61 @@ import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  signupForm = new FormGroup({
-    "username": new FormControl('', Validators.required),
-    "email": new FormControl('',[Validators.required, Validators.email]),
-
-  });
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  signupForm;
+  loginForm;
+  checkPasswords(group: FormGroup): ValidationErrors | null { // here we have the 'passwords' group
   let pass = group.get('password').value;
-  let confirmPass = group.get('confirmPass').value;
+  let confirmPass = group.get('confirmPassword').value;
   return pass === confirmPass ? null : { notSame: true }     
-}
+  }
 
-  constructor() { }
+  mustBeUniqueUsername(control: FormControl): Promise<ValidationErrors | null>{
+    return new Promise((resolve, reject) => {
+      this.authService.checkUsernameNotTaken(control.value).subscribe(res =>{
+      console.log("got response: ", res);
+      if(res.status === 200){
+        resolve(null);
+      }
+      else{
+        resolve({"notUnique": true});
+      }
+
+   
+    });
+    });
+  
+
+  }
+  
+  
+
+  constructor(fb:FormBuilder, private authService: AuthService) {
+    this.signupForm = fb.group({
+      "username": ['', [Validators.required, this.mustBeUniqueUsername]],
+      "email": ['', [Validators.required, Validators.email]],
+      "password": ['', [Validators.required, Validators.minLength(6)]],
+      "confirmPassword": ['', Validators.required]
+    }, 
+    {validator: this.checkPasswords }
+
+    );
+
+    this.loginForm = fb.group({
+      "username": ['', Validators.required],
+      "password": ['', Validators.required],
+    });
+  }
+
 
   ngOnInit() {
   }
-  login(f:NgForm){
-    console.log(f);
+  login(){
+    console.log(this.loginForm.value);
     // this.authService.getAuth(f.value);
     
-    
   }
-  signup(f:NgForm){
-    console.log(f);
+  signup(){
+    console.log(this.signupForm.value);
     // this.authService.getAuth(f.value);
     
     

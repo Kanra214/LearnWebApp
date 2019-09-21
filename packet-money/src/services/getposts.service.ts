@@ -12,7 +12,7 @@ export class GetpostsService {
   constructor(private http: HttpClient) { }
   getPosts(queryObj){
     const params = new HttpParams({fromObject: queryObj});
-    this.http.get(this.url, {params}).subscribe(res =>{
+    this.http.get(this.url, {params: params}).subscribe(res =>{
       console.log("got response: ", res);
       let temp = [];
       const resArr = res as Post[];

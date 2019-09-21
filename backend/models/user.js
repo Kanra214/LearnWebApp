@@ -1,31 +1,37 @@
 const mongoose = require('mongoose');
 const debug = require('debug')('app:db');
 
-
-
-const postSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        maxlength:100,
-        required: true,
+const userSchema = new mongoose.Schema({
+   username:{
+       type: String,
+       required: true,
+       maxlength:50,
+       unique: true,
     },
-    author: {
+    email:{
         type: String,
         required: true,
+        unique: true,
     },
-    content: String,
-    location: String,
-    bounty: Number,
-    category: String,
-    date: {type: Date, default: Date.now}
+    password:{
+        type: String,
+        required: true,
 
+    }
+   
 });
-const Post = mongoose.model('Post', postSchema);
-async function getPosts(queryParams){
-    const result = await Post.find(queryParams)
-            .sort('-date');
+const User = mongoose.model('User', userSchema);
+async function getUser(queryParams){
+    const result = await User.find(queryParams);
     debug("Returning the query result: ", result);
     return result;
+
+}
+async function checkUsernameTaken(username){
+    const result = await User.exists({'username': username});
+    return result;
+
+
 
 }
 // Post.updateOne({author: "Haru"}, {bounty: 10}, function(err, docs){
@@ -34,5 +40,6 @@ async function getPosts(queryParams){
 // });
 // const p = new Post({title: 'french tutoring', author:'Wang', content: 'french tutor wanted dufiuwehfoiusheoirfuhirefireheigug', location:'South Shore', bounty: 50 });
 // p.save();
-module.exports.Post = Post;
-module.exports.getPosts = getPosts;
+module.exports.User = User;
+module.exports.checkUsernameTaken = checkUsernameTaken;
+module.exports.getUser = getUser;

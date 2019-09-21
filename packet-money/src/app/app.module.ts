@@ -17,6 +17,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ModalService } from 'src/services/modal.service';
 import * as $ from 'jquery';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from 'src/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LoginComponent } from './login/login.component';
   providers: [
     GetpostsService,
     ModalService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
