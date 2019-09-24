@@ -1,6 +1,6 @@
 module.exports.absolute = (number)=> {
     if(number > 0){
-        return -number;
+        return number;
     }
     if(number < 0){
         return -number;
