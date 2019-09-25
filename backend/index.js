@@ -24,7 +24,7 @@ app.get('/*',function(req,res,next){
 app.use('/api/posts', posts);
 app.use('/api/users', users)
 
-const port = 3000;
+const port = process.env.PORT | 3000;
 app.listen(port, ()=> {
     console.log("listening on " + port);
 

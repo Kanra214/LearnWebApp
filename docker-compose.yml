@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend:
+    container_name: review-backend
+    image: review-backend
+    build:
+      context: ./backend
+    networks:
+      - net
+  
+  frontend:
+    container_name: review-frontend
+    image: review-frontend
+    build:
+      context: ./packet-money
+      networks:
+        - net
+networks:
+  net:
