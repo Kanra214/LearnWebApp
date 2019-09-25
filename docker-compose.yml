@@ -8,12 +8,12 @@ services:
     networks:
       - net
   
-  frontend:
-    container_name: review-frontend
-    image: review-frontend
-    build:
-      context: ./packet-money
-      networks:
-        - net
+  # frontend:
+  #   container_name: review-frontend
+  #   image: review-frontend
+  #   build:
+  #     context: ./packet-money
+  #     networks:
+  #       - net
 networks:
   net:
