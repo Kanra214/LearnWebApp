@@ -28,7 +28,9 @@ async function getUser(queryParams){
 
 }
 async function checkUsernameTaken(username){
-    const result = await User.exists({'username': username});
+    debug("username: ", username);
+    result = await User.exists({'username': username});
+    debug("checkUsernameTaken result ", result);
     return result;
 
 
