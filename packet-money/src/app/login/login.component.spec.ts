@@ -68,7 +68,7 @@ describe('LoginComponent signup form test', () => {
     
   });
 
-  it("signup form username is valid when response header usernameTaken is false", fakeAsync(() => {
+  it("signup form username is valid when response body usernameTaken is false", fakeAsync(() => {
     const inputusername = "kanra";
     let control: AbstractControl = component.signupForm.get('username');
     console.log("2 control errors " + control.errors);
@@ -91,7 +91,7 @@ describe('LoginComponent signup form test', () => {
 
 
 
-  it("signup form should be invalid if response header usernameTaken is true", fakeAsync(() => {
+  it("signup form should be invalid if response body usernameTaken is true", fakeAsync(() => {
     const inputusername = "kanra";
     let control: AbstractControl = component.signupForm.get('username');
     spyOn(service, 'checkUsernameNotTaken').and.callFake( (username) => {
