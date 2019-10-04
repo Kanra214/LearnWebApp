@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  url:string = 'http://localhost:3000/api/users';
+  url:string = 'https://ea5f36e3-3d92-423f-99f9-4b80aaf63581.mock.pstmn.io/api/users';
 
 
   
@@ -13,6 +13,9 @@ export class AuthService {
   constructor(private http: HttpClient) { }
   checkUsernameNotTaken(username: string){
     const params = new HttpParams().set('attemptedUsername', username);
-    return this.http.get(this.url+'/checkUsernameTaken', {observe: "response", params: params});
+    return this.http.get(this.url+'/checkusernametaken', {
+      observe: "response", 
+      params: params
+    });
   }
 }

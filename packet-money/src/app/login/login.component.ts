@@ -20,16 +20,22 @@ export class LoginComponent implements OnInit {
     console.log("check username is sending: ", control.value);
     
     
+    
     return new Promise((resolve, reject) => {
       
         this.authService.checkUsernameNotTaken(control.value).subscribe(res =>{
         console.log("got response: ", res);
-        if(res.status === 200){
-          resolve(null);
-        }
-        else{
-          resolve({"notUnique": true});
-        }
+        
+          if(res.body["usernameTaken"] === "true"){
+            resolve({notUnique:true});
+          }
+          else if(res.body['usernameTaken'] === "false"){
+            resolve(null);
+          }
+          else{
+            reject("something is wrong");
+          }
+        
 
    
     });
