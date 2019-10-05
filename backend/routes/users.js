@@ -1,30 +1,61 @@
 const express = require('express');
 const router = express.Router();
-const user = require('../models/user');
+const User = require('../models/user');
 const debug = require('debug')('app:users');
 
-router.get('/checkUsernameTaken', async (req, res) => {
+router.get('/checkusernametaken', async (req, res) => {
     try{
         debug("receive checkUsernameTaken request with query: ", req.query);
         debug("req query ", req.query);
         const attemptedUsername = req.query.attemptedUsername;
         debug("attemp username: ", attemptedUsername);
-        const result = await user.checkUsernameTaken(attemptedUsername);
-        if(result){
-            res.status(409).send({"message":"username is taken."});
+        const result = await User.checkUsernameTaken(attemptedUsername);
+        if(result === false){
+            res.status(200).send({"usernameTaken":"false"});
         }
         else{
-            res.status(200).send({"message":"username is unique."});
+            res.status(200).send({"usernameTaken":"true"});
         }
     }
     catch(error){
         debug('err:', error);
     }
 });
+router.get('/checkemailtaken', async (req, res) => {
+    try{
+        debug("receive checkEmailTaken request with query: ", req.query);
+        debug("req query ", req.query);
+        const attemptedEmail = req.query.attemptedEmail;
+        debug("attemp email: ", attemptedEmail);
+        const result = await User.checkEmailTaken(attemptedEmail);
+        if(result === false){
+            res.status(200).send({"emailTaken":"false"});
+        }
+        else{
+            res.status(200).send({"emailTaken":"true"});
+        }
+    }
+    catch(error){
+        debug('err:', error);
+    }
+});
+
+
+router.post('/signup', async(req, res) => {
+    debug("got signup request: ", req);
+    let newUser = new User({
+        username: req.body.username, 
+        email: req.body.email,
+        password: req.body.password
+    });
+    await newUser.save(); 
+    res.send(newUser);
+
+});
 router.get('/', async (req, res) =>{
     try{
         debug("receive query query: ", req.query);
-        const result = await user.getUser(queryParam);
+        const result = await User.getUser(queryParam);
         debug("sending the result: ", result);
         res.send(result);
     }

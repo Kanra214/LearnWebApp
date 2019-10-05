@@ -3,17 +3,30 @@ services:
   backend:
     container_name: review-backend
     image: review-backend
+    ports:
+      - "3000:3000"
     build:
       context: ./backend
     networks:
       - net
   
-  # frontend:
-  #   container_name: review-frontend
-  #   image: review-frontend
-  #   build:
-  #     context: ./packet-money
-  #     networks:
-  #       - net
+  frontend:
+    container_name: review-frontend
+    image: review-frontend
+    ports:
+      - "4200:4200"
+    build:
+      context: ./packet-money
+      networks:
+        - net
+  database:
+    image:mongo
+    container_name:mongodb
+    ports:
+      -  "27017:27017"
+    volumes:
+      - ""
+    networks:
+      - net
 networks:
   net:

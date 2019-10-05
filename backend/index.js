@@ -3,6 +3,7 @@ const posts = require('./routes/posts');
 const users = require('./routes/users');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.connect('mongodb://localhost/packet_money_database')
     .then(()=>{
@@ -20,9 +21,10 @@ app.get('/*',function(req,res,next){
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     next();
 });
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api/posts', posts);
-app.use('/api/users', users)
+app.use('/api/users', users);
 
 const port = process.env.PORT | 3000;
 app.listen(port, ()=> {

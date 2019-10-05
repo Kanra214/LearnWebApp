@@ -31,9 +31,15 @@ async function checkUsernameTaken(username){
     debug("username: ", username);
     result = await User.exists({'username': username});
     debug("checkUsernameTaken result ", result);
-    return result;
+    return result;   
 
+}
 
+async function checkEmailTaken(username){
+    debug("email: ", username);
+    result = await User.exists({'email': username});
+    debug("checkEmailTaken result ", result);
+    return result;   
 
 }
 // Post.updateOne({author: "Haru"}, {bounty: 10}, function(err, docs){
@@ -42,6 +48,7 @@ async function checkUsernameTaken(username){
 // });
 // const p = new Post({title: 'french tutoring', author:'Wang', content: 'french tutor wanted dufiuwehfoiusheoirfuhirefireheigug', location:'South Shore', bounty: 50 });
 // p.save();
-module.exports.User = User;
+module.exports = User;
 module.exports.checkUsernameTaken = checkUsernameTaken;
-module.exports.getUser = getUser;
+module.exports.checkEmailTaken = checkEmailTaken;
+// module.exports.getUser = getUser;

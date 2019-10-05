@@ -34,5 +34,5 @@ async function getPosts(queryParams){
 // });
 // const p = new Post({title: 'french tutoring', author:'Wang', content: 'french tutor wanted dufiuwehfoiusheoirfuhirefireheigug', location:'South Shore', bounty: 50 });
 // p.save();
-module.exports.Post = Post;
+module.exports = Post;
 module.exports.getPosts = getPosts;

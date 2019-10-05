@@ -17,10 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   mustBeUniqueUsername(control: FormControl): Promise<ValidationErrors | null>{
-    console.log("check username is sending: ", control.value);
-    
-    
-    
+    console.log("check username is sending: ", control.value);  
     return new Promise((resolve, reject) => {
       
         this.authService.checkUsernameNotTaken(control.value).subscribe(res =>{
@@ -35,17 +32,27 @@ export class LoginComponent implements OnInit {
           else{
             reject("something is wrong");
           }
-        
-
-   
     });
-  
+    });
+  }
+  mustBeUniqueEmail(control: FormControl): Promise<ValidationErrors | null>{
+    console.log("check email is sending: ", control.value);  
+    return new Promise((resolve, reject) => {
       
+        this.authService.checkEmailNotTaken(control.value).subscribe(res =>{
+        console.log("got response: ", res);
+        
+          if(res.body["emailTaken"] === "true"){
+            resolve({notUnique:true});
+          }
+          else if(res.body['emailTaken'] === "false"){
+            resolve(null);
+          }
+          else{
+            reject("something is wrong");
+          }
     });
-  
-
-  
-
+    });
   }
 
 
@@ -55,7 +62,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb:FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
       "username": ['', [Validators.required], [this.mustBeUniqueUsername.bind(this)]],
-      "email": ['', [Validators.required, Validators.email]],
+      "email": ['', [Validators.required, Validators.email], [this.mustBeUniqueEmail.bind(this)]],
       "password": ['', [Validators.required, Validators.minLength(6)]],
       "confirmPassword": ['', Validators.required]
     }, 
