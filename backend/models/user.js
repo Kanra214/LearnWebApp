@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const debug = require('debug')('app:db');
-
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const userSchema = new mongoose.Schema({
    username:{
        type: String,
        required: true,
-       maxlength:50,
        unique: true,
     },
     email:{
@@ -20,12 +20,24 @@ const userSchema = new mongoose.Schema({
     }
    
 });
+
+userSchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({_id:this._id}, config.get('jwtPrivateKey'));
+    return token;
+};
 const User = mongoose.model('User', userSchema);
 async function getUser(queryParams){
     const result = await User.find(queryParams);
     debug("Returning the query result: ", result);
     return result;
 
+}
+
+async function findUser(email){
+    debug('finding user by email: ', email );
+    let user = await User.findOne({email: email});
+    debug('find user result: ', user);
+    return user;
 }
 async function checkUsernameTaken(username){
     debug("username: ", username);
@@ -52,3 +64,4 @@ module.exports = User;
 module.exports.checkUsernameTaken = checkUsernameTaken;
 module.exports.checkEmailTaken = checkEmailTaken;
 // module.exports.getUser = getUser;
+module.exports.findUser = findUser;

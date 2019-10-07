@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const debug = require('debug')('app:users');
 
+
 router.get('/checkusernametaken', async (req, res) => {
     try{
         debug("receive checkUsernameTaken request with query: ", req.query);
@@ -41,17 +42,7 @@ router.get('/checkemailtaken', async (req, res) => {
 });
 
 
-router.post('/signup', async(req, res) => {
-    debug("got signup request: ", req);
-    let newUser = new User({
-        username: req.body.username, 
-        email: req.body.email,
-        password: req.body.password
-    });
-    await newUser.save(); 
-    res.send(newUser);
 
-});
 router.get('/', async (req, res) =>{
     try{
         debug("receive query query: ", req.query);
