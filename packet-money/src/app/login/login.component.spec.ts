@@ -5,6 +5,7 @@ import { FormBuilder, AbstractControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/services/auth.service';
 import { Observable, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 // describe('LoginComponent', () => {
 //   let component: LoginComponent;
@@ -40,7 +41,7 @@ describe('LoginComponent signup form test', () => {
   let form: FormGroup;
   beforeEach(() => {
     service = new AuthService(null);
-    component = new LoginComponent(new FormBuilder(), service);
+    component = new LoginComponent(new FormBuilder(), service, null);
     form = component.signupForm;
 
   });

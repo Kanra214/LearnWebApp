@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 
 router.post('/signup', async(req, res) => {
-    debug("got signup request: ", req);
     let newUser = new User({
         username: req.body.username, 
         email: req.body.email,
@@ -19,8 +18,8 @@ router.post('/signup', async(req, res) => {
     
     await newUser.save(); 
     const token = newUser.generateAuthToken();
-
-    res.header('x-auth-token', token).send(_.pick(req.body, ['username', 'email']));
+    const resBody = {token:token};
+    res.status(200).send(resBody);
 
 });
 
@@ -32,8 +31,11 @@ router.post('/login', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if(!validPassword) return res.status(400).send('Invalid email or password.');
     const token = user.generateAuthToken();
+    
     //send something
-    res.status(200).send(token);
+    const resBody = {token:token};
+    res.status(200).send(resBody);
+
 });
 
 

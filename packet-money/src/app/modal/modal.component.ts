@@ -26,4 +26,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     
     $(this.element).find("#modalLoginForm").modal('toggle');
   }
+  close(){
+    $(this.element).find("#modalLoginForm").modal('hide');
+  }
 }

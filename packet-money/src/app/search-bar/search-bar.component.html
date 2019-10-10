@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col col-lg-12">
                 <button type="button" class="col col-sm-12 col-md-12 col-lg-12 btn-danger">
-                    Post Ad
+                    Create a study group
                 </button>
             </div>
 
@@ -36,14 +36,14 @@
                         </ul>
                     </div>      -->
                     <select ngModel class="form-control search-slt selectpicker" name="category">
-                        <option value="">Select Category</option>
+                        <option value="">Select subject</option>
                         <option *ngFor="let category of categoryList">{{ category | categoryformat }}</option>
                     </select>
                 </div>
 
                 <div class="col col-lg-3 col-md-3 col-sm-12 col-12 form-group">
                     <select ngModel class="form-control search-slt selectpicker" name="location">
-                        <option value="">Select Location</option>
+                        <option value="">Select university</option>
                         <option *ngFor="let location of locationList">{{ location }}</option>
                     </select>
                 </div>

@@ -20,12 +20,14 @@ mongoose.connect('mongodb://localhost/packet_money_database')
         console.log('Could not connect to database: ' + err);
     });
 
-app.get('/*',function(req,res,next){
+app.all('/*',function(req,res,next){
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
 
      // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 app.use(bodyParser.json());
@@ -33,6 +35,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api/posts', posts);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+
 
 const port = process.env.PORT | 3000;
 app.listen(port, ()=> {

@@ -17,12 +17,10 @@ export class ModalService {
   }
 
   toggle(id:string){
-    console.log(this.modals);
     let modalList:ModalComponent[] = this.modals.filter(x =>{
       return x.element.id === id
     });
     for(let modal of modalList){
-      console.log('toggle', modal);
       modal.toggle();
     }
       
@@ -30,5 +28,11 @@ export class ModalService {
     
     
 
+  }
+
+  closeAllModals(){
+    for(let modal of this.modals){
+      modal.close();
+    }
   }
 }
