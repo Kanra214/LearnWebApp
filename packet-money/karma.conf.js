@@ -29,7 +29,18 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'HeadlessChrome'],
+    customLaunchers:{
+      HeadlessChrome:{
+        base: 'ChromeHeadless',
+        flags: [
+          '--no-sandbox',
+          '--disable-translate',
+          '--remote-debugging-port=9223'
+
+       ]
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
