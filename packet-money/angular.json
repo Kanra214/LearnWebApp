@@ -92,6 +92,12 @@
               "src/styles.css"
             ],
             "scripts": []
+          },
+          "configurations": {
+            "headless": {
+              "browsers": "PhantomJS",
+              "tsConfig": "tsconfig-es5.spec.json"
+            }
           }
         },
         "lint": {
