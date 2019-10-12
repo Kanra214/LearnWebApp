@@ -40,8 +40,8 @@ module.exports = function (config) {
           // '--disable-translate',
           // '--remote-debugging-port=9223',
           // '--headless', 
-          // '--proxy-server=\'direct://\'',
-          // '--proxy-bypass-list=*'
+          '--proxy-server=\'direct://\'',
+          '--proxy-bypass-list=*'
 
        ]
       }
