@@ -95,8 +95,7 @@
           },
           "configurations": {
             "headless": {
-              "browsers": "PhantomJS",
-              "tsConfig": "tsconfig-es5.spec.json"
+              "browsers": "HeadlessChrome"
             }
           }
         },
