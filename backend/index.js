@@ -6,19 +6,26 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('config');
+const isDocker = require('is-docker');
 
 if(!config.get('jwtPrivateKey')){
     console.error("FATAL ERROR: jwtPrivateKey is not defined");
     process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost/packet_money_database')
+let dbhost = 'localhost';
+if(isDocker()){
+    dbhost = 'mongo'
+}
+const dbport = process.env.DBHOST | 27027
+mongoose.connect('mongodb://' + dbhost + ':' + dbport + '/packet_money_database')
     .then(()=>{
         console.log('connected to database');
     })
     .catch(err =>{
         console.log('Could not connect to database: ' + err);
     });
+
 
 app.all('/*',function(req,res,next){
     // Website you wish to allow to connect
