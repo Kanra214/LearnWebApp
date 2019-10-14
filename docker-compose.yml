@@ -1,32 +1,45 @@
 version: '3'
 services:
   backend:
-    container_name: review-backend
-    image: review-backend
+    container_name: backend
+    image: reviewbackend
     ports:
-      - "3000:3000"
+      - "${BACKEND_PORT}:3000"
     build:
       context: ./backend
+      args:
+        STAGE: ${STAGE}
     networks:
       - net
+    depends_on:
+      - db
   
   frontend:
-    container_name: review-frontend
+    container_name: frontend
     image: review-frontend
     ports:
-      - "4200:4200"
+      - "${FRONTEND_PORT}:4200"
     build:
       context: ./packet-money
-      networks:
-        - net
-  database:
-    image:mongo
-    container_name:mongodb
-    ports:
-      -  "27017:27017"
-    volumes:
-      - ""
+      args:
+        STAGE: ${STAGE}
+    depends_on: backend
     networks:
       - net
+    
+  database:
+    image: mongo:4.0.3
+    container_name: db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      -  "${MONGODB_PORT}:27017"
+    volumes:
+      - "~/app/${STAGE}/mongo:/data/db"
+      - "./mongo-entrypoint:/docekr-entrypoint-initdb.d/:ro"
+    networks:
+      - net
+    command: mongod 
 networks:
   net:

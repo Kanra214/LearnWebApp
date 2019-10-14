@@ -40,6 +40,7 @@ module.exports = function (config) {
           // '--disable-translate',
           // '--remote-debugging-port=9223',
           // '--headless', 
+          '--disable-setuid-sandbox',
           '--proxy-server=\'direct://\'',
           '--proxy-bypass-list=*'
 
