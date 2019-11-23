@@ -3,6 +3,7 @@ FROM node:10.16.0
 ARG STAGE
 
 ENV NODE_ENV
+
 WORKDIR /app
 
 COPY package*.json ./

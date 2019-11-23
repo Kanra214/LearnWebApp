@@ -67,11 +67,22 @@ pipeline{
             }
 
         }
-        stage('deploy to master container') {
-            sh '''
-            echo "merge to master for production"
-            '''
-        }
+        // stage('deploy to master container') {
+        //     agent docker
+        //     environment {
+        //         STAGE = 'production'
+        //         FRONTEND_PORT = 4200
+        //         BACKEND_PORT = 3000
+        //         MONGODB_PORT = 27017
+        //         MONGO_INITDB_ROOT_USERNAME = 'prod-admin'
+        //         MONGO_INITDB_ROOT_PASSWORD = credential(prod_db_root_password)
+        //     }
+        //     steps {
+        //         sh '''
+        //         docker-compose -p prod -d
+        //         '''
+        //     }
+        // }
 
     }
 }

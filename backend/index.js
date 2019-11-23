@@ -17,8 +17,8 @@ let dbhost = 'localhost';
 if(isDocker()){
     dbhost = 'mongo'
 }
-const dbport = process.env.DBHOST | 27027
-mongoose.connect('mongodb://' + dbhost + ':' + dbport + '/packet_money_database')
+// const dbport = process.env.DBHOST | 27027
+mongoose.connect('mongodb://' +  dbhost + '/packet_money_database')
     .then(()=>{
         console.log('connected to database');
     })

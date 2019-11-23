@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const debug = require('debug')('app:auth');
-const bcrypt = require('bcryptjs');ç
+const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
 router.post('/signup', async(req, res) => {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GetpostsService } from '../../services/getposts.service';
 import {Post} from '../../models/post';
+import { AuthService } from 'src/services/auth.service';
+import { ModalService } from 'src/services/modal.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-bar',
@@ -44,10 +47,19 @@ export class SearchBarComponent implements OnInit {
     
   }
 
-  constructor(private getPostsService: GetpostsService) { }
+  constructor(private getPostsService: GetpostsService, private authService: AuthService, private modalService: ModalService, private router: Router) { }
 
   ngOnInit() {
     
+  }
+
+  createStudyGroup(){
+    if(this.authService.currentUser == null) {
+      this.modalService.toggle('login-modal');
+    }
+    else{
+      this.router.navigateByUrl('/createstudygroup')
+    }
   }
 
 

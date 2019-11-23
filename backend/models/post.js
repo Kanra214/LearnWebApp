@@ -4,20 +4,29 @@ const debug = require('debug')('app:db');
 
 
 const postSchema = new mongoose.Schema({
-    title: {
+    subject: {
         type: String,
         maxlength:100,
         required: true,
     },
-    author: {
-        type: String,
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
-    content: String,
-    location: String,
-    bounty: Number,
-    category: String,
-    date: {type: Date, default: Date.now}
+    members: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'User',
+        required: true,
+        maxlength: 10,
+    },
+    introduction: String,
+    university: String,
+    date: {type: Date, default: Date.now},
+    schedule:[Date],
+    maxNumOfMembers:Number,
+    location:String
+
 
 });
 const Post = mongoose.model('Post', postSchema);

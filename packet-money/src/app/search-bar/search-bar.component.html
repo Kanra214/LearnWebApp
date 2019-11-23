@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col col-lg-12">
-                <button type="button" class="col col-sm-12 col-md-12 col-lg-12 btn-danger">
+                <button type="button" class="col col-sm-12 col-md-12 col-lg-12 btn-danger" (click)="createStudyGroup()">
                     Create a study group
                 </button>
             </div>
@@ -48,7 +48,7 @@
                     </select>
                 </div>
                 <div class="col col-lg-2 col-md-2 col-sm-12 col-12">
-                    <button type="submit" class="btn-danger" routerLink="/posts"
+                    <button id="search-btn" type="submit" class="btn-danger" routerLink="/posts"
                         [queryParams]=formValue.value>
                         Search
                     </button>
