@@ -1,0 +1,11 @@
+import { environment } from '../environments/environment'
+let host = environment.host;
+export const api = {
+    'validatesignup':{
+        'username':host + '/api/users/checkusernametaken',
+        'email':host + '/api/users/checkemailtaken',
+
+    },
+    'signup': host + '/api/auth/signup',
+    'login': host + '/api/auth/login',
+}
