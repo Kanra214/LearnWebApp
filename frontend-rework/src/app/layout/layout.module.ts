@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LayoutRoutingModule } from './layout-routing.module';
-import { LayoutDefaultComponent } from './layout-default/layout-default.component';
 import { DefaultComponent } from './default/default.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { HeaderComponent } from './default/header/header.component';
+import { SidebarComponent } from './default/sidebar/sidebar.component';
 import { PassportComponent } from './passport/passport.component';
 
+const components = [DefaultComponent, HeaderComponent, SidebarComponent, PassportComponent]
 
 @NgModule({
-  declarations: [LayoutDefaultComponent, DefaultComponent, HeaderComponent, SidebarComponent, PassportComponent],
+  declarations: [...components],
   imports: [
     CommonModule,
-    LayoutRoutingModule
-  ]
+    
+  ],
+  exports: [...components]
 })
 export class LayoutModule { }

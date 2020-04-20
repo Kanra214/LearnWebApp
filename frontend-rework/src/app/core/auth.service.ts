@@ -52,7 +52,7 @@ export class AuthService {
     }
   }
 
-  get isLoggedIn(){
+  get isLoggedIn() {
     return tokenNotExpired();
   }
 

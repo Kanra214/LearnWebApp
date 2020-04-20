@@ -8,13 +8,20 @@ import { MainComponent } from './dashboard/main/main.component';
 import { CreategroupComponent } from './creategroup/creategroup.component';
 import { MygroupsComponent } from './mygroups/mygroups.component';
 import { UpcommingeventsComponent } from './upcommingevents/upcommingevents.component';
+import { LoginComponent } from './passport/login/login.component';
+import { SignupComponent } from './passport/signup/signup.component';
 
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+const components = [DashboardComponent, SearchbarComponent, MainComponent, CreategroupComponent, MygroupsComponent, UpcommingeventsComponent, LoginComponent, SignupComponent]
 @NgModule({
-  declarations: [DashboardComponent, SearchbarComponent, MainComponent, CreategroupComponent, MygroupsComponent, UpcommingeventsComponent],
+  declarations: [...components],
   imports: [
     CommonModule,
-    ComponentsRoutingModule
-  ]
+    ComponentsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ComponentsModule { }

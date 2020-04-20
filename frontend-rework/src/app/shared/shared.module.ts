@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GrouplistviewComponent } from './grouplistview/grouplistview.component';
-import { GroupcardComponent } from './grouplistview/groupcard/groupcard.component';
+import { GroupcardComponent } from './groupcard/groupcard.component';
 import { GroupdetailComponent } from './groupdetail/groupdetail.component';
 import { UsercardComponent } from './usercard/usercard.component';
 import { UserlistComponent } from './userlist/userlist.component';
