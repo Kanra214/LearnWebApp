@@ -19,10 +19,10 @@ import { SimpleGuard } from './../core/guard/simple.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
     component: DefaultComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: 'dashboard', pathMatch: 'full', component: DashboardComponent},
       {path: 'creategroup', component: CreategroupComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},
       {path: 'mygroups', component: MygroupsComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},
       {path: 'upcommingevents', component: UpcommingeventsComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},
@@ -33,13 +33,7 @@ const routes: Routes = [
   //passport
   {
     path: 'passport',
-    redirectTo: 'passport/login',
     component: PassportComponent,
-    children: [
-      {path: 'login', component: LoginComponent},
-      {path: 'signup', component: SignupComponent},
-
-    ]
 
   }
 ];

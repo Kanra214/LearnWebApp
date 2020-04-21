@@ -14,10 +14,10 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
-    ComponentsModule,
     CoreModule,
     LayoutModule,
     SharedModule,
+    ComponentsModule,
     
   ],
   providers: [],

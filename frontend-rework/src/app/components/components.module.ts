@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ComponentsRoutingModule } from './components-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchbarComponent } from './dashboard/searchbar/searchbar.component';
 import { MainComponent } from './dashboard/main/main.component';
@@ -13,15 +12,18 @@ import { SignupComponent } from './passport/signup/signup.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsRoutingModule } from './components-routing.module';
+import { RouterModule } from '@angular/router';
 
 const components = [DashboardComponent, SearchbarComponent, MainComponent, CreategroupComponent, MygroupsComponent, UpcommingeventsComponent, LoginComponent, SignupComponent]
 @NgModule({
   declarations: [...components],
   imports: [
     CommonModule,
-    ComponentsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ComponentsRoutingModule,
   ],
+  exports: [RouterModule]
 })
 export class ComponentsModule { }
