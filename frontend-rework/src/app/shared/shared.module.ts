@@ -7,13 +7,17 @@ import { UsercardComponent } from './usercard/usercard.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, SchedulerComponent, UserprofileComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class SharedModule { }
