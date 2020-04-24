@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+ .fas {
+     font-family: FontAwesome;
+ }
+ .search-sec{
+     padding: 2rem;
+ }
+ .search-slt{
+     display: block;
+     width: 100%;
+     font-size: 0.875rem;
+     line-height: 1.5;
+     color: #55595c;
+     background-color: #fff;
+     background-image: none;
+     border: 1px solid #ccc;
+     height: calc(3rem + 2px) !important;
+     border-radius:0;
+ }
+ .btn-danger {
+     width: 100%;
+     font-size: 16px;
+     font-weight: 400;
+     text-transform: capitalize;
+     height: calc(3rem + 2px) ;
+     background-color : blanchedalmond !important;
+     border-color: blanchedalmond !important;
+     color : #343A40 !important;
+     border-radius:.25rem;
+ }
+ .btn-danger:hover {
+     background-color : #ffe0b3 !important;
+     color : #343A40 !important;
+     border-color: #ffe0b3 !important;
+     border-radius:.25rem;
+     
+ }
+ 
+ @media (min-width: 992px){
+     .search-sec{
+         position: relative;
+         top: -114px;
+         background: rgba(26, 70, 104, 0.51);
+     }
+ }
+ 
+ @media (max-width: 992px){
+     .search-sec{
+         background: #1A4668;
+     }
+ }
+ .submitDiv {
+     margin-top: 35px;
+    height: 50px;
+    text-align: center;
+
+}

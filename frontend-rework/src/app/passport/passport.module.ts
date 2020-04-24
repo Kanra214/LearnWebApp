@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { PassportComponent } from './passport.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LoginComponent,
     SignupComponent,
+    PassportComponent,
     
   ],
   imports: [

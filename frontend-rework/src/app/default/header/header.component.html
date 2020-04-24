@@ -1,1 +1,22 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-sm bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/">studybar</a>
+      </div>
+      <ul class="nav navbar-nav ml-auto">
+        <li *ngIf="!authService.isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/passport/signup"> Signup </a>
+        </li>
+        <li *ngIf="!authService.isLoggedIn" class="nav-item">
+          <a class="nav-link" routerLink="/passport/login"> Login </a>
+        </li>
+        <li *ngIf="authService.isLoggedIn" class="nav-item">
+            <a class="nav-link"> {{ authService.currentUser.username }} </a>
+        </li>
+        <li *ngIf="authService.isLoggedIn" class="nav-item">
+            <a class="nav-link" (click)="authService.logout()"> logout </a>
+        </li>
+  
+      </ul>
+    </div>
+  </nav>
