@@ -10,8 +10,8 @@ export const defaultRoutes = [
         path: '', 
         component: DefaultComponent, 
         children:[
-            {path: '', redirectTo: 'dashboard'},
-            {path: 'dashboard', component: DashboardComponent},
+            {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+            {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'},
             {path: 'creategroup', component: CreategroupComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},
             {path: 'mygroups', component: MygroupsComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},
             {path: 'upcommingevents', component: UpcommingeventsComponent, canActivate: [SimpleGuard], canActivateChild: [SimpleGuard]},

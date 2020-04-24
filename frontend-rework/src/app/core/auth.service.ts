@@ -33,8 +33,7 @@ export class AuthService {
   }
 
   signup(credentials){
-    return this.http.post(api.signup, credentials)
-    .pipe(map(this.storeToken))
+    return this.http.post(api.signup, credentials, {observe: 'response'});
     
   }
 
@@ -47,8 +46,8 @@ export class AuthService {
       localStorage.setItem('token', res.token);
       return true;
     }
-    else{
-      return false;
+    else if(res && res.error){
+      return res.error;
     }
   }
 

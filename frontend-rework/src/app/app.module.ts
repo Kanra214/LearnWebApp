@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    RouterModule.forRoot(appRoutes),
     
   ],
   providers: [],
