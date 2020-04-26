@@ -1,1 +1,9 @@
-<p>grouplistview works!</p>
+<div class="index-content">
+    <div class="container">
+            <a *ngFor="let group of groups">
+                <app-groupcard [group]="group"></app-groupcard>
+            </a>
+            
+
+    </div>
+</div>

@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
 
   onSubmit(f:NgForm){
     console.log(f);
-    this.getPostsService.getPosts(f.value).subscribe(res =>{
+    this.groupService.getGroups(f.value).subscribe(res =>{
       console.log("got response: ", res);
       let temp = [];
       const resArr = res as Post[];

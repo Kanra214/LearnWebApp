@@ -1,5 +1,5 @@
 const express = require('express');
-const posts = require('./routes/posts');
+const groups = require('./routes/groups');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const app = express();
@@ -39,7 +39,7 @@ app.all('/*',function(req,res,next){
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.use('/api/posts', posts);
+app.use('/api/groups', groups);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 

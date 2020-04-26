@@ -1,1 +1,13 @@
-<p>groupcard works!</p>
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 item">
+    <div class="card">
+        <h5 class="card-header">
+            <p class="header-title">University: {{ group.university }}</p>
+            <p *ngIf="group.inProgress"class="header-status"> in progress : {{ group.events[0].name }}</p>
+            </h5>
+
+        <h4 class="card-title">{{ group.subject }}</h4>
+            <p class="card-text">{{ group.introduction }}</p>
+        
+        <a href="#" class="blue-button">Claim this task</a>
+    </div>
+</div>

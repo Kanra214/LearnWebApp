@@ -8,4 +8,5 @@ export const api = {
     },
     'signup': host + '/api/auth/signup',
     'login': host + '/api/auth/login',
+    'group': host + '/api/group',
 }

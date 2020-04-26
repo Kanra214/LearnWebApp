@@ -12,6 +12,7 @@ import { MygroupsComponent } from './main-container/mygroups/mygroups.component'
 import { UpcommingeventsComponent } from './main-container/upcommingevents/upcommingevents.component';
 import { SearchbarComponent } from './main-container/dashboard/searchbar/searchbar.component';
 import { DashboardComponent } from './main-container/dashboard/dashboard.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { DashboardComponent } from './main-container/dashboard/dashboard.compone
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(defaultRoutes),
   ],
   // exports:[RouterModule],

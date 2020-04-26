@@ -8,16 +8,18 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractPipe } from './pipes/abstract.pipe';
 
 
-
+let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, SchedulerComponent, UserprofileComponent]
+let pipes = [AbstractPipe]
 @NgModule({
-  declarations: [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, SchedulerComponent, UserprofileComponent],
+  declarations: [components,pipes],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule]
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, components]
 })
 export class SharedModule { }
