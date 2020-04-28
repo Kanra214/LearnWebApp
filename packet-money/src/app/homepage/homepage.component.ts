@@ -11,7 +11,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     $('#search-form')[0].reset();
-    
+    $('#search-btn').click();
   }
 
 

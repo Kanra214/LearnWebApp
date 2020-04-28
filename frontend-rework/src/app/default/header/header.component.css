@@ -1,0 +1,7 @@
+nav  a {
+    color : whitesmoke;
+}
+nav a:hover {
+    color :gainsboro;
+    cursor: pointer;
+}

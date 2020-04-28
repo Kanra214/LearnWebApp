@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from 'src/services/modal.service';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,13 +9,16 @@ import { ModalService } from 'src/services/modal.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private modalService: ModalService) { }
+  constructor(private modalService: ModalService, private authService:AuthService) { }
 
   ngOnInit() {
   }
   toggleModal(id:string){
-    console.log('openModal: ', id);
     this.modalService.toggle(id);
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
 

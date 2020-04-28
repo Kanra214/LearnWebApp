@@ -1,6 +1,6 @@
 export class Post {
     collapsed: boolean = false;
-    constructor(obj){
+    constructor(obj?){
         Object.assign(this, obj)
     }
     toggleContent(){

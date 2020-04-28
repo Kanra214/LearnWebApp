@@ -1,0 +1,21 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 item">
+    <div class="card">
+        <h5 class="card-header">
+            <p class="header-title">University: {{ group.university }}</p>
+            <p *ngIf="group.inProgress"class="header-status"> in progress : {{ group.events[0].name }}</p>
+            </h5>
+        <div class="card-body">
+
+        <div class="body-title">
+            <h4>{{ group.subject }}</h4>
+            <p class="body-status">members: {{group.members.length}} / {{group.capacity}}</p>
+            
+        </div>
+        
+        
+        <div class="card-text"><p>{{ group.introduction }}</p></div>
+        
+        <button href="#" [disabled]="isInGroup" class="blue-button">{{isInGroup ? "You are registered" : "Join this group"}}</button>
+        </div>
+    </div>
+</div>

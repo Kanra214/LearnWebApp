@@ -12,7 +12,7 @@ router.get('/', async (req, res) =>{
         debug("cleaned the param: ", queryParam);
         const result = await post.getPosts(queryParam);
         debug("sending the result: ", result);
-        res.send(result);
+        res.status(200).send(result);
     }
     catch(error){
         debug('err:',error);

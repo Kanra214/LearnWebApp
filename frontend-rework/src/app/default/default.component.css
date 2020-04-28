@@ -1,0 +1,13 @@
+
+.default {
+    height: 100%;
+}
+.main-container {
+    top: 56px;
+    left: 160px;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: blanchedalmond;
+
+}

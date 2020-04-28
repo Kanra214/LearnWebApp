@@ -92,6 +92,11 @@
               "src/styles.css"
             ],
             "scripts": []
+          },
+          "configurations": {
+            "headless": {
+              "browsers": "HeadlessChrome"
+            }
           }
         },
         "lint": {

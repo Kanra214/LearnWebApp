@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GetpostsService } from '../../services/getposts.service';
+import {Post} from '../../models/post';
+import { AuthService } from 'src/services/auth.service';
+import { ModalService } from 'src/services/modal.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-bar',
@@ -28,15 +32,34 @@ export class SearchBarComponent implements OnInit {
 
   onSubmit(f:NgForm){
     console.log(f);
-    this.getPostsService.getPosts(f.value);
+    this.groupService.getGroups(f.value).subscribe(res =>{
+      console.log("got response: ", res);
+      let temp = [];
+      const resArr = res as Post[];
+      for(let post of resArr){  
+        temp.push(new Post(post));
+      }
+      this.getPostsService.posts = temp;
+
+   
+    });;
     
     
   }
 
-  constructor(private getPostsService: GetpostsService) { }
+  constructor(private getPostsService: GetpostsService, private authService: AuthService, private modalService: ModalService, private router: Router) { }
 
   ngOnInit() {
     
+  }
+
+  createStudyGroup(){
+    if(this.authService.currentUser == null) {
+      this.modalService.toggle('login-modal');
+    }
+    else{
+      this.router.navigateByUrl('/createstudygroup')
+    }
   }
 
 
