@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../../models/group';
-import { GroupService } from 'src/app/core/group.service';
+import { GroupService } from '@services/group.service';
 
 @Component({
   selector: 'app-grouplistview',
@@ -14,7 +14,7 @@ export class GrouplistviewComponent implements OnInit {
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: true,
-  members : ['111', '222', '333'],
+  members : ['111', '781784310@qq.com', '333'],
   capacity : 3,
   isFull : true,
 

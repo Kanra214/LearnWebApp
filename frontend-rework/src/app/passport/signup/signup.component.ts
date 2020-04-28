@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
-import { AuthService } from './../../core/auth.service';
+import { AuthService } from '@services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -94,7 +94,7 @@ export class SignupComponent implements OnInit {
   signup(){
     this.authService.signup(this.signupForm.value).subscribe(result => {
       if(result.status === 200){
-        //TODO: make a alert window
+        alert("You are successfully signed up");
         this.router.navigate(['passport/login']);
       
       }

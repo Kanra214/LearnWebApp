@@ -3,9 +3,6 @@ export class Group {
         Object.assign(this, obj)
     }
 
-    isRegistered():boolean {
-
-    }
     
 
 }

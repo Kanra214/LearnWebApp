@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Group } from '../models/group';
+import { Group } from '@models/group';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { api } from '../api';
+import { api } from '@api';
 import { ResourceService } from './resource.service';
 import { of, Observable } from 'rxjs';
 
@@ -18,6 +18,7 @@ export class GroupService extends ResourceService {
     return of(this.results);
   }
   search(queryObj){
+    this.results = [];
     super.get(queryObj).subscribe(
       response => {
         const resArr = response as Group[];

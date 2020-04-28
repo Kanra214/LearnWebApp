@@ -15,7 +15,7 @@
         
         <div class="card-text"><p>{{ group.introduction }}</p></div>
         
-        <a href="#" class="blue-button">Claim this task</a>
+        <button href="#" [disabled]="isInGroup" class="blue-button">{{isInGroup ? "You are registered" : "Join this group"}}</button>
         </div>
     </div>
 </div>

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
-import { api } from '../api';
+import { api } from '@api';
+import { User } from '@models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,7 @@ export class AuthService {
 
   private storeToken(res:any){
     if(res && res.token){
-      localStorage.setItem('token', res.token);
+      localStorage.setItem('token',res.token);
       return true;
     }
     else if(res && res.error){
@@ -58,7 +59,7 @@ export class AuthService {
   get currentUser(){
     let token = localStorage.getItem('token');
     if(!token) return null;
-    let result = new JwtHelper().decodeToken(token);
+    let result = new JwtHelper().decodeToken(token) as User;
     return result;
   }
 }

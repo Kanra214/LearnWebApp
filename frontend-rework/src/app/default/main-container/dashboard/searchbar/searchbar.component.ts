@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GroupService } from 'src/app/core/group.service';
+import { GroupService } from '@services/group.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -8,7 +8,6 @@ import { GroupService } from 'src/app/core/group.service';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
-
   categoryList = [
     "car washing",
     "coffee holding",
@@ -28,7 +27,8 @@ export class SearchbarComponent implements OnInit {
 
   onSubmit(f:NgForm){
     console.log(f);
-    this.groupService.search(f)
+    // this.onSearch.emit(f.value);
+        this.groupService.search(f.value);
   }
 
   constructor(private groupService: GroupService) { }

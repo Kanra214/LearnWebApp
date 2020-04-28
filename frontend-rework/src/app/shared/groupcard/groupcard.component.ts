@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Group } from 'src/app/models/group';
+import { Group } from '@models/group';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-groupcard',
@@ -7,10 +8,13 @@ import { Group } from 'src/app/models/group';
   styleUrls: ['./groupcard.component.css']
 })
 export class GroupcardComponent implements OnInit {
-  @Input() group:any;
-  constructor() { }
+  @Input() group:any;//TODO: change to group interface
+  constructor(public authService: AuthService ) { }
 
   ngOnInit(): void {
+  }
+  get isInGroup(): boolean{
+    return this.group.members.includes(this.authService.currentUser?.email);
   }
 
 }
