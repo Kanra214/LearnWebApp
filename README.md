@@ -1,3 +1,5 @@
 # To do
 - [ ] make front end responsive
-- [ ] jwt auth token
+- [x] jwt auth token
+- [ ] group card view
+- [ ] strong typing everything
