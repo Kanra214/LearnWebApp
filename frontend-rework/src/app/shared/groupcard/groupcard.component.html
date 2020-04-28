@@ -4,10 +4,18 @@
             <p class="header-title">University: {{ group.university }}</p>
             <p *ngIf="group.inProgress"class="header-status"> in progress : {{ group.events[0].name }}</p>
             </h5>
+        <div class="card-body">
 
-        <h4 class="card-title">{{ group.subject }}</h4>
-            <p class="card-text">{{ group.introduction }}</p>
+        <div class="body-title">
+            <h4>{{ group.subject }}</h4>
+            <p class="body-status">members: {{group.members.length}} / {{group.capacity}}</p>
+            
+        </div>
+        
+        
+        <div class="card-text"><p>{{ group.introduction }}</p></div>
         
         <a href="#" class="blue-button">Claim this task</a>
+        </div>
     </div>
 </div>

@@ -41,8 +41,19 @@
     padding:5px;
 }
 .header-title {
-    text-align: left;
+    float:left;
 }
 .header-status {
-    text-align: right;
+    float: right;
+}
+.body-title {
+    display: block;
+}
+.body-title > h4 {
+    display: inline-block;
+}
+
+.body-status {
+    display: inline-block;
+    float: right;
 }
