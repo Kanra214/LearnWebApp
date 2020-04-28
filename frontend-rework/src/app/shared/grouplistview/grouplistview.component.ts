@@ -14,17 +14,21 @@ export class GrouplistviewComponent implements OnInit {
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: true,
-  members : ['1', '2', '3'],
-  capacity : 10
+  members : ['111', '222', '333'],
+  capacity : 3,
+  isFull : true,
+
 
 
 }),
 new Group({
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
-  inProgress: true,
-  members : ['1', '2', '3'],
-  capacity : 10
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
 
 
 }),
