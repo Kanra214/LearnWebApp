@@ -1,1 +1,34 @@
-<p>creategroup works!</p>
+<h2>Create a group</h2>
+<form>
+    <div class="row">
+      <div class="col col-md-5 form-group">
+        <label for="subject"></label>
+        <input id="subject" type="text" class="form-control">
+      </div>
+      <div class="col col-md-2">
+        <p>from</p>
+      </div>
+      
+      <div class="col col-md-5 form-group">
+          <label for="university"></label>
+          <select id="university" class="form-control">
+            <option selected>Choose...</option>
+            <option *ngFor="let uni of universities">{{ uni }}</option>
+          </select>
+      </div>
+    </div>
+      <div class="form-group">
+          <label for="introduction">Introduction</label>
+          <textarea id="introduction" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+          <label for="capacity">Capacity</label>
+          <select id="capacity" class="form-control">
+            <option *ngFor="let i of Array(groupService.maxCapacity).keys()">{{ i }}</option>
+          </select>
+
+      </div>
+      <div ></div>
+
+    
+  </form>

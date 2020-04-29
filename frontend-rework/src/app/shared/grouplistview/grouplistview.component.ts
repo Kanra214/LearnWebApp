@@ -32,6 +32,61 @@ new Group({
 
 
 }),
+new Group({
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+}),
+new Group({
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+}),
+new Group({
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+}),
+new Group({
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+}),
+new Group({
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+}),
 ]
   constructor(private groupService: GroupService) { }
 

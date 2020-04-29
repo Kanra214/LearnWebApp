@@ -11,6 +11,7 @@ import { of, Observable } from 'rxjs';
 export class GroupService extends ResourceService {
 
   results: Group[];
+  maximumCapacity: Number = 8;
   constructor(http: HttpClient) { 
     super(api.group, http);
   }

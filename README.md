@@ -3,3 +3,5 @@
 - [x] jwt auth token
 - [ ] group card view
 - [ ] strong typing everything
+- [ ] pagination
+- [ ] create card form
