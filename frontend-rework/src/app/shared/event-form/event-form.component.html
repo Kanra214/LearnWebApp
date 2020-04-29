@@ -1,0 +1,10 @@
+
+<form>
+    <div class="form-group">
+        <label for="time-and-date">Events</label>
+        <div class="row" *ngFor="let event of events">{{ event.name }}</div>
+        <app-time-and-date-picker *ngIf="showPicker"></app-time-and-date-picker>
+        <button class="btn btn-primary add" (click)="togglePicker()">{{showPicker ? "close" : "+ Add event"}}</button>
+    </div>
+
+</form>

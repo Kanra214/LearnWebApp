@@ -2,15 +2,15 @@
 <form>
     <div class="row">
       <div class="col col-md-5 form-group">
-        <label for="subject"></label>
+        <label for="subject">Subject</label>
         <input id="subject" type="text" class="form-control">
       </div>
       <div class="col col-md-2">
-        <p>from</p>
+        <p class="center">from</p>
       </div>
       
       <div class="col col-md-5 form-group">
-          <label for="university"></label>
+          <label for="university">University</label>
           <select id="university" class="form-control">
             <option selected>Choose...</option>
             <option *ngFor="let uni of universities">{{ uni }}</option>
@@ -24,11 +24,12 @@
       <div class="form-group">
           <label for="capacity">Capacity</label>
           <select id="capacity" class="form-control">
-            <option *ngFor="let i of Array(groupService.maxCapacity).keys()">{{ i }}</option>
+            <option *ngFor="let i of capacityOptions">{{ i }}</option>
           </select>
 
       </div>
-      <div ></div>
+      <app-event-form></app-event-form>
+      
 
     
   </form>

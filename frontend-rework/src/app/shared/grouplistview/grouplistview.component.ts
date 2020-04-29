@@ -9,8 +9,8 @@ import { GroupService } from '@services/group.service';
 })
 export class GrouplistviewComponent implements OnInit {
   // groups: Group[];
-  groups = [
-    new Group({
+  groups: Group[] = [
+    {
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: true,
@@ -20,8 +20,8 @@ export class GrouplistviewComponent implements OnInit {
 
 
 
-}),
-new Group({
+} as Group,
+{
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: false,
@@ -31,8 +31,8 @@ new Group({
 
 
 
-}),
-new Group({
+},
+{
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: false,
@@ -42,8 +42,8 @@ new Group({
 
 
 
-}),
-new Group({
+},
+{
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: false,
@@ -53,8 +53,8 @@ new Group({
 
 
 
-}),
-new Group({
+},
+{
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: false,
@@ -64,8 +64,8 @@ new Group({
 
 
 
-}),
-new Group({
+},
+{
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: false,
@@ -75,7 +75,7 @@ new Group({
 
 
 
-}),
+},
 new Group({
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
