@@ -11,6 +11,9 @@ import { AbstractPipe } from './pipes/abstract.pipe';
 import { EventFormComponent } from './event-form/event-form.component';
 import { TimeAndDatePickerComponent } from './time-and-date-picker/time-and-date-picker.component';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent]
 let pipes = [AbstractPipe]
@@ -20,6 +23,9 @@ let pipes = [AbstractPipe]
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
+    
   ],
   exports: [CommonModule, FormsModule, ReactiveFormsModule, components]
 })

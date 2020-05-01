@@ -5,3 +5,4 @@
 - [ ] strong typing everything
 - [ ] pagination
 - [ ] create card form
+- [ ] date and time picker repeat mechanism
