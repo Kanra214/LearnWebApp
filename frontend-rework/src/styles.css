@@ -56,3 +56,6 @@
     text-align: center;
 
 }
+.btn-primary:disabled{
+    cursor: not-allowed;
+}

@@ -6,3 +6,8 @@
 - [ ] pagination
 - [ ] create card form
 - [ ] date and time picker repeat mechanism
+- [ ] event name should be bucket, now we dont allow duplicate event name
+- [ ] create group form
+- [ ] backend validation
+- [x] time slot validation
+- [ ] create group form validation

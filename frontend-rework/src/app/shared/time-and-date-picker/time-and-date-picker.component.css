@@ -1,0 +1,7 @@
+.close {
+    line-height: unset;
+    font-weight: 200;
+}
+.close:hover {
+    cursor: pointer;
+}

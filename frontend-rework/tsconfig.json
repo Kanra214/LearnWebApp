@@ -6,6 +6,7 @@
       "@services/*": ["src/app/core/services/*"],
       "@models/*": ["src/app/models/*"],
       "@api": ["src/app/api.ts"],
+      "@shared/*": ["src/app/shared/*"],
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
