@@ -12,7 +12,6 @@ import { EventOverlapService } from '@services/event-overlap.service';
 export class EventFormComponent implements OnInit{
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
   
-  events: Event[];
   pickers: ComponentRef<TimeAndDatePickerComponent>[] = [];
   
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private eo: EventOverlapService) {}
@@ -23,6 +22,27 @@ export class EventFormComponent implements OnInit{
 
 
   ngOnInit(): void {
+  }
+  get valid():boolean {
+    for(let picker of this.pickers){
+      if(!picker.instance.valid){
+        return false;
+
+      }
+    }
+    return true;
+  }
+  get events(){
+    let result = [];
+    for(let picker of this.pickers){
+      let inst = picker.instance;
+      if(inst.valid){
+        result.push(inst.placeholder);
+      }
+
+
+    }
+    return result;
   }
   change(){
     for(let picker of this.pickers){

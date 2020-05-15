@@ -4,10 +4,11 @@
 - [ ] group card view
 - [ ] strong typing everything
 - [ ] pagination
-- [ ] create card form
+- [ ] make create group pretty
 - [ ] date and time picker repeat mechanism
 - [ ] event name should be bucket, now we dont allow duplicate event name
-- [ ] create group form
+- [x] create group form
 - [ ] backend validation
 - [x] time slot validation
-- [ ] create group form validation
+- [x] create group form validation
+- [ ] create group backend

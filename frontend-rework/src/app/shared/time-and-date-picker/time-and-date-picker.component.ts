@@ -24,10 +24,13 @@ export class TimeAndDatePickerComponent implements OnInit {
   overlap:boolean = false;
   constructor(private fb: FormBuilder, private eo: EventOverlapService) { 
     this.dtForm = this.fb.group({
-      "eventName": ['', [Validators.required]],
+      "eventName": ['', Validators.required],
       "dateTime": ['', [this.mustHaveFromAndTo]]
     }, 
     );
+  }
+  get valid():boolean{
+    return this.dtForm.valid && !this.overlap && !this.edit
   }
   mustHaveFromAndTo(dateTimeFormControl: FormControl): ValidationErrors | null{
     const dateArr: Date[] = dateTimeFormControl.value;
