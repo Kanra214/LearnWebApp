@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { GroupService } from '@services/group.service';
+import { University } from '@models/university';
 
 @Component({
   selector: 'app-searchbar',
@@ -8,22 +9,7 @@ import { GroupService } from '@services/group.service';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
-  categoryList = [
-    "car washing",
-    "coffee holding",
-    "tutoring",
-    "dog walking",
-    "delivery",
-    
-  ];
-
-
-  locationList = [
-    "Downtown Montreal",
-    "Laval",
-    "Longueuil",
-    "South Shore"
-  ];
+  universities: string[] = Object.values(University);
 
   onSubmit(f:NgForm){
     console.log(f);
@@ -31,10 +17,12 @@ export class SearchbarComponent implements OnInit {
         this.groupService.search(f.value);
   }
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService) {
+
+    this.groupService.search({});
+   }
 
   ngOnInit() {
-    
   }
 
   

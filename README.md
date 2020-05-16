@@ -16,4 +16,6 @@
 - [ ] edit group config backend
 - [ ] mygroups list view
 - [ ] add event location
-- [ ] event schema
+- [ ] event 
+- [ ] come out of a better search bar
+- [ ] search keywork mechanism

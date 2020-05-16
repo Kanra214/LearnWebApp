@@ -36,7 +36,7 @@ const groupSchema = new mongoose.Schema({
 });
 const Group = mongoose.model('Group', groupSchema);
 async function getGroups(queryParams){
-    const result = await group.find(queryParams)
+    const result = await Group.find(queryParams)
             .sort('-date');
     debug("Returning the query result: ", result);
     return result;
@@ -66,7 +66,7 @@ async function updateGroup(doc){
     debug('finding group by id: ', doc._id );
     let group = await Group.findById(doc._id);
     debug('find group result: ', group);
-    group.update({
+    Group.update({
         subject:doc.subject,
         university:doc.university,
         introduction:doc.introduction,
