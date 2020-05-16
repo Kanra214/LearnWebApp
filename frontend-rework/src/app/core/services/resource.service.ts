@@ -12,4 +12,7 @@ export class ResourceService {
   create(requestBody) {
     return this.http.post(this.url, requestBody,  {observe: 'response'});
   }
+  update(requestBody) {
+    return this.http.put(this.url, requestBody, {observe: 'response'});
+  }
 }

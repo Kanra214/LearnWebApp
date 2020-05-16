@@ -11,4 +11,8 @@
 - [ ] backend validation
 - [x] time slot validation
 - [x] create group form validation
-- [ ] create group backend
+- [x] create group backend
+- [ ] edit group config frontend
+- [ ] edit group config backend
+- [ ] mygroups list view
+- [ ] add event location

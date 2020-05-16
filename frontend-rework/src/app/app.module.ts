@@ -6,9 +6,10 @@ import { appRoutes } from './app.routes';
 //my modules
 import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppErrorHandler } from './core/app-error-handler';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyInterceptor } from './core/my-interceptor';
 
 
 
@@ -27,7 +28,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     {
-      provide:ErrorHandler, useClass: AppErrorHandler
+      provide:ErrorHandler, useClass: AppErrorHandler,
+      
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

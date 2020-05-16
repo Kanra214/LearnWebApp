@@ -6,9 +6,16 @@ export class AppErrorHandler implements ErrorHandler{
         let errorMessage : string;
         if (error instanceof HttpErrorResponse){
             // server error
-            if (error.status === 400) {
+            if (error.status === 404) {
                 errorMessage = 'The target resouce is not found';
                 
+            }
+            else if(error.status === 400){
+                errorMessage = 'Bad request';
+            }
+
+            else if(error.status === 401) {
+                errorMessage = 'Unauthorized';
             }
 
         }

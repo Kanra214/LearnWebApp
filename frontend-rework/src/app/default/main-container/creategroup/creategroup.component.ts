@@ -33,15 +33,14 @@ export class CreategroupComponent implements OnInit {
   createGroup(){
     let mergedForm = this.createGroupForm.value;
     mergedForm['events'] = this.eventFormComponent.events;
-    // this.groupService.create(mergedForm).subscribe(result => {
-    //   if(result.status === 200){
-    //     alert("Group is created");
-    //     this.router.navigate(['/mygroups']);
+    this.groupService.create(mergedForm).subscribe(result => {
+      if(result.status === 200){
+        alert("Group is created");
+        this.router.navigate(['/mygroups']);
       
-    //   }
-    // }
-    // );
-    console.log(mergedForm);
+      }
+    }
+    );
     
     
   }

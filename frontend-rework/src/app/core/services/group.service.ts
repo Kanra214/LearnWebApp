@@ -30,6 +30,7 @@ export class GroupService extends ResourceService {
    
     });
   }
+
   get maximumCapacity(){
     return this._maximumCapacity;
   }

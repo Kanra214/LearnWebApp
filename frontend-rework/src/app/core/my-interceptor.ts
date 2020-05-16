@@ -11,16 +11,27 @@ import {  HttpEvent,
     HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { AuthService } from '@services/auth.service';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
-
-export class HttpErrorInterceptor implements HttpInterceptor {
+@Injectable()
+export class MyInterceptor implements HttpInterceptor {
+    constructor(private authService: AuthService, private router: Router) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      if (this.authService.isLoggedIn) {
+        request = request.clone({
+            setHeaders: {
+                token: this.authService.token,
+            }
+        });
+      }
 
         return next.handle(request).pipe(
         //   retry(1),
           catchError((error: HttpErrorResponse) => {
             if (error.status === 401) {
-              // refresh token
+              this.router.navigate(['passport/login']);
             } else {
               return throwError(error);
             }
