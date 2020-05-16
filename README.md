@@ -16,3 +16,4 @@
 - [ ] edit group config backend
 - [ ] mygroups list view
 - [ ] add event location
+- [ ] event schema

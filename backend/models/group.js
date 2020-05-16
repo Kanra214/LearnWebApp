@@ -24,7 +24,8 @@ const groupSchema = new mongoose.Schema({
     create_date: {type: Date, default: Date.now},
     last_update: {type: Date},
     events:{
-        type: [mongoose.Schema.Types.ObjectId],
+        // type: [mongoose.Schema.Types.ObjectId],
+        type: [String],
         ref: 'Event',
 
     },
