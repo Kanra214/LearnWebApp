@@ -1,4 +1,5 @@
 /* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
  .fas {
      font-family: FontAwesome;
  }
@@ -54,4 +55,7 @@
     height: 50px;
     text-align: center;
 
+}
+.btn-primary:disabled{
+    cursor: not-allowed;
 }

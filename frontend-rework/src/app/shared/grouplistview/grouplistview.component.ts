@@ -9,8 +9,8 @@ import { GroupService } from '@services/group.service';
 })
 export class GrouplistviewComponent implements OnInit {
   // groups: Group[];
-  groups = [
-    new Group({
+  groups: Group[] = [
+    {
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 
   inProgress: true,
@@ -20,7 +20,62 @@ export class GrouplistviewComponent implements OnInit {
 
 
 
-}),
+} as Group,
+{
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+},
+{
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+},
+{
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+},
+{
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+},
+{
+  'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
+  'events':[{name:'event1'},{name: 'event2'}], 
+  inProgress: false,
+  members : ['aaa', 'bbb', 'ccc'],
+  capacity : 10,
+  isFull : false,
+
+
+
+},
 new Group({
   'university':'Concordia', 'subject': 'COMP 5231', 'introduction': 'sdjfoisdjfosidjsdfsdfsfsdgsfgjsherfigjeorgiejrgoeirghjsortghslegjreslkrjglekrjgefosidfjosidjfosdighosdijf', 
   'events':[{name:'event1'},{name: 'event2'}], 

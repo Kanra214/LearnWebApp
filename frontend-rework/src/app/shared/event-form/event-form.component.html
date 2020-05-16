@@ -1,0 +1,15 @@
+
+<form>
+    <div class="form-group">
+        <label>Events</label>
+        <div (click)="change()">
+            <!-- Use ng-template to ensure that the generated components end up in the right place -->
+            <ng-template #container>
+      
+            </ng-template>
+          </div>
+        
+        <button class="btn btn-primary add" (click)="addPicker()">+ Add event</button>
+    </div>
+
+</form>

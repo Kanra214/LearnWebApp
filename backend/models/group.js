@@ -6,7 +6,6 @@ const debug = require('debug')('app:db');
 const groupSchema = new mongoose.Schema({
     subject: {
         type: String,
-        maxlength:100,
         required: true,
     },
     owner: {
@@ -18,23 +17,67 @@ const groupSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'User',
         required: true,
-        maxlength: 10,
+        maxlength: 8,
     },
     introduction: String,
     university: String,
-    date: {type: Date, default: Date.now},
-    schedule:[Date],
-    maxNumOfMembers:Number,
-    location:String
+    create_date: {type: Date, default: Date.now},
+    last_update: {type: Date},
+    events:{
+        // type: [mongoose.Schema.Types.ObjectId],
+        type: [String],
+        ref: 'Event',
+
+    },
+    capacity:Number,
+    // location:String
 
 
 });
-const group = mongoose.model('group', groupSchema);
-async function getgroups(queryParams){
+const Group = mongoose.model('Group', groupSchema);
+async function getGroups(queryParams){
     const result = await group.find(queryParams)
             .sort('-date');
     debug("Returning the query result: ", result);
     return result;
+
+}
+async function createGroup(doc){
+    // if(reqBody._id){
+    //     debug('updating group');
+    //     debug('finding group by id: ', reqBody._id );
+    //     let group = await Group.findById(reqBody._id);
+    //     debug('find group result: ', group);
+    //     group.update(reqBody);
+    //     debug('updated')
+    //     return 'ok';
+    // }
+    // else{
+        debug("creating group", doc);
+        
+        let newGroup = new Group(doc);
+        await newGroup.save();
+        debug("group saved");
+        return newGroup.ObjectId;
+
+    }
+async function updateGroup(doc){
+    debug('updating group');
+    debug('finding group by id: ', doc._id );
+    let group = await Group.findById(doc._id);
+    debug('find group result: ', group);
+    group.update({
+        subject:doc.subject,
+        university:doc.university,
+        introduction:doc.introduction,
+        capacity: doc.capacity,
+        events: doc.events,
+        members: doc.members,
+        last_update:Date.now,
+    });
+    debug('group updated')
+    return 'ok';
+
 
 }
 // group.updateOne({author: "Haru"}, {bounty: 10}, function(err, docs){
@@ -43,5 +86,7 @@ async function getgroups(queryParams){
 // });
 // const p = new group({title: 'french tutoring', author:'Wang', content: 'french tutor wanted dufiuwehfoiusheoirfuhirefireheigug', location:'South Shore', bounty: 50 });
 // p.save();
-module.exports = group;
-module.exports.getgroups = getgroups;
+module.exports = Group;
+module.exports.getGroups = getGroups;
+module.exports.createGroup = createGroup;
+module.exports.updateGroup = updateGroup;

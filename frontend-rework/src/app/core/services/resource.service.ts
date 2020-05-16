@@ -9,4 +9,10 @@ export class ResourceService {
     const params = new HttpParams({fromObject: queryObj});
     return this.http.get(this.url, {params: params});
   }
+  create(requestBody) {
+    return this.http.post(this.url, requestBody,  {observe: 'response'});
+  }
+  update(requestBody) {
+    return this.http.put(this.url, requestBody, {observe: 'response'});
+  }
 }

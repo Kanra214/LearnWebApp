@@ -1,23 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 //my modules
 import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppErrorHandler } from './core/app-error-handler';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyInterceptor } from './core/my-interceptor';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
@@ -26,7 +28,13 @@ import { AppErrorHandler } from './core/app-error-handler';
   ],
   providers: [
     {
-      provide:ErrorHandler, useClass: AppErrorHandler
+      provide:ErrorHandler, useClass: AppErrorHandler,
+      
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
