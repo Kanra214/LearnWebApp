@@ -21,7 +21,7 @@
         </app-groupdetail>
         </div>
         
-        <button href="#" [disabled]="isInGroup" class="blue-button">{{isInGroup ? "You are registered" : "Join this group"}}</button>
+        <button href="#" [disabled]="inGroupStatus!=='Join this group'" class="blue-button" (click)="join()">{{inGroupStatus}}</button>
         </div>
     </div>
 </div>

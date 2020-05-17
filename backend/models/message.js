@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const debug = require('debug')('app:db');
+const debug = require('debug')('app:messages');
 
 
 
@@ -18,9 +18,14 @@ const messageSchema = new mongoose.Schema({
         required: true,
     },
     create_date: {type: Date, default: Date.now},
-    read: Boolean,
-    isRequest: Boolean,
-    isApproved: Boolean,
+    read: {type: Boolean, default: false},
+    isRequest: {type: Boolean, default: null},
+    isApproved: {type: Boolean, default: null},
+    last_update: {type: Date},
+    groupId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Group',
+    }
     
 
 
@@ -49,28 +54,23 @@ async function createMessage(doc){
         let newMessage = new message(doc);
         await newMessage.save();
         debug("message saved");
-        return newMessage.ObjectId;
+        return newMessage;
 
     }
-// async function updatemessage(doc){
-//     debug('updating message');
-//     debug('finding message by id: ', doc._id );
-//     let message = await message.findById(doc._id);
-//     debug('find message result: ', message);
-//     message.update({
-//         subject:doc.subject,
-//         university:doc.university,
-//         introduction:doc.introduction,
-//         capacity: doc.capacity,
-//         events: doc.events,
-//         members: doc.members,
-//         last_update:Date.now,
-//     });
-//     debug('message updated')
-//     return 'ok';
+async function updateMessage(doc){
+    debug('updating message');
+    debug('finding message by id: ', doc._id );
+    let result = await message.findById(doc._id);
+    debug('find message result: ', result);
+    debug('update last update');
+    doc['last_update'] = Date.now();
+    result.overwrite(doc);
+    await result.save();
+    debug('message updated')
+    return result;
 
 
-// }
+}
 // message.updateOne({author: "Haru"}, {bounty: 10}, function(err, docs){
 //     if(err) console.log(err);
 //     console.log('更改成功：' + docs);
@@ -80,4 +80,4 @@ async function createMessage(doc){
 module.exports = message;
 module.exports.getMessages = getMessages;
 module.exports.createMessage = createMessage;
-// module.exports.updatemessage = updatemessage;
+module.exports.updateMessage = updateMessage;

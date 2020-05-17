@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const clean = require('../util/clean-query');
-const Group = require('../models/group');
-const debug = require('debug')('app:groups');
-const User = require('../models/user');
+const Message = require('../models/message');
+const debug = require('debug')('app:messages');
 const auth = require('../middlewares/auth');
-const attachMembersInfoForGetGroups = require('../middlewares/attachMembersInfoForGroups');
+const attachMembersInfoForGetMessages = require('../middlewares/attachMembersInfoForMessages');
 
 
-router.get('/', async (req, res, next) =>{
+router.get('/', auth, async (req, res, next) =>{
     try{
         debug("receive query params: ", req.query);
         const queryParam = clean(req.query);
         debug("cleaned the param: ", queryParam);
-        const result = await Group.getGroups(queryParam);
+        const newQueryParam = {$or: [
+            {from: queryParam.userId},
+            {to: queryParam.userId}
+        ]}
+        const result = await Message.getMessages(newQueryParam);
         debug("sending the result: ", result);
         
         if(result){
@@ -29,19 +32,23 @@ router.get('/', async (req, res, next) =>{
 
     }
 
-},attachMembersInfoForGetGroups );
+},attachMembersInfoForGetMessages );
 
 router.post('/',auth, async(req, res) =>{
     debug("a create group request");
     try{
             let doc = req.body;
-            doc['owner'] = req.user;
-            doc['members'] = [req.user];
-            debug("new group ", doc);
-            const result = await Group.createGroup(doc);
+            doc['from'] = req.user._id;
+            debug("new message ", doc);
+            const result = await Message.createMessage(doc);
 
             debug("sending the result: ", result);
-            res.status(200).send({_id:result});
+            if(result){
+                res.status(200).send(result);
+            }
+            else{
+                throw "cant save message";
+            }
                 
 
             
@@ -55,26 +62,17 @@ router.post('/',auth, async(req, res) =>{
 
 });
 router.put('/', auth, async(req, res) =>{
-    debug("a update group config request");
+    debug("a update message request");
+    debug('req, ',req.body);
     try{
 
-        //check if user is the group owner
-        const group = Group.findById(req.body._id);
-        if(group.owner !== req.user){
-            //not a owner
-            res.send(401).send();
+        const result = await Message.updateMessage(req.body);
+        if(result){
 
-        }
-
-
-
-        const result = await Group.updateGroup(req.body);
-        if(result === 'ok'){
-
-            res.status(200).send();
+            res.status(200).send(result);
         }
         else{
-            res.status(400).send(result);
+            throw "cant update message";
         }
             
         

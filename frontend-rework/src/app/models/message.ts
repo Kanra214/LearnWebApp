@@ -1,8 +1,10 @@
+import { UserInfo } from '@models/userInfo';
 export interface Message{
-    from: string,
-    to: string,
+    from: UserInfo | string,
+    to: UserInfo | string,
     isRequest: boolean,
     // date: Date,
     isApproved: boolean,
     content: string,
+    groupId: string,
 }

@@ -28,3 +28,9 @@
 - [x] message detail / modal
 - [ ] prettify message detail view
 - [ ] message backend
+- [ ] user profile page
+- [ ] attachUserInfo attach full profile
+- [ ] open new message doesnt open a message modal
+- [ ] approved not addding that member to group
+- [ ] read based on message, but also needs to based on user
+- [ ] request from and to receive same message

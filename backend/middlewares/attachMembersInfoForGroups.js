@@ -2,7 +2,7 @@ const User = require('../models/user');
 const debug = require('debug')('app:groups');
 
 
-async function attachMembersInfo(req, res){
+async function attachMembersInfoForGroups(req, res){
     debug('attaching members info');
     // const getMembersInfo = (memberId) =>{
     //     const user = User.findById(memberId);
@@ -51,4 +51,4 @@ async function attachMembersInfo(req, res){
 
 }
 
-module.exports = attachMembersInfo;
+module.exports = attachMembersInfoForGroups;

@@ -2,6 +2,7 @@ const express = require('express');
 const groups = require('./routes/groups');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const messages = require('./routes/messages');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -40,6 +41,7 @@ app.all('/*',function(req,res,next){
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api/groups', groups);
+app.use('/api/messages', messages);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 

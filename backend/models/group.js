@@ -66,7 +66,7 @@ async function updateGroup(doc){
     debug('finding group by id: ', doc._id );
     let group = await Group.findById(doc._id);
     debug('find group result: ', group);
-    Group.update({
+    group.overwrite({
         subject:doc.subject,
         university:doc.university,
         introduction:doc.introduction,
@@ -75,6 +75,7 @@ async function updateGroup(doc){
         members: doc.members,
         last_update:Date.now,
     });
+    await group.save();
     debug('group updated')
     return 'ok';
 
