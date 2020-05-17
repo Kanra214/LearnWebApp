@@ -13,6 +13,7 @@ import { UpcommingeventsComponent } from './main-container/upcommingevents/upcom
 import { SearchbarComponent } from './main-container/dashboard/searchbar/searchbar.component';
 import { DashboardComponent } from './main-container/dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
+import { MessagelistComponent } from './header/messagelist/messagelist.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     UpcommingeventsComponent,
     SearchbarComponent,
     DashboardContentComponent,
+    MessagelistComponent,
   ],
   imports: [
     CommonModule,

@@ -9,12 +9,17 @@ import { AuthService } from '@services/auth.service';
 })
 export class GroupcardComponent implements OnInit {
   @Input() group:any;//TODO: change to group interface
+  showDetail:boolean = false;
   constructor(public authService: AuthService ) { }
 
   ngOnInit(): void {
   }
   get isInGroup(): boolean{
-    return this.group.members.includes(this.authService.currentUser?.email);
+    return this.group.members.some( (member) => {
+      return member._id === this.authService.currentUser?._id
+  });}
+  toggleDetail(){
+    this.showDetail = !this.showDetail;
   }
 
 }

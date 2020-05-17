@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-groupdetail',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupdetailComponent implements OnInit {
 
+  @Input() group:any;//TODO: change to group interface
   constructor() { }
 
   ngOnInit(): void {

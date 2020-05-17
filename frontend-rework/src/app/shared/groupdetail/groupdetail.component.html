@@ -1,1 +1,13 @@
-<p>groupdetail works!</p>
+<div class="detail-container">
+    <div class="event-list">
+        <h5>Events:</h5>
+        <p *ngFor="let event of group.events"> {{ event }}</p>
+    </div>
+
+    <div class="member-list">
+        <h5>Members:</h5>
+        <p>
+            <a href="#" *ngFor="let member of group.members"> {{ member.username }}</a>
+        </p>
+    </div>
+</div>

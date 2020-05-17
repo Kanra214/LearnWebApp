@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+        
+        
+		<!-- Our Special dropdown has class show-on-hover -->
+        <div class="btn-group show-on-hover">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            messages <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li *ngFor="let message of messagelist"><span *ngIf="!message.read" class="dot"></span><a href="#"> {{ message.from }}: {{message.content | abstract:10}} </a></li>
+          </ul>
+        </div>
+
+	</div>
+  <br />
+
+</div>

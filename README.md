@@ -16,6 +16,13 @@
 - [ ] edit group config backend
 - [ ] mygroups list view
 - [ ] add event location
-- [ ] event 
+- [ ] event schema
 - [ ] come out of a better search bar
 - [ ] search keywork mechanism
+- [ ] in process / next event in group card
+- [ ] click group card to view detail
+- [ ] think of returning user info to frontend
+- [ ] username link to user profile
+- [x] attachUserInfo for get group middleware
+- [ ] message mechanism
+- [ ] message detail / modal

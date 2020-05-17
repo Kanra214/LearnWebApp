@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-dark">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" routerLink="/">studybar</a>
+        <a class="navbar-brand" (click)="reload()">studybar</a>
       </div>
       <ul class="nav navbar-nav ml-auto">
         <li *ngIf="!authService.isLoggedIn" class="nav-item">
@@ -13,6 +13,9 @@
         <li *ngIf="authService.isLoggedIn" class="nav-item">
             <a class="nav-link"> {{ authService.currentUser.username }} </a>
         </li>
+        <li *ngIf="authService.isLoggedIn" class="nav-item">
+          <app-messagelist></app-messagelist>
+      </li>
         <li *ngIf="authService.isLoggedIn" class="nav-item">
             <a class="nav-link" (click)="authService.logout()"> logout </a>
         </li>

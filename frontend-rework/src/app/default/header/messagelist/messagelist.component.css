@@ -1,0 +1,28 @@
+body{
+    padding:10px;
+}
+
+.show-on-hover:hover > ul.dropdown-menu {
+    display: block;    
+    background-color: rgb(233, 233, 233);
+    padding:10px;
+}
+ul a {
+    color: #343A40;
+}
+
+button.dropdown-toggle {
+    color : whitesmoke;
+}
+button.dropdown-toggle:hover {
+    color :gainsboro;
+    cursor: pointer;
+}
+.dot {
+    height: 7px;
+    width: 7px;
+    background-color: rgb(216, 92, 92);
+    border-radius: 50%;
+    display: inline-block;
+  }
+

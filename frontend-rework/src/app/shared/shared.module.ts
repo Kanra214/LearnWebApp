@@ -13,12 +13,13 @@ import { TimeAndDatePickerComponent } from './time-and-date-picker/time-and-date
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ModalComponent } from './modal/modal.component';
 
 
-let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent]
+let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent]
 let pipes = [AbstractPipe]
 @NgModule({
-  declarations: [components,pipes, EventFormComponent, TimeAndDatePickerComponent],
+  declarations: [...components,...pipes, ],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,6 +28,6 @@ let pipes = [AbstractPipe]
     OwlNativeDateTimeModule,
     
   ],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, components]
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, ...components, ...pipes]
 })
 export class SharedModule { }
