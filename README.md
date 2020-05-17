@@ -25,4 +25,6 @@
 - [ ] username link to user profile
 - [x] attachUserInfo for get group middleware
 - [ ] message mechanism
-- [ ] message detail / modal
+- [x] message detail / modal
+- [ ] prettify message detail view
+- [ ] message backend

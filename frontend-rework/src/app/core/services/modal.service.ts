@@ -5,34 +5,29 @@ import { ModalComponent } from '@shared/modal/modal.component';
   providedIn: 'root'
 })
 export class ModalService {
-  private modals:ModalComponent[] = [];
-  constructor() { }
-  add(modal:ModalComponent){
-    this.modals.push(modal);
-  }
-  remove(modal:ModalComponent){
-    this.modals = this.modals.filter(x => {
-      return x !== modal;
-    });
-  }
+    private modals: any[] = [];
 
-  toggle(id:string){
-    let modalList:ModalComponent[] = this.modals.filter(x =>{
-      return x.element.id === id
-    });
-    for(let modal of modalList){
-      modal.toggle();
+    add(modal: any) {
+        // add modal to array of active modals
+        console.log('is added')
+        this.modals.push(modal);
+        console.log(modal.id);
     }
-      
-    
-    
-    
 
-  }
-
-  closeAllModals(){
-    for(let modal of this.modals){
-      modal.close();
+    remove(id: string) {
+        // remove modal from array of active modals
+        this.modals = this.modals.filter(x => x.id !== id);
     }
-  }
+
+    open(id: string) {
+        // open modal specified by id
+        const modal = this.modals.find(x => x.id === id);
+        modal.open();
+    }
+
+    close(id: string) {
+        // close modal specified by id
+        const modal = this.modals.find(x => x.id === id);
+        modal.close();
+    }
 }

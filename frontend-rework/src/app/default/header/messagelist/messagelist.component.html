@@ -8,11 +8,25 @@
             messages <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li *ngFor="let message of messagelist"><span *ngIf="!message.read" class="dot"></span><a href="#"> {{ message.from }}: {{message.content | abstract:10}} </a></li>
+            <li *ngFor="let message of messagelist"><span *ngIf="!message.read" class="dot"></span><a (click)="openModal(message._id)"> {{ message.from }}: {{message.content | abstract:10}} </a></li>
           </ul>
         </div>
 
 	</div>
-  <br />
+  <br>
 
+</div>
+
+<div *ngFor="let message of messagelist">
+<jw-modal [id]="message._id">
+    <p> {{ message.from }}: {{message.content}}</p>
+    <div *ngIf="message.isRequest">
+        <hr class="dashed">
+        <span>
+            <button [disabled]="message.isApproved !== null" (click)="approve(message._id, false)"> Decline <span *ngIf="message.isApproved === false">&#10004;</span></button>
+            <button [disabled]="!message.isApproved !== null" (click)="approve(message._id, true)"> Approve <span *ngIf="message.isApproved === true">&#10004;</span></button>
+        </span>
+    </div>
+    <button (click)="closeModal(message._id);">Close</button>
+</jw-modal>
 </div>
