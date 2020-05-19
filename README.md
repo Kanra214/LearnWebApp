@@ -1,7 +1,7 @@
 # To do
 - [ ] make front end responsive
 - [x] jwt auth token
-- [ ] group card view
+- [x] group card view
 - [ ] strong typing everything
 - [ ] pagination
 - [ ] make create group pretty
@@ -20,17 +20,18 @@
 - [ ] come out of a better search bar
 - [ ] search keywork mechanism
 - [ ] in process / next event in group card
-- [ ] click group card to view detail
+- [x] click group card to view detail
 - [ ] think of returning user info to frontend
 - [ ] username link to user profile
 - [x] attachUserInfo for get group middleware
 - [ ] message mechanism
 - [x] message detail / modal
 - [ ] prettify message detail view
-- [ ] message backend
+- [x] message backend
+- [ ] try to encapsulate backend db codes
 - [ ] user profile page
 - [ ] attachUserInfo attach full profile
-- [ ] open new message doesnt open a message modal
+- [x] open new message doesnt open a message modal
 - [x] approved not addding that member to group
 - [x] read based on message, but also needs to based on user
 - [x] request from and to receive same message
