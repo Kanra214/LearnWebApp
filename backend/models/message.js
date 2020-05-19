@@ -33,7 +33,7 @@ const messageSchema = new mongoose.Schema({
 const message = mongoose.model('message', messageSchema);
 async function getMessages(queryParams){
     const result = await message.find(queryParams)
-            .sort('-date');
+            .sort({'create_date': -1});
     debug("Returning the query result: ", result);
     return result;
 

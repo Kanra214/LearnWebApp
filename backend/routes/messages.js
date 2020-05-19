@@ -5,6 +5,7 @@ const Message = require('../models/message');
 const debug = require('debug')('app:messages');
 const auth = require('../middlewares/auth');
 const attachMembersInfoForGetMessages = require('../middlewares/attachMembersInfoForMessages');
+// const attachGroupInfoForResponseToRequest = require('../middlewares/attachGroupInfoForResponseToRequest');
 
 
 router.get('/', auth, async (req, res, next) =>{

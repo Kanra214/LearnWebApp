@@ -5,6 +5,7 @@ import { api } from '@api';
 import { ResourceService } from './resource.service';
 import { of, Observable, BehaviorSubject, Subject } from 'rxjs';
 import { CDK_CONNECTED_OVERLAY_SCROLL_STRATEGY } from '@angular/cdk/overlay/overlay-directives';
+import { group } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class GroupService extends ResourceService {
 
   resultsChange: Subject<Group[]> = new Subject<Group[]>();
   results:Group[];
+  searchResults: Group[];
   constructor(http: HttpClient) { 
     super(api.group, http);
     this.resultsChange.subscribe((value) => {
@@ -28,6 +30,30 @@ export class GroupService extends ResourceService {
   //   return of(this.results);
   // }
   search(queryObj){
+
+    this.searchResults =  this.results?.filter( (group) =>{
+
+      for (let key of Object.keys(queryObj)) {
+        if(queryObj[key] === ""){
+          continue;
+        }
+        if (group[key] !== queryObj[key]){
+          console.log('false', key);
+          return false;
+      }
+      
+      
+    }
+    return true;
+    
+  
+    }
+    );
+
+    console.log(this.searchResults);
+  }
+
+  getGroups(queryObj, init?: boolean){
     let temp = [];
     super.get(queryObj).subscribe(
       response => {
@@ -36,10 +62,17 @@ export class GroupService extends ResourceService {
           temp.push(new Group(group));
       }
       this.resultsChange.next(temp);
+      if(init === true){
+        this.search({});
+        console.log('searhced', this.searchResults);
+        
+      }
 
    
     });
   }
+  
+
   // onResults() {
   //   console.log('onresult');
   //   return this.resultsSource.asObservable();
@@ -53,6 +86,15 @@ export class GroupService extends ResourceService {
   get maximumCapacity(){
     return this._maximumCapacity;
   }
+
+  addMember(userId: string, groupId: string){
+    let group = this.results
+  }
+
+
+
+ 
+  
 
   
   

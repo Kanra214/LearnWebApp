@@ -31,12 +31,11 @@ export class MessageService extends ResourceService {
       // {haha:'jaja'}
   ).subscribe(
       response => {
+
         for(let message of response as Message[]){  
           temp.push(message);
       }
       this.resultsChange.next(temp);
-      console.log(temp);
-      // console.log('haha');
 
    
     });

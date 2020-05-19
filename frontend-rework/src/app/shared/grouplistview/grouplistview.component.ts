@@ -92,7 +92,7 @@ export class GrouplistviewComponent implements OnInit {
   constructor(private groupService: GroupService) { 
   }
   get groups(){
-    return this.groupService.results;
+    return this.groupService.searchResults;
   }
 
   ngOnInit(): void {

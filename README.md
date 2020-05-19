@@ -32,5 +32,10 @@
 - [ ] attachUserInfo attach full profile
 - [ ] open new message doesnt open a message modal
 - [ ] approved not addding that member to group
-- [ ] read based on message, but also needs to based on user
-- [ ] request from and to receive same message
+- [x] read based on message, but also needs to based on user
+- [x] request from and to receive same message
+- [ ] nested ts interface getting an error: no property found, learn OOP ts
+- [ ] attach group name to messages created from approval / rejection
+- [x] sort message based on date
+- [x] sort groups based on date
+- [x] seperate get groups and search groups

@@ -3,6 +3,8 @@ import { ModalService } from '@services/modal.service';
 import { Message } from '@models/message';
 import { MessageService } from '@services/message.service';
 import { AuthService } from '@services/auth.service';
+import { UserInfo } from '@models/userInfo';
+import { GroupService } from '@services/group.service';
 
 @Component({
   selector: 'app-messagelist',
@@ -45,7 +47,7 @@ export class MessagelistComponent implements OnInit {
 //   }
 
 // ];
-  constructor(private modalService: ModalService, private messageService: MessageService, private authService: AuthService) { 
+  constructor(private modalService: ModalService, private messageService: MessageService, public authService: AuthService, private groupService: GroupService) { 
 
   }
 
@@ -53,18 +55,24 @@ export class MessagelistComponent implements OnInit {
   }
   openModal(id: string) {
     let message = this.messages.filter((message)=> {
-      return message._id = id;
+      return message._id === id;
     });
      //deep copy res.body
   let messageToSend = JSON.parse(JSON.stringify(message[0]));
   
   if(!messageToSend.read){
     messageToSend.read = true;
-
-  this.messageService.updateMessage(messageToSend);
+//to solve modal close on getmessage, we use update instead of updateMessage
+    this.messageService.update(messageToSend).subscribe((result)=>{
+    if(result.status === 200){
+      message[0].read = true;
+      this.modalService.open(id);
+    }
+    });
   }
-
-  this.modalService.open(id);
+  else{
+    this.modalService.open(id);
+  }
   }
 
 get messages(){
@@ -77,12 +85,22 @@ closeModal(id: string) {
 
 approve(id:string, approve:boolean){
   let message: Message[] = this.messages.filter((message)=>{
-    return message._id == id;
+    return message._id === id;
   });
   //deep copy res.body
   let messageToSend = JSON.parse(JSON.stringify(message[0]));
   messageToSend.isApproved = approve;
   this.messageService.updateMessage(messageToSend);
+
+  //create a response message
+  let messageToCreate : Message = {
+    to: (message[0].from as UserInfo)._id,
+    isRequest: false,
+    content: "Your request has been " + (approve ? "approved" : "rejected") + " by " + this.authService.currentUser.username,//TODO: put group name here 
+
+  }
+  this.messageService.createMessage(messageToCreate);
+  //update group
   }
   
   

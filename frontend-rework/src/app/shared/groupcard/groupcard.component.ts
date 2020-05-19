@@ -39,6 +39,20 @@ export class GroupcardComponent implements OnInit {
       return "Request sent";
 
     }
+
+    if(this.messageService.results.filter((message) =>{
+      return message.groupId === this.group._id && message.isApproved === true && message.from._id === this.authService.currentUser?._id;
+      // console.log('1', message.groupId);
+      // console.log('2', this.group._id);
+      // return message.groupId === this.group._id;
+      
+    }).length === 1 && !this.group.members.some((member)=>{
+      return member._id === this.authService.currentUser?._id;
+    })){
+      //back end processing
+      return "Request sent";
+
+    }
     else{
       return "Join this group";
     }

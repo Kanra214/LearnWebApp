@@ -37,7 +37,7 @@ const groupSchema = new mongoose.Schema({
 const Group = mongoose.model('Group', groupSchema);
 async function getGroups(queryParams){
     const result = await Group.find(queryParams)
-            .sort('-date');
+            .sort({'create_date': -1});
     debug("Returning the query result: ", result);
     return result;
 

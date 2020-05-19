@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupService } from '@services/group.service';
-import { Group } from '@models/group';
 
 @Component({
   selector: 'app-dashboard-content',
