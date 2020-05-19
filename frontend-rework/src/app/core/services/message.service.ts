@@ -23,22 +23,28 @@ export class MessageService extends ResourceService {
   }
 
   getMessages(){
+    if(this.authService.isLoggedIn){
 
-    console.log('get messages');
-    let temp = [];
-    super.get(
-      {'userId': this.authService.currentUser?._id},
-      // {haha:'jaja'}
-  ).subscribe(
-      response => {
+      console.log('get messages');
+      let temp = [];
+      super.get(
+        {'userId': this.authService.currentUser?._id},
+        // {haha:'jaja'}
+    ).subscribe(
+        response => {
 
-        for(let message of response as Message[]){  
-          temp.push(message);
-      }
-      this.resultsChange.next(temp);
+          for(let message of response as Message[]){  
+            temp.push(message);
+        }
+        this.resultsChange.next(temp);
 
-   
-    });
+    
+      });
+  }
+  }
+  clear(){
+    this.resultsChange = null;
+    this.results = null;
   }
 
   updateMessage(requestObj){

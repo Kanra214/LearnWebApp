@@ -60,7 +60,7 @@ export class MessagelistComponent implements OnInit {
      //deep copy res.body
   let messageToSend = JSON.parse(JSON.stringify(message[0]));
   
-  if(!messageToSend.read){
+  if(!messageToSend.read && message[0].to._id === this.authService.currentUser._id){
     messageToSend.read = true;
 //to solve modal close on getmessage, we use update instead of updateMessage
     this.messageService.update(messageToSend).subscribe((result)=>{
@@ -87,20 +87,23 @@ approve(id:string, approve:boolean){
   let message: Message[] = this.messages.filter((message)=>{
     return message._id === id;
   });
-  //deep copy res.body
-  let messageToSend = JSON.parse(JSON.stringify(message[0]));
-  messageToSend.isApproved = approve;
-  this.messageService.updateMessage(messageToSend);
+  // //deep copy res.body
+  // let messageToSend = JSON.parse(JSON.stringify(message[0]));
+  // messageToSend.isApproved = approve;
+  // this.messageService.updateMessage(messageToSend);
 
   //create a response message
   let messageToCreate : Message = {
     to: (message[0].from as UserInfo)._id,
-    isRequest: false,
+    message_type: (approve? 2 : 3),
     content: "Your request has been " + (approve ? "approved" : "rejected") + " by " + this.authService.currentUser.username,//TODO: put group name here 
+    groupId: message[0].groupId,
+    last_message: message[0]._id,
+
 
   }
   this.messageService.createMessage(messageToCreate);
-  //update group
+  
   }
   
   

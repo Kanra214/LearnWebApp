@@ -5,6 +5,7 @@ const Message = require('../models/message');
 const debug = require('debug')('app:messages');
 const auth = require('../middlewares/auth');
 const attachMembersInfoForGetMessages = require('../middlewares/attachMembersInfoForMessages');
+const Group = require('../models/group');
 // const attachGroupInfoForResponseToRequest = require('../middlewares/attachGroupInfoForResponseToRequest');
 
 
@@ -36,10 +37,37 @@ router.get('/', auth, async (req, res, next) =>{
 },attachMembersInfoForGetMessages );
 
 router.post('/',auth, async(req, res) =>{
-    debug("a create group request");
+    debug("a create message request");
+    let doc = req.body;
+    doc['from'] = req.user._id;
     try{
-            let doc = req.body;
-            doc['from'] = req.user._id;
+
+            //is it a response to group request?
+            if((req.body.message_type == 2 || req.body.message_type == 3)){
+                //if yes to the request
+                if(req.body.message_type == 2){
+                //try to add member to the group]
+                    try{
+                        await Group.addMember(req.body.groupId, req.body.to);
+                        await Message.approveMessage(req.body.last_message);
+
+                        
+                    }
+                    catch(error){
+                        debug('error', error);
+                        res.status(400).send(error);
+                        let group = await Group.findById(req.body.groupId);
+                        doc.content = "You cannot join the group " + group.subject + " because it's full";
+                        doc.message_type = 0;
+                        await Message.createMessage(doc);
+                        return;
+
+
+                    }
+
+                }
+                //if its no to the request, do nothing and create the message
+            }
             debug("new message ", doc);
             const result = await Message.createMessage(doc);
 

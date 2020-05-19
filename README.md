@@ -31,7 +31,7 @@
 - [ ] user profile page
 - [ ] attachUserInfo attach full profile
 - [ ] open new message doesnt open a message modal
-- [ ] approved not addding that member to group
+- [x] approved not addding that member to group
 - [x] read based on message, but also needs to based on user
 - [x] request from and to receive same message
 - [ ] nested ts interface getting an error: no property found, learn OOP ts
@@ -39,3 +39,6 @@
 - [x] sort message based on date
 - [x] sort groups based on date
 - [x] seperate get groups and search groups
+- [ ] too many error messages 'group is full' if the owner keep approving the join request
+- [ ] switch user will end up seeing previous user's message if not reload the page
+- [ ] only starts to load message after user is loggedin, avoid cyclic DI

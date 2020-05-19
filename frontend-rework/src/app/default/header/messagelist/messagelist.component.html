@@ -21,7 +21,7 @@
 <div *ngFor="let message of messages">
 <jw-modal [id]="message._id">
     <p> {{ authService.currentUser._id === message.from._id ? 'You' : message.from.username }} to {{ authService.currentUser._id === message.to._id ? 'you' : message.to.username }}: {{message.content}}</p>
-    <div *ngIf="authService.currentUser._id === message.to._id && message.isRequest">
+    <div *ngIf="authService.currentUser._id === message.to._id && message.message_type === 1">
         <hr class="dashed">
         <span>
             <button [disabled]="message.isApproved !== null" (click)="approve(message._id, false)"> Decline <span *ngIf="message.isApproved === false">&#10004;</span></button>

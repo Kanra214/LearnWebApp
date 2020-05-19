@@ -19,13 +19,17 @@ const messageSchema = new mongoose.Schema({
     },
     create_date: {type: Date, default: Date.now},
     read: {type: Boolean, default: false},
-    isRequest: {type: Boolean, default: null},
+    message_type: {type: Number, default: null},//0 = normal message, 1 = request, 2 = approved response, 3 = declined response
     isApproved: {type: Boolean, default: null},
     last_update: {type: Date},
     groupId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Group',
-    }
+    },
+    last_message: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message',
+    },
     
 
 
@@ -71,6 +75,11 @@ async function updateMessage(doc){
 
 
 }
+async function approveMessage(messageId){
+    let messageToApprove = await message.findById(messageId);
+    messageToApprove.isApproved = true;
+    await messageToApprove.save();
+}
 // message.updateOne({author: "Haru"}, {bounty: 10}, function(err, docs){
 //     if(err) console.log(err);
 //     console.log('更改成功：' + docs);
@@ -81,3 +90,4 @@ module.exports = message;
 module.exports.getMessages = getMessages;
 module.exports.createMessage = createMessage;
 module.exports.updateMessage = updateMessage;
+module.exports.approveMessage = approveMessage;

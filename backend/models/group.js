@@ -61,6 +61,21 @@ async function createGroup(doc){
         return newGroup.ObjectId;
 
     }
+async function addMember(groupId, userId){
+    debug('adding a member');
+    let group = await Group.findById(groupId);
+    //if theres available seat
+    if(group.members.length < group.capacity){
+        //add the member
+        group.members.push(userId);
+        await group.save();
+
+    }
+    else{
+        throw 'No more space in the group';
+    }
+
+}
 async function updateGroup(doc){
     debug('updating group');
     debug('finding group by id: ', doc._id );
@@ -91,3 +106,4 @@ module.exports = Group;
 module.exports.getGroups = getGroups;
 module.exports.createGroup = createGroup;
 module.exports.updateGroup = updateGroup;
+module.exports.addMember = addMember;

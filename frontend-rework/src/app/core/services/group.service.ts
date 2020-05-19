@@ -87,9 +87,15 @@ export class GroupService extends ResourceService {
     return this._maximumCapacity;
   }
 
-  addMember(userId: string, groupId: string){
-    let group = this.results
-  }
+  // addMember(userId: string, groupId: string){
+  //   let group:any = this.results.filter((group:any) =>{
+  //     return group._id === groupId;
+  //   });
+
+  //   group[0].members.push(userId);
+
+
+  // }
 
 
 

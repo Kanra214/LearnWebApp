@@ -5,7 +5,7 @@ const debug = require('debug')('app:messages');
 
 async function attachGroupInfoForResponseToRequest(req, res, next){
     debug('attaching group info');
-    if(res.body.isRequest === false){
+    if(res.body.message_type !== 1){
         debug('not a request, no group id, skip attach groupInfo');
         next();
     }

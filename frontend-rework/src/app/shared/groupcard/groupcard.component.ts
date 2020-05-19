@@ -24,9 +24,15 @@ export class GroupcardComponent implements OnInit {
       return 'You are registered';
 
     }
+    if(this.group.members.length >= this.group.capacity){
+      return "This group is full";
+    }
     if(!this.messageService.results){
       return "Join this group";
     }
+
+
+
    
 
     if(this.messageService.results.filter((message) =>{
@@ -39,20 +45,21 @@ export class GroupcardComponent implements OnInit {
       return "Request sent";
 
     }
-
-    if(this.messageService.results.filter((message) =>{
-      return message.groupId === this.group._id && message.isApproved === true && message.from._id === this.authService.currentUser?._id;
-      // console.log('1', message.groupId);
-      // console.log('2', this.group._id);
-      // return message.groupId === this.group._id;
+//isApproved and add member must be handled atomically in backend, following is commented out
+    // if(this.messageService.results.filter((message) =>{
+    //   return message.groupId === this.group._id && message.isApproved === true && message.from._id === this.authService.currentUser?._id;
+    //   // console.log('1', message.groupId);
+    //   // console.log('2', this.group._id);
+    //   // return message.groupId === this.group._id;
       
-    }).length === 1 && !this.group.members.some((member)=>{
-      return member._id === this.authService.currentUser?._id;
-    })){
-      //back end processing
-      return "Request sent";
+    // }).length === 1 && !this.group.members.some((member)=>{
+    //   return member._id === this.authService.currentUser?._id;
+    // })){
+    //   //back end processing
+    //   return "Request sent";
 
-    }
+    // }
+ 
     else{
       return "Join this group";
     }
@@ -64,7 +71,7 @@ export class GroupcardComponent implements OnInit {
     this.messageService.createMessage(
       {
         to: this.group.owner,
-        isRequest:true,
+        message_type:1,
         groupId: this.group._id,
         content: 'User ' + this.authService.currentUser?.username + ' wants to join your group(' + this.group.subject + ').',
       
