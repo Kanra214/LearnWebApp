@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { api } from '@api';
 import { Subject } from 'rxjs';
 import { Message } from '@models/message'
-import { AuthService } from './auth.service';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +13,22 @@ export class MessageService extends ResourceService {
 
   resultsChange: Subject<any[]> = new Subject<any[]>();
   results:any[];
-  constructor(http: HttpClient, private authService: AuthService) { 
+  constructor(http: HttpClient, private accountService: AccountService) { 
     super(api.message, http);
     this.resultsChange.subscribe((value) => {
       this.results = value;
   }
   );
-  this.getMessages();
+  console.log('constructor called');
   }
 
   getMessages(){
-    if(this.authService.isLoggedIn){
+    if(this.accountService.isLoggedIn){
 
       console.log('get messages');
       let temp = [];
       super.get(
-        {'userId': this.authService.currentUser?._id},
+        {'userId': this.accountService.currentUser?._id},
         // {haha:'jaja'}
     ).subscribe(
         response => {
@@ -43,8 +43,8 @@ export class MessageService extends ResourceService {
   }
   }
   clear(){
-    this.resultsChange = null;
-    this.results = null;
+    this.resultsChange.next([])
+    console.log('results', this.results);
   }
 
   updateMessage(requestObj){

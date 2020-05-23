@@ -4,19 +4,19 @@
         <a class="navbar-brand" (click)="reload()">studybar</a>
       </div>
       <ul class="nav navbar-nav ml-auto">
-        <li *ngIf="!authService.isLoggedIn" class="nav-item">
+        <li *ngIf="!accountService.isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/passport/signup"> Signup </a>
         </li>
-        <li *ngIf="!authService.isLoggedIn" class="nav-item">
+        <li *ngIf="!accountService.isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/passport/login"> Login </a>
         </li>
-        <li *ngIf="authService.isLoggedIn" class="nav-item">
-            <a class="nav-link"> {{ authService.currentUser.username }} </a>
+        <li *ngIf="accountService.isLoggedIn" class="nav-item">
+            <a class="nav-link"> {{ accountService.currentUser.username }} </a>
         </li>
-        <li *ngIf="authService.isLoggedIn" class="nav-item">
+        <li *ngIf="accountService.isLoggedIn" class="nav-item">
           <app-messagelist></app-messagelist>
       </li>
-        <li *ngIf="authService.isLoggedIn" class="nav-item">
+        <li *ngIf="accountService.isLoggedIn" class="nav-item">
             <a class="nav-link" (click)="authService.logout()"> logout </a>
         </li>
   

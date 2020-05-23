@@ -43,3 +43,4 @@
 - [ ] too many error messages 'group is full' if the owner keep approving the join request
 - [ ] switch user will end up seeing previous user's message if not reload the page
 - [ ] only starts to load message after user is loggedin, avoid cyclic DI
+- [ ] add getMessage() in authService login pipe argument, learn rxjs operators

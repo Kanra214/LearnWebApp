@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.login(this.loginForm.value).subscribe(result => {
       if(result === true){
+        this.authService.messageService.getMessages();
         this.invalidLogin = false;
         this.router.navigate([this.returnUrl]);
         

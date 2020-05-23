@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalService } from '@services/modal.service';
 import { Message } from '@models/message';
 import { MessageService } from '@services/message.service';
-import { AuthService } from '@services/auth.service';
 import { UserInfo } from '@models/userInfo';
-import { GroupService } from '@services/group.service';
+import { AccountService } from '@services/account.service';
 
 @Component({
   selector: 'app-messagelist',
@@ -47,7 +46,7 @@ export class MessagelistComponent implements OnInit {
 //   }
 
 // ];
-  constructor(private modalService: ModalService, private messageService: MessageService, public authService: AuthService, private groupService: GroupService) { 
+  constructor(private modalService: ModalService, private messageService: MessageService, public accountService: AccountService) { 
 
   }
 
@@ -60,7 +59,7 @@ export class MessagelistComponent implements OnInit {
      //deep copy res.body
   let messageToSend = JSON.parse(JSON.stringify(message[0]));
   
-  if(!messageToSend.read && message[0].to._id === this.authService.currentUser._id){
+  if(!messageToSend.read && message[0].to._id === this.accountService.currentUser._id){
     messageToSend.read = true;
 //to solve modal close on getmessage, we use update instead of updateMessage
     this.messageService.update(messageToSend).subscribe((result)=>{
@@ -96,7 +95,7 @@ approve(id:string, approve:boolean){
   let messageToCreate : Message = {
     to: (message[0].from as UserInfo)._id,
     message_type: (approve? 2 : 3),
-    content: "Your request has been " + (approve ? "approved" : "rejected") + " by " + this.authService.currentUser.username,//TODO: put group name here 
+    content: "Your request has been " + (approve ? "approved" : "rejected") + " by " + this.accountService.currentUser.username,//TODO: put group name here 
     groupId: message[0].groupId,
     last_message: message[0]._id,
 
