@@ -5,7 +5,14 @@
 .index-content{
     margin-bottom:20px;
     padding:50px 0px;
+    overflow: auto;
     
+}
+.index-content.dashboard {
+    height: 1200px;
+}
+.index-content.mygroups{
+    height: 1350px;
 }
 .index-content .row{
     margin-top:20px;

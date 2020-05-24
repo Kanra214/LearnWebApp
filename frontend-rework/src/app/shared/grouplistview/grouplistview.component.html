@@ -1,5 +1,5 @@
 
-<div class="index-content" [style.overflow]="'auto'" [style.height.px]="'1050'">
+<div class="index-content" [class.mygroups]="router.isActive('/mygroups', true)" [class.dashboard]="router.isActive('/dashboard', true)">
     <div class="container">
         <!-- <perfect-scrollbar style="max-width: 300px; max-height: 150px;" [config]="config" [scrollIndicators]="true" class="scroll-container"> -->
             <!-- <div class="scrollable-content"> -->
@@ -12,7 +12,7 @@
             
 
     </div>
-</div>
-<div class="card-footer pb-0 pt-3">
-    <jw-pagination [items]="groups" (changePage)="onChangePage($event)"></jw-pagination>
+    <div class="card-footer pb-0 pt-3">
+        <jw-pagination [items]="groups" (changePage)="onChangePage($event)"></jw-pagination>
+    </div>
 </div>

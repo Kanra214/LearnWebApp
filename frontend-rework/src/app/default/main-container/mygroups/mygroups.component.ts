@@ -1,13 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { GroupService } from '@services/group.service';
+import { AccountService } from '@services/account.service';
 @Component({
   selector: 'app-mygroups',
   templateUrl: './mygroups.component.html',
-  styleUrls: ['./mygroups.component.css']
+  styleUrls: ['./mygroups.component.css'],
+  // encapsulation:ViewEncapsulation.None,
 })
 export class MygroupsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private groupService: GroupService, private accountService: AccountService) { 
+    this.groupService.getGroups({});
+    this.groupService.search((group) => {
+      return group.members.some((member) => {
+        return member._id === this.accountService.currentUser._id;
+      });
+    })
+
+
+  }
 
   ngOnInit(): void {
   }

@@ -29,30 +29,36 @@ export class GroupService extends ResourceService {
   //   console.log('onresult');
   //   return of(this.results);
   // }
-  search(queryObj){
+  // search(queryObj){
 
-    this.searchResults =  this.results?.filter( (group) =>{
+  //   this.searchResults =  this.results?.filter( (group) =>{
 
-      for (let key of Object.keys(queryObj)) {
-        if(queryObj[key] === ""){
-          continue;
-        }
-        if (group[key] !== queryObj[key]){
-          console.log('false', key);
-          return false;
-      }
+  //     for (let key of Object.keys(queryObj)) {
+  //       if(queryObj[key] === ""){
+  //         continue;
+  //       }
+  //       if (group[key] !== queryObj[key]){
+  //         console.log('false', key);
+  //         return false;
+  //     }
       
       
-    }
-    return true;
+  //   }
+  //   return true;
     
   
-    }
-    );
+  //   }
+  //   );
 
-    console.log(this.searchResults);
+  //   console.log(this.searchResults);
+  // }
+  search(filter){
+
+    this.searchResults =  this.results?.filter(filter);
+    console.log('search result, ', this.searchResults);
+
+    
   }
-
   getGroups(queryObj, init?: boolean){
     let temp = [];
     super.get(queryObj).subscribe(
@@ -63,7 +69,9 @@ export class GroupService extends ResourceService {
       }
       this.resultsChange.next(temp);
       if(init === true){
-        this.search({});
+        this.search(function getAll(group){
+          return true;
+        });
         console.log('searhced', this.searchResults);
         
       }

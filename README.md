@@ -14,7 +14,7 @@
 - [x] create group backend
 - [ ] edit group config frontend
 - [ ] edit group config backend
-- [ ] mygroups list view
+- [x] mygroups list view
 - [ ] add event location
 - [ ] event schema
 - [ ] come out of a better search bar
@@ -50,3 +50,4 @@
 - [x] a no-login user tries to join a group and got You provided 'undefined' where a stream was expected
 - [x] navigate to dashboard and reload when hit 'studdybar'
 - [x] change style for sidebar according to active component
+- [ ] grouplistview change height on different active link

@@ -3,6 +3,7 @@ import { Group } from '../../models/group';
 import { GroupService } from '@services/group.service';
 import { PerfectScrollbarConfigInterface,
   PerfectScrollbarComponent} from 'ngx-perfect-scrollbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grouplistview',
@@ -93,7 +94,8 @@ export class GrouplistviewComponent implements OnInit {
 // groups: Group[];
 pageOfItems: Group[];
 public config: PerfectScrollbarConfigInterface = {};
-  constructor(private groupService: GroupService) { 
+  constructor(private groupService: GroupService, public router: Router) { 
+    
   }
   get groups(){
     return this.groupService.searchResults;

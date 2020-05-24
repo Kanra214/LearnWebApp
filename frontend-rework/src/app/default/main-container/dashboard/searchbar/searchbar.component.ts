@@ -14,7 +14,25 @@ export class SearchbarComponent implements OnInit {
   onSubmit(f:NgForm){
     console.log(f);
     // this.onSearch.emit(f.value);
-        this.groupService.search(f.value);
+        this.groupService.search(
+          (group) =>{
+
+                for (let key of Object.keys(f.value)) {
+                  if(f.value[key] === ""){
+                    continue;
+                  }
+                  if (group[key] !== f.value[key]){
+                    console.log('false', key);
+                    return false;
+                }
+                
+                
+              }
+              return true;
+              
+            
+              }
+        );
   }
 
   constructor(private groupService: GroupService) {
