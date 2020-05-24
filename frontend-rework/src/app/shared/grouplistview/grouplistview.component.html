@@ -1,9 +1,18 @@
-<div class="index-content">
+
+<div class="index-content" [style.overflow]="'auto'" [style.height.px]="'1050'">
     <div class="container">
-            <a *ngFor="let group of groups">
+        <!-- <perfect-scrollbar style="max-width: 300px; max-height: 150px;" [config]="config" [scrollIndicators]="true" class="scroll-container"> -->
+            <!-- <div class="scrollable-content"> -->
+            <a *ngFor="let group of pageOfItems">
                 <app-groupcard [group]="group"></app-groupcard>
             </a>
+        <!-- </div> -->
+          <!-- </perfect-scrollbar> -->
+        
             
 
     </div>
+</div>
+<div class="card-footer pb-0 pt-3">
+    <jw-pagination [items]="groups" (changePage)="onChangePage($event)"></jw-pagination>
 </div>

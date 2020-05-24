@@ -54,3 +54,9 @@
 .item {
     padding:5px;
 }
+.card-footer {
+    text-align: center;
+}
+jw-pagination {
+    display: inline-block;
+}

@@ -41,6 +41,7 @@
 - [x] sort groups based on date
 - [x] seperate get groups and search groups
 - [ ] too many error messages 'group is full' if the owner keep approving the join request
-- [ ] switch user will end up seeing previous user's message if not reload the page
-- [ ] only starts to load message after user is loggedin, avoid cyclic DI
-- [ ] add getMessage() in authService login pipe argument, learn rxjs operators
+- [x] switch user will end up seeing previous user's message if not reload the page
+- [x] only starts to load message after user is loggedin, avoid cyclic DI
+- [x] add getMessage() in authService login pipe argument, learn rxjs operators
+- [ ] scollerbar

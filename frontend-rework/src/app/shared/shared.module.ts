@@ -14,20 +14,37 @@ import { TimeAndDatePickerComponent } from './time-and-date-picker/time-and-date
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ModalComponent } from './modal/modal.component';
+import { JwPaginationComponent } from './jw-pagination/jw-pagination.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+ 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  wheelPropagation: true
+};
 
 
-let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent]
+let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent, JwPaginationComponent]
 let pipes = [AbstractPipe]
 @NgModule({
-  declarations: [...components,...pipes, ],
+  declarations: [...components,...pipes, JwPaginationComponent
+    ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
+    PerfectScrollbarModule,
     
   ],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, ...components, ...pipes]
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, ...components, ...pipes],
+  entryComponents: [TimeAndDatePickerComponent],//create group is dynamic and Ivy is disabled so we need to specify this component in entryComponent array
 })
 export class SharedModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../../models/group';
 import { GroupService } from '@services/group.service';
+import { PerfectScrollbarConfigInterface,
+  PerfectScrollbarComponent} from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-grouplistview',
@@ -89,13 +91,20 @@ export class GrouplistviewComponent implements OnInit {
 // }),
 // ]
 // groups: Group[];
+pageOfItems: Group[];
+public config: PerfectScrollbarConfigInterface = {};
   constructor(private groupService: GroupService) { 
   }
   get groups(){
     return this.groupService.searchResults;
   }
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
 
   ngOnInit(): void {
+    
    
   }
 }
