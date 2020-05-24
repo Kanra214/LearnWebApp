@@ -3,7 +3,7 @@
 - [x] jwt auth token
 - [x] group card view
 - [ ] strong typing everything
-- [ ] pagination
+- [x] pagination
 - [ ] make create group pretty
 - [ ] date and time picker repeat mechanism
 - [ ] event name should be bucket, now we dont allow duplicate event name
@@ -44,4 +44,4 @@
 - [x] switch user will end up seeing previous user's message if not reload the page
 - [x] only starts to load message after user is loggedin, avoid cyclic DI
 - [x] add getMessage() in authService login pipe argument, learn rxjs operators
-- [ ] scollerbar
+- [x] scollerbar
