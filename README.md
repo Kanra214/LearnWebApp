@@ -45,3 +45,8 @@
 - [x] only starts to load message after user is loggedin, avoid cyclic DI
 - [x] add getMessage() in authService login pipe argument, learn rxjs operators
 - [x] scollerbar
+- [ ] move pagination into scrollable content
+- [ ] owner can edit group config
+- [x] a no-login user tries to join a group and got You provided 'undefined' where a stream was expected
+- [x] navigate to dashboard and reload when hit 'studdybar'
+- [x] change style for sidebar according to active component
