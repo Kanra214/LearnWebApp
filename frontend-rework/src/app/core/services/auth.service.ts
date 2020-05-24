@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import { api } from '@api';
 import { User } from '@models/user';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 
   
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public messageService: MessageService) { }
   checkUsernameNotTaken(username: string){
     const params = new HttpParams().set('attemptedUsername', username);
     return this.http.get(api.validatesignup.username, {
@@ -40,6 +41,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
+    this.messageService.clear();
   }
 
   private storeToken(res:any){
@@ -52,25 +54,25 @@ export class AuthService {
     }
   }
 
-  get isLoggedIn() {
-    return tokenNotExpired();
-  }
-  get token(){
-    let token = localStorage.getItem('token');
-    if(!token) return null;
-    return token
+  // get isLoggedIn() {
+  //   return tokenNotExpired();
+  // }
+  // get token(){
+  //   let token = localStorage.getItem('token');
+  //   if(!token) return null;
+  //   return token
 
-  }
+  // }
 
-  get currentUser(){
-    const token = this.token;
-    if(!token){
-      return null;
-    }
+  // get currentUser(){
+  //   const token = this.token;
+  //   if(!token){
+  //     return null;
+  //   }
 
-    let result = new JwtHelper().decodeToken(token) as User;
-    return result;
-  }
+  //   let result = new JwtHelper().decodeToken(token) as User;
+  //   return result;
+  // }
 }
 
 

@@ -36,8 +36,8 @@ const groupSchema = new mongoose.Schema({
 });
 const Group = mongoose.model('Group', groupSchema);
 async function getGroups(queryParams){
-    const result = await group.find(queryParams)
-            .sort('-date');
+    const result = await Group.find(queryParams)
+            .sort({'create_date': -1});
     debug("Returning the query result: ", result);
     return result;
 
@@ -61,12 +61,27 @@ async function createGroup(doc){
         return newGroup.ObjectId;
 
     }
+async function addMember(groupId, userId){
+    debug('adding a member');
+    let group = await Group.findById(groupId);
+    //if theres available seat
+    if(group.members.length < group.capacity){
+        //add the member
+        group.members.push(userId);
+        await group.save();
+
+    }
+    else{
+        throw 'No more space in the group';
+    }
+
+}
 async function updateGroup(doc){
     debug('updating group');
     debug('finding group by id: ', doc._id );
     let group = await Group.findById(doc._id);
     debug('find group result: ', group);
-    group.update({
+    group.overwrite({
         subject:doc.subject,
         university:doc.university,
         introduction:doc.introduction,
@@ -75,6 +90,7 @@ async function updateGroup(doc){
         members: doc.members,
         last_update:Date.now,
     });
+    await group.save();
     debug('group updated')
     return 'ok';
 
@@ -90,3 +106,4 @@ module.exports = Group;
 module.exports.getGroups = getGroups;
 module.exports.createGroup = createGroup;
 module.exports.updateGroup = updateGroup;
+module.exports.addMember = addMember;

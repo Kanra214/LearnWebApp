@@ -5,29 +5,38 @@ const Group = require('../models/group');
 const debug = require('debug')('app:groups');
 const User = require('../models/user');
 const auth = require('../middlewares/auth');
+const attachMembersInfoForGetGroups = require('../middlewares/attachMembersInfoForGroups');
 
 
-router.get('/', async (req, res) =>{
+router.get('/', async (req, res, next) =>{
     try{
         debug("receive query params: ", req.query);
         const queryParam = clean(req.query);
         debug("cleaned the param: ", queryParam);
         const result = await Group.getGroups(queryParam);
         debug("sending the result: ", result);
-        res.status(200).send(result);
+        
+        if(result){
+            res.body = result;
+            next();
+        }
+        else{
+            res.status(404).send();
+        }
     }
     catch(error){
         debug('err:',error);
 
     }
 
-});
+},attachMembersInfoForGetGroups );
 
 router.post('/',auth, async(req, res) =>{
     debug("a create group request");
     try{
             let doc = req.body;
             doc['owner'] = req.user;
+            doc['members'] = [req.user];
             debug("new group ", doc);
             const result = await Group.createGroup(doc);
 

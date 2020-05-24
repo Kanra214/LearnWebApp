@@ -1,9 +1,9 @@
 # To do
 - [ ] make front end responsive
 - [x] jwt auth token
-- [ ] group card view
+- [x] group card view
 - [ ] strong typing everything
-- [ ] pagination
+- [x] pagination
 - [ ] make create group pretty
 - [ ] date and time picker repeat mechanism
 - [ ] event name should be bucket, now we dont allow duplicate event name
@@ -14,6 +14,40 @@
 - [x] create group backend
 - [ ] edit group config frontend
 - [ ] edit group config backend
-- [ ] mygroups list view
+- [x] mygroups list view
 - [ ] add event location
 - [ ] event schema
+- [ ] come out of a better search bar
+- [ ] search keywork mechanism
+- [ ] in process / next event in group card
+- [x] click group card to view detail
+- [ ] think of returning user info to frontend
+- [ ] username link to user profile
+- [x] attachUserInfo for get group middleware
+- [ ] message mechanism
+- [x] message detail / modal
+- [ ] prettify message detail view
+- [x] message backend
+- [ ] try to encapsulate backend db codes
+- [ ] user profile page
+- [ ] attachUserInfo attach full profile
+- [x] open new message doesnt open a message modal
+- [x] approved not addding that member to group
+- [x] read based on message, but also needs to based on user
+- [x] request from and to receive same message
+- [ ] nested ts interface getting an error: no property found, learn OOP ts
+- [ ] attach group name to messages created from approval / rejection
+- [x] sort message based on date
+- [x] sort groups based on date
+- [x] seperate get groups and search groups
+- [ ] too many error messages 'group is full' if the owner keep approving the join request
+- [x] switch user will end up seeing previous user's message if not reload the page
+- [x] only starts to load message after user is loggedin, avoid cyclic DI
+- [x] add getMessage() in authService login pipe argument, learn rxjs operators
+- [x] scollerbar
+- [x] move pagination into scrollable content
+- [ ] owner can edit group config
+- [x] a no-login user tries to join a group and got You provided 'undefined' where a stream was expected
+- [x] navigate to dashboard and reload when hit 'studdybar'
+- [x] change style for sidebar according to active component
+- [x] grouplistview change height on different active link

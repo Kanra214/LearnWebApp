@@ -27,15 +27,16 @@ import { MyInterceptor } from './core/my-interceptor';
     
   ],
   providers: [
-    {
-      provide:ErrorHandler, useClass: AppErrorHandler,
-      
-    },
+   
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyInterceptor,
       multi: true
-    }
+    },
+    {
+      provide:ErrorHandler, useClass: AppErrorHandler,
+      
+    },
   ],
   bootstrap: [AppComponent]
 })
