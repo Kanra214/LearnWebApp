@@ -47,7 +47,7 @@ app.use('/api/auth', auth);
 
 
 const port = process.env.PORT | 3000;
-app.listen(port,'localhost', ()=> {
+app.listen(port, ()=> {
     console.log("listening on " + port);
 
 });
