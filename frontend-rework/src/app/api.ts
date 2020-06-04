@@ -1,5 +1,5 @@
 import { environment } from '../environments/environment'
-let host = 'http://' + environment.host + ':3000';
+let host = environment.host
 export const api = {
     'validatesignup':{
         'username':host + '/api/users/checkusernametaken',
