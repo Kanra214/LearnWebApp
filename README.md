@@ -51,3 +51,4 @@
 - [x] navigate to dashboard and reload when hit 'studdybar'
 - [x] change style for sidebar according to active component
 - [x] grouplistview change height on different active link
+- [x] deploy on aws
