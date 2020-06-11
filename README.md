@@ -1,5 +1,5 @@
 # To do
-- [ ] make front end responsive
+- [x] make front end responsive
 - [x] jwt auth token
 - [x] group card view
 - [ ] strong typing everything
@@ -51,3 +51,9 @@
 - [x] navigate to dashboard and reload when hit 'studdybar'
 - [x] change style for sidebar according to active component
 - [x] grouplistview change height on different active link
+- [x] deploy on aws
+- [x] make create group page scrollable
+- [ ] if directly access /mygroups without first reaching the main page my groups is empty
+- [ ] sidebar text hides if the screen is too narrow
+- [ ] header is messed up if the screen is too narrow, worse if message list is shown
+- [ ] create group form (including event form) is messed up if screen is too narrow

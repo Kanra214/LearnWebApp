@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DefaultComponent } from './default.component';
-import { MainContainerComponent } from './main-container/main-container.component';
 import { DashboardContentComponent } from './main-container/dashboard/dashboard-content/dashboard-content.component';
 import { CreategroupComponent } from './main-container/creategroup/creategroup.component';
 import { MygroupsComponent } from './main-container/mygroups/mygroups.component';
@@ -21,7 +20,6 @@ import { MessagelistComponent } from './header/messagelist/messagelist.component
     DefaultComponent,
     HeaderComponent,
     SidebarComponent,
-    MainContainerComponent,
     DashboardComponent,
     CreategroupComponent,
     MygroupsComponent,

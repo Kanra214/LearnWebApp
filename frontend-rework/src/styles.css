@@ -5,6 +5,7 @@
  }
  .search-sec{
      padding: 2rem;
+     height: 10vh;
  }
  .search-slt{
      display: block;
@@ -36,11 +37,11 @@
      border-radius:.25rem;
      
  }
- 
+
  @media (min-width: 992px){
      .search-sec{
          position: relative;
-         top: -114px;
+         /* top: -114px; */
          background: rgba(26, 70, 104, 0.51);
      }
  }
@@ -51,7 +52,7 @@
      }
  }
  .submitDiv {
-     margin-top: 35px;
+    margin-top: 35px;
     height: 50px;
     text-align: center;
 

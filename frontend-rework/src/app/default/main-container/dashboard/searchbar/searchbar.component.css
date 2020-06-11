@@ -3,7 +3,7 @@
     padding : 2rem;
     position : relative;
     background : #343A40;
-    top:0px;
+    height: 10vh;
 }
 .search-slt{
     padding:0;
@@ -24,4 +24,10 @@
 .col {
     padding:2px;
     border: 1px;
+}
+
+@media only screen and (max-width: 767px) {
+    .search-sec {
+        height: 20vh;
+    }
 }

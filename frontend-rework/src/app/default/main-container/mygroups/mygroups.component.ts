@@ -9,7 +9,8 @@ import { AccountService } from '@services/account.service';
 })
 export class MygroupsComponent implements OnInit {
 
-  constructor(private groupService: GroupService, private accountService: AccountService) { 
+  constructor(private groupService: GroupService, private accountService: AccountService) {
+    // this.groupService.
     this.groupService.getGroups({});
     this.groupService.search((group) => {
       return group.members.some((member) => {

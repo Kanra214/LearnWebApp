@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from '@services/message.service';
 import { AccountService } from '@services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-groupcard',
@@ -9,8 +10,9 @@ import { AccountService } from '@services/account.service';
 })
 export class GroupcardComponent implements OnInit {
   @Input() group:any;//TODO: change to group interface
+  isMyGroups: boolean = this.router.isActive('/mygroups', true)
   showDetail:boolean = false;
-  constructor(public accountService: AccountService, private messageService: MessageService ) { }
+  constructor(public accountService: AccountService, private messageService: MessageService, private router: Router ) { }
 
   ngOnInit(): void {
   }

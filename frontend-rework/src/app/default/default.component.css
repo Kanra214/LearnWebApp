@@ -2,7 +2,7 @@
 .default {
     height: 100%;
 }
-.main-container {
+/* .main-container {
     top: 56px;
     left: 160px;
     position: fixed;
@@ -10,4 +10,10 @@
     width: 100%;
     background-color: blanchedalmond;
 
+} */
+.main-container {
+    display: inline-block;
+    height: 100vh;
+    width: 80vw;
+    background-color: blanchedalmond;
 }
