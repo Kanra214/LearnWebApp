@@ -11,12 +11,17 @@ export class MygroupsComponent implements OnInit {
 
   constructor(private groupService: GroupService, private accountService: AccountService) {
     // this.groupService.
-    this.groupService.getGroups({});
-    this.groupService.search((group) => {
+    console.log('my groups constructor called')
+    this.groupService.getGroups({}, (group) => {
       return group.members.some((member) => {
         return member._id === this.accountService.currentUser._id;
       });
-    })
+    });
+    // this.groupService.search((group) => {
+    //   return group.members.some((member) => {
+    //     return member._id === this.accountService.currentUser._id;
+    //   });
+    // })
 
 
   }

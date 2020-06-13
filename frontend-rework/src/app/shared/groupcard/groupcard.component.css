@@ -1,4 +1,5 @@
 .card{
+    overflow:scroll;
     background-color: #FFFFFF;
     padding:0;
     -webkit-border-radius: 4px;
@@ -60,3 +61,14 @@
 button {
     width: 100%;
 }
+@media only screen and (max-width: 545px) {
+    .body-status {
+        float:left;
+    }
+}
+/* .card-header {
+    width: 100vw;
+}
+.card-body {
+    width: 100vw;
+} */

@@ -53,7 +53,8 @@
 - [x] grouplistview change height on different active link
 - [x] deploy on aws
 - [x] make create group page scrollable
-- [ ] if directly access /mygroups without first reaching the main page my groups is empty
-- [ ] sidebar text hides if the screen is too narrow
-- [ ] header is messed up if the screen is too narrow, worse if message list is shown
+- [x] if directly access /mygroups without first reaching the main page my groups is empty
+- [x] sidebar text hides if the screen is too narrow
+- [x] header is messed up if the screen is too narrow, worse if message list is shown
 - [ ] create group form (including event form) is messed up if screen is too narrow
+- [ ] group card is messed up (card title and body are not taking 100% width of card)

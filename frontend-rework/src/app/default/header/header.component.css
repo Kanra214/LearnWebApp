@@ -5,3 +5,13 @@ nav a:hover {
     color :gainsboro;
     cursor: pointer;
 }
+/* .nav-item {
+    padding: 8px 0px;
+} */
+
+@media only screen and (max-width: 575px) {
+    .navbar-nav .nav-link {
+        padding: 8px 30px;
+    }
+
+}
