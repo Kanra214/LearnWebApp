@@ -23,14 +23,16 @@ const groupSchema = new mongoose.Schema({
     university: String,
     create_date: {type: Date, default: Date.now},
     last_update: {type: Date},
-    events:{
+    events:
         // type: [mongoose.Schema.Types.ObjectId],
-        type: [String],
-        ref: 'Event',
-
-    },
+        [
+        {
+            eventName: String,
+            dateTime: [Date]
+        }
+        ],
     capacity:Number,
-    // location:String
+    location:String,
 
 
 });
@@ -68,11 +70,47 @@ async function addMember(groupId, userId){
     if(group.members.length < group.capacity){
         //add the member
         group.members.push(userId);
+        group.last_update = Date.now;
         await group.save();
 
     }
     else{
         throw 'No more space in the group';
+    }
+
+}
+async function deleteMember(groupId, userId){
+    debug('deleting a member');
+    let group = await Group.findById(groupId);
+    //if theres available seat
+    if(group.members.length > 1){
+        //delete the member
+        // group.members.pull(userId);
+        let index = group.members.indexOf(userId);
+        group.members.splice(index, 1);
+        group.last_update = Date.now;
+        await group.save();
+
+    }
+    else{
+        throw 'Cannot remove the only member';
+    }
+
+}
+
+async function modifyCapacity(groupId, newCapacity){
+    debug('modifing capacity');
+    let group = await Group.findById(groupId);
+    //if theres available seat
+    if(group.members.length <= newCapacity ){
+        //delete the member
+        group.capacity = newCapacity;
+        group.last_update = Date.now;
+        await group.save();
+
+    }
+    else{
+        throw 'new capacity is smaller than the number of existing members';
     }
 
 }
@@ -82,12 +120,12 @@ async function updateGroup(doc){
     let group = await Group.findById(doc._id);
     debug('find group result: ', group);
     group.overwrite({
-        subject:doc.subject,
         university:doc.university,
         introduction:doc.introduction,
-        capacity: doc.capacity,
+        // capacity: doc.capacity,
         events: doc.events,
-        members: doc.members,
+        location: doc.location,
+        // members: doc.members,
         last_update:Date.now,
     });
     await group.save();

@@ -37,7 +37,8 @@ export class EventFormComponent implements OnInit{
     for(let picker of this.pickers){
       let inst = picker.instance;
       if(inst.valid){
-        result.push(inst.placeholder);
+        // result.push(inst.placeholder);
+        result.push(inst.dtForm.value);
       }
 
 

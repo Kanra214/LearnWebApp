@@ -12,10 +12,17 @@ export class EventOverlapService {
     this.pickers = updatedPickers;
 
   }
+  checkEventNameDuplicate():Observable<any>{
+    const eventNames = this.pickers.map((picker)=> {
+      return picker.instance.dtForm.controls['eventName'].value;
+    });
+    let result = {duplicateEventName: new Set(eventNames).size !== eventNames.length}
+    return Observable.of(result);
+  }
   checkOverlap(): Observable<any>{
     const dateRanges = this.pickers.map((picker) => {
       return picker.instance.dtForm.controls['dateTime'].value;
-    })
+    });
     var sortedRanges = dateRanges.sort((previous, current) => {
     
       // get the start date from previous and current

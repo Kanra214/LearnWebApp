@@ -1,5 +1,5 @@
 # To do
-- [ ] make front end responsive
+- [x] make front end responsive
 - [x] jwt auth token
 - [x] group card view
 - [ ] strong typing everything
@@ -15,8 +15,8 @@
 - [ ] edit group config frontend
 - [ ] edit group config backend
 - [x] mygroups list view
-- [ ] add event location
-- [ ] event schema
+- [x] add event location
+- [x] event schema
 - [ ] come out of a better search bar
 - [ ] search keywork mechanism
 - [ ] in process / next event in group card
@@ -51,3 +51,14 @@
 - [x] navigate to dashboard and reload when hit 'studdybar'
 - [x] change style for sidebar according to active component
 - [x] grouplistview change height on different active link
+- [x] deploy on aws
+- [x] make create group page scrollable
+- [x] if directly access /mygroups without first reaching the main page my groups is empty
+- [x] sidebar text hides if the screen is too narrow
+- [x] header is messed up if the screen is too narrow, worse if message list is shown
+- [ ] create group form (including event form) is messed up if screen is too narrow
+- [ ] group card is messed up (card title and body are not taking 100% width of card)
+- [x] only display location and events when registered
+- [x] duplicate event name in same group is not allowed
+- [x] move creategroupform component to shared module, reuse it for create group and edit group
+- [x] toggle edit and goBack in /mygroups

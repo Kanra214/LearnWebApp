@@ -1,14 +1,21 @@
 .sidenav {
-    height: 100%;
-    width: 160px;
-    position: fixed;
+  display: inline-block;
+    height: 100vh;
+    width: 25vw;
+    /* position: fixed; */
     z-index: 1;
-    top: 56px;
-    left: 0;
+    /* top: 56px; */
+    /* left: 0; */
     background-color: #343a40;
     overflow-x: hidden;
     padding-top: 20px;
   }
+
+  @media only screen and (min-width: 1200px) {
+    .sidenav {
+      width: 300px;
+    }
+}
   
   .sidenav a {
     padding: 50px 15px 50px 15px;
@@ -17,6 +24,17 @@
     color: #818181;
     display: block;
   }
+
+@media only screen and (max-width: 767px) {
+    .sidenav a {
+        font-size: 3vw;
+    }
+}
+/* @media only screen and (min-width: 767px) {
+  .sidenav a {
+      font-size: 20px;
+  }
+} */
   
   .sidenav a:hover {
     color: #f1f1f1;

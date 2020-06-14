@@ -22,6 +22,7 @@ export class TimeAndDatePickerComponent implements OnInit {
   min: Date;
   dtForm;
   overlap:boolean = false;
+  duplicateEventName:boolean = false;
   constructor(private fb: FormBuilder, private eo: EventOverlapService) { 
     this.dtForm = this.fb.group({
       "eventName": ['', Validators.required],
@@ -63,8 +64,17 @@ export class TimeAndDatePickerComponent implements OnInit {
       }
       else{
         this.overlap = false;
-        this.placeholder = "Event name: " + eventNameValue + "; Time: " + dateTimeValue[0].toLocaleString() +  " ~ " + dateTimeValue[1].toLocaleString();
-        this.edit = false;
+        this.eo.checkEventNameDuplicate().subscribe(result=> {
+          if(result.duplicateEventName){
+            this.duplicateEventName = true;
+          }
+          else{
+            this.duplicateEventName = false;
+            this.placeholder = "Event name: " + eventNameValue + "; Time: " + dateTimeValue[0].toLocaleString() +  " ~ " + dateTimeValue[1].toLocaleString();
+            this.edit = false;
+          }
+        });
+        
       }
     });
 

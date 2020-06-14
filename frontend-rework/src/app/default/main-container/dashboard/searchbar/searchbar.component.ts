@@ -38,7 +38,9 @@ export class SearchbarComponent implements OnInit {
   constructor(private groupService: GroupService) {
     console.log('constructor called');
 
-    this.groupService.getGroups({}, true);
+    this.groupService.getGroups({}, function getAll(group){
+      return true;
+    });
    }
 
   ngOnInit() {
