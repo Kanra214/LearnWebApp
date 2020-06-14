@@ -15,8 +15,8 @@
 - [ ] edit group config frontend
 - [ ] edit group config backend
 - [x] mygroups list view
-- [ ] add event location
-- [ ] event schema
+- [x] add event location
+- [x] event schema
 - [ ] come out of a better search bar
 - [ ] search keywork mechanism
 - [ ] in process / next event in group card
@@ -60,3 +60,5 @@
 - [ ] group card is messed up (card title and body are not taking 100% width of card)
 - [x] only display location and events when registered
 - [x] duplicate event name in same group is not allowed
+- [x] move creategroupform component to shared module, reuse it for create group and edit group
+- [x] toggle edit and goBack in /mygroups

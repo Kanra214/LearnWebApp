@@ -1,0 +1,62 @@
+<div class="creategroupcontainer">
+    <h2>{{isMyGroups ? 'Edit' : 'Create'}} a group <button *ngIf="isMyGroups" class="btn return btn-primary" (click)="goBack()">Return</button></h2>
+    
+    <form [formGroup]="createGroupForm" (ngSubmit)="createGroup()">
+      
+    
+        <div class="row">
+          <div class="col col-md-5 form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" type="text" class="form-control" name="subject" formControlName="subject">
+          </div>
+          <!-- <div class="alert alert-danger" *ngIf="createGroupForm.get('subject').touched && createGroupForm.get('subject').invalid">
+            <div *ngIf="createGroupForm.get('subject').errors.required">Subject is required</div>
+          </div> -->
+          <div class="col col-md-2">
+            <p class="center">from</p>
+          </div>
+          
+          <div class="col col-md-5 form-group">
+              <label for="university">University</label>
+              <select id="university" class="form-control" name="university" formControlName="university">
+                <option selected>Choose...</option>
+                <option *ngFor="let uni of universities">{{ uni }}</option>
+              </select>
+          </div>
+          
+        </div>
+        <div class="alert alert-danger" *ngIf="createGroupForm.get('subject').touched && createGroupForm.get('subject').invalid">
+          <div *ngIf="createGroupForm.get('subject').errors.required">Subject is required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="createGroupForm.get('university').touched && createGroupForm.get('university').invalid">
+          <div *ngIf="createGroupForm.get('university').errors.required">University is required</div>
+        </div>
+          <div class="form-group">
+              <label for="introduction">Introduction</label>
+              <textarea id="introduction" class="form-control" name="introduction" formControlName="introduction"></textarea>
+          </div>
+         
+          <div class="form-group">
+              <label for="capacity">Capacity</label>
+              <select id="capacity" class="form-control" name="capacity" formControlName="capacity">
+                <option selected>Choose...</option>
+                <option *ngFor="let i of capacityOptions">{{ i }}</option>
+              </select>
+    
+          </div>
+          <div class="alert alert-danger" *ngIf="createGroupForm.get('capacity').touched && createGroupForm.get('capacity').invalid">
+            <div *ngIf="createGroupForm.get('capacity').errors.required">Capacity is required</div>
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" class="form-control" name="location" formControlName="location">
+        </div>
+          <app-event-form></app-event-form>
+          <div class="submitDiv">
+            <button  [disabled]="createGroupForm.invalid || !eventFormComponent.valid" type="submit" class="btn btn-primary">Create</button>
+        </div>
+          
+    
+        
+      </form>
+      </div>

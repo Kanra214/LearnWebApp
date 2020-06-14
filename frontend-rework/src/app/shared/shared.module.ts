@@ -17,16 +17,17 @@ import { JwPaginationComponent } from './jw-pagination/jw-pagination.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { GroupFormComponent } from './group-form/group-form.component';
  
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true
 };
 
 
-let components = [GrouplistviewComponent, GroupcardComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent, JwPaginationComponent]
+let components = [GrouplistviewComponent, GroupcardComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent, JwPaginationComponent, GroupFormComponent]
 let pipes = [AbstractPipe]
 @NgModule({
-  declarations: [...components,...pipes, JwPaginationComponent
+  declarations: [...components,...pipes,
     ],
   imports: [
     CommonModule,

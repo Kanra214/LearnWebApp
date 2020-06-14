@@ -9,9 +9,9 @@ import { GroupService } from '@services/group.service';
   templateUrl: './groupcard.component.html',
   styleUrls: ['./groupcard.component.css']
 })
+
 export class GroupcardComponent implements OnInit {
   @Input() group:any;//TODO: change to group interface
-  @Input() myGroup: boolean
   isMyGroups: boolean = this.router.isActive('/mygroups', true)
   showDetail:boolean = false;
   edit:boolean = false;
@@ -142,6 +142,7 @@ parseTime(date){
     );
 
   }
+ 
 
 
 

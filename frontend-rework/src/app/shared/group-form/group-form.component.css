@@ -1,4 +1,4 @@
-/* textarea {
+textarea {
     resize: none;
 }
 form {
@@ -16,4 +16,13 @@ p.center {
 .creategroupcontainer {
     overflow: scroll;
     height: 100vh;
-} */
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.return {
+        display: inline-block;
+        width: 10%;
+        right: 10px;
+        position: absolute;
+        float:right;
+    
+}
