@@ -4,7 +4,7 @@
         <!-- <perfect-scrollbar style="max-width: 300px; max-height: 150px;" [config]="config" [scrollIndicators]="true" class="scroll-container"> -->
             <!-- <div class="scrollable-content"> -->
             <a *ngFor="let group of pageOfItems">
-                <app-groupcard [group]="group"></app-groupcard>
+                <app-groupcard [group]="group" [myGroup]="router.isActive('/mygroups', true)"></app-groupcard>
             </a>
         <!-- </div> -->
           <!-- </perfect-scrollbar> -->

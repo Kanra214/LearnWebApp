@@ -72,3 +72,14 @@ button {
 .card-body {
     width: 100vw;
 } */
+.detail-container {
+    margin:20px;
+    opacity: 0.65;
+}
+
+.btn {
+    float: right;
+    display: inline-block;
+    width: 10%;
+    margin-top:13px;
+}

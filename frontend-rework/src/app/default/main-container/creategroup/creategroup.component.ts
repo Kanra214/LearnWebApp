@@ -21,6 +21,7 @@ export class CreategroupComponent implements OnInit {
       "university": ['', Validators.required],
       "introduction": [],
       "capacity":['', Validators.required],
+      "location": [],
     }
   
     );

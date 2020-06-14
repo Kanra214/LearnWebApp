@@ -6,7 +6,7 @@
     height: 10vh;
 }
 .search-slt{
-    padding:0;
+    /* padding:0; */
     display: block;
     width: 100%;
     font-size: 0.875rem;

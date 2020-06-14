@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GrouplistviewComponent } from './grouplistview/grouplistview.component';
 import { GroupcardComponent } from './groupcard/groupcard.component';
-import { GroupdetailComponent } from './groupdetail/groupdetail.component';
 import { UsercardComponent } from './usercard/usercard.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
@@ -24,7 +23,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 
 
-let components = [GrouplistviewComponent, GroupcardComponent, GroupdetailComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent, JwPaginationComponent]
+let components = [GrouplistviewComponent, GroupcardComponent, UsercardComponent, UserlistComponent, UserprofileComponent, EventFormComponent, TimeAndDatePickerComponent, ModalComponent, JwPaginationComponent]
 let pipes = [AbstractPipe]
 @NgModule({
   declarations: [...components,...pipes, JwPaginationComponent

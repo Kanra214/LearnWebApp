@@ -46,6 +46,10 @@
       <div class="alert alert-danger" *ngIf="createGroupForm.get('capacity').touched && createGroupForm.get('capacity').invalid">
         <div *ngIf="createGroupForm.get('capacity').errors.required">Capacity is required</div>
       </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input id="location" class="form-control" name="location" formControlName="location">
+    </div>
       <app-event-form></app-event-form>
       <div class="submitDiv">
         <button  [disabled]="createGroupForm.invalid || !eventFormComponent.valid" type="submit" class="btn btn-primary">Create</button>

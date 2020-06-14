@@ -58,3 +58,5 @@
 - [x] header is messed up if the screen is too narrow, worse if message list is shown
 - [ ] create group form (including event form) is messed up if screen is too narrow
 - [ ] group card is messed up (card title and body are not taking 100% width of card)
+- [x] only display location and events when registered
+- [x] duplicate event name in same group is not allowed
