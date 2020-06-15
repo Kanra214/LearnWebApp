@@ -55,11 +55,11 @@ export class GroupService extends ResourceService {
   search(filter){
 
     this.searchResults =  this.results?.filter(filter);
-    console.log('search result, ', this.searchResults);
+    // console.log('search result, ', this.searchResults);
 
     
   }
-  getGroups(queryObj, init?: boolean){
+  getGroups(queryObj, filter?: any){
     let temp = [];
     super.get(queryObj).subscribe(
       response => {
@@ -68,11 +68,9 @@ export class GroupService extends ResourceService {
           temp.push(new Group(group));
       }
       this.resultsChange.next(temp);
-      if(init === true){
-        this.search(function getAll(group){
-          return true;
-        });
-        console.log('searhced', this.searchResults);
+      if(filter){
+        this.search(filter);
+        // console.log('searhced', this.searchResults);
         
       }
 

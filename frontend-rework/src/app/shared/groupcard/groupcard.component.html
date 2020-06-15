@@ -1,8 +1,14 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-12 item">
-    <div class="card">
+    <div *ngIf="edit" class="card">
+        <app-group-form [group]='group' (returned)="edit = false"></app-group-form>
+
+    </div>
+    <div *ngIf="!edit" class="card">
         <h5 class="card-header">
             <p class="header-title">University: {{ group.university }}</p>
-            <p *ngIf="group.inProgress"class="header-status"> in progress : {{ group.events[0].name }}</p>
+            <button *ngIf="isMyGroups && isOwner" class="btn btn-primary" (click)="edit = true">Edit</button>
+            <p *ngIf="inGroupStatus === 'You are registered' && getInprogressEvent().length > 0" class="header-status"> in progress : {{ eventProfile(getInprogressEvent()[0]) }}</p>
+            <p *ngIf="inGroupStatus === 'You are registered' && getInprogressEvent().length === 0 && getNextEvent().length > 0" class="header-status"> upcomming event : {{ eventProfile(getNextEvent()[0]) }}</p>
             </h5>
         <div class="card-body">
         <div (click)="toggleDetail()">
@@ -16,9 +22,32 @@
         
         
         <div class="card-text"><p>{{ group.introduction }}</p></div>
-        <app-groupdetail *ngIf="showDetail" [group]="group">
+        <!-- <app-groupdetail *ngIf="showDetail" [group]="group">
 
-        </app-groupdetail>
+        </app-groupdetail> -->
+        <div *ngIf="showDetail" class="detail-container">
+            <div class="event-list">
+                <h5>Events:</h5>
+                <div *ngIf="inGroupStatus === 'You are registered'">
+                <p *ngFor="let event of group.events"> {{ eventProfile(event, true)}}</p>
+                </div>
+                <div *ngIf="inGroupStatus !== 'You are registered'">
+                    <p>Join this group to view events.</p>
+
+                </div>
+            </div>
+            <div>
+                <h5>Location:</h5>
+                <p>{{inGroupStatus === 'You are registered' ? group.location : 'Join this group to view location.'}}</p>
+            </div>
+        
+            <div class="member-list">
+                <h5>Members:</h5>
+                <p>
+                    <a href="#" *ngFor="let member of group.members"> {{ member.username }}</a>
+                </p>
+            </div>
+        </div>
         </div>
         
         <button href="#" [disabled]="inGroupStatus!=='Join this group'" class="blue-button" (click)="join()">{{inGroupStatus}}</button>

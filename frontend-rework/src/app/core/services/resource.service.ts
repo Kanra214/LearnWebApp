@@ -10,6 +10,7 @@ export class ResourceService {
     return this.http.get(this.url, {params: params});
   }
   create(requestBody) {
+    // console.log('group: ', requestBody);
     return this.http.post(this.url, requestBody,  {observe: 'response'});
   }
   update(requestBody) {

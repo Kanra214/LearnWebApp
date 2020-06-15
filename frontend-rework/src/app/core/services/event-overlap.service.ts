@@ -2,20 +2,37 @@ import { Injectable, ComponentRef } from '@angular/core';
 import { TimeAndDatePickerComponent } from '@shared/time-and-date-picker/time-and-date-picker.component';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class EventOverlapService {
-  private pickers:ComponentRef<TimeAndDatePickerComponent>[];
+  private pickers:ComponentRef<TimeAndDatePickerComponent>[] = [];
   constructor() { }
-  updatePicker(updatedPickers: ComponentRef<TimeAndDatePickerComponent>[]): void{
-    this.pickers = updatedPickers;
+  // updatePicker(updatedPickers: ComponentRef<TimeAndDatePickerComponent>[]): void{
+  //   this.pickers = updatedPickers;
 
+  // }
+  removePicker(picker){
+    const index = this.pickers.indexOf(picker);
+  if (index > -1) {
+    this.pickers.splice(index, 1);
+    console.log('removed picker from eo');
+  }
+  }
+  addPicker(newPicker){
+    this.pickers.push(newPicker);
+  }
+  checkEventNameDuplicate():Observable<any>{
+    const eventNames = this.pickers.map((picker)=> {
+      return picker.instance.dtForm.controls['eventName'].value;
+    });
+    let result = {duplicateEventName: new Set(eventNames).size !== eventNames.length}
+    return Observable.of(result);
   }
   checkOverlap(): Observable<any>{
     const dateRanges = this.pickers.map((picker) => {
       return picker.instance.dtForm.controls['dateTime'].value;
-    })
+    });
     var sortedRanges = dateRanges.sort((previous, current) => {
     
       // get the start date from previous and current

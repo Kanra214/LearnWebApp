@@ -2,10 +2,18 @@ body{
     padding:10px;
 }
 
-.show-on-hover:hover > ul.dropdown-menu {
+.show-on-hover:hover> ul.dropdown-menu {
     display: block;    
     background-color: rgb(233, 233, 233);
-    padding:10px;
+    margin:2px;
+    padding:8px;
+}
+
+.show-on-hover> ul.dropdown-menu {
+    display: none;
+}
+.dropdown-menu {
+    position: absolute !important;
 }
 ul a {
     color: #343A40;
@@ -13,6 +21,7 @@ ul a {
 
 button.dropdown-toggle {
     color : whitesmoke;
+    
 }
 button.dropdown-toggle:hover {
     color :gainsboro;
@@ -26,5 +35,14 @@ button.dropdown-toggle:hover {
     display: inline-block;
   }
 
+/* .btn.dropdown-toggle {
+    padding: 8px 0px;
+} */
 
+@media only screen and (max-width: 575px) {
+    .btn.dropdown-toggle {
+        padding: 8px 30px;
+    }
+
+}
 

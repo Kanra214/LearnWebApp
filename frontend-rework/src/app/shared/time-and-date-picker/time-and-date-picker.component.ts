@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators, ValidationErrors, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { EventOverlapService } from '@services/event-overlap.service';
+import { Router } from '@angular/router';
 
 // Time slot validate
 //1. cant be empty
@@ -22,14 +23,20 @@ export class TimeAndDatePickerComponent implements OnInit {
   min: Date;
   dtForm;
   overlap:boolean = false;
-  constructor(private fb: FormBuilder, private eo: EventOverlapService) { 
+  duplicateEventName:boolean = false;
+  isMyGroups: boolean = this.router.isActive('/mygroups', true)
+  constructor(private fb: FormBuilder, private eo: EventOverlapService, private router: Router) { 
     this.dtForm = this.fb.group({
       "eventName": ['', Validators.required],
       "dateTime": ['', [this.mustHaveFromAndTo]]
     }, 
     );
   }
+  get eventPassed():boolean {
+    return this.dtForm.get('dateTime').value[1] < new Date();
+  }
   get valid():boolean{
+
     return this.dtForm.valid && !this.overlap && !this.edit
   }
   mustHaveFromAndTo(dateTimeFormControl: FormControl): ValidationErrors | null{
@@ -39,7 +46,6 @@ export class TimeAndDatePickerComponent implements OnInit {
     }
     if(!dateArr[1]){
 
-      console.log("false");
       return {noTo:true};
     }
     return null;
@@ -48,13 +54,31 @@ export class TimeAndDatePickerComponent implements OnInit {
 // @Output() closePicker= new EventEmitter();
 
   ngOnInit(): void {
-    this.min = new Date();
+    let current = new Date();
+    if(this.isMyGroups){
+      //take min of old value and current time. if no old value(a new picker) then take current time
+      if(this.dtForm.get('dateTime').value.length > 1){
+        let startTime = new Date(this.dtForm.get('dateTime').value[0]);
+        if(current > startTime){
+          this.min = startTime;
+        }
+        else{
+          this.min = current;
+        }
+      }
+    } 
+      else{
+        this.min = current;
+      }
+    
+    
   }
   close(){
     // this.closePicker.emit(this);
     this.closed = true;
   }
   save(){
+
     const eventNameValue = this.dtForm.controls['eventName'].value;
     const dateTimeValue = this.dtForm.controls['dateTime'].value;
     this.eo.checkOverlap().subscribe(result =>{
@@ -63,8 +87,17 @@ export class TimeAndDatePickerComponent implements OnInit {
       }
       else{
         this.overlap = false;
-        this.placeholder = "Event name: " + eventNameValue + "; Time: " + dateTimeValue[0].toLocaleString() +  " ~ " + dateTimeValue[1].toLocaleString();
-        this.edit = false;
+        this.eo.checkEventNameDuplicate().subscribe(result=> {
+          if(result.duplicateEventName){
+            this.duplicateEventName = true;
+          }
+          else{
+            this.duplicateEventName = false;
+            this.placeholder = "Event name: " + eventNameValue + "; Time: " + dateTimeValue[0].toLocaleString() +  " ~ " + dateTimeValue[1].toLocaleString();
+            this.edit = false;
+          }
+        });
+        
       }
     });
 
