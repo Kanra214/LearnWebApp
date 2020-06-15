@@ -55,7 +55,7 @@ export class GroupService extends ResourceService {
   search(filter){
 
     this.searchResults =  this.results?.filter(filter);
-    console.log('search result, ', this.searchResults);
+    // console.log('search result, ', this.searchResults);
 
     
   }
@@ -70,7 +70,7 @@ export class GroupService extends ResourceService {
       this.resultsChange.next(temp);
       if(filter){
         this.search(filter);
-        console.log('searhced', this.searchResults);
+        // console.log('searhced', this.searchResults);
         
       }
 

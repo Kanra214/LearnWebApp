@@ -58,7 +58,7 @@
         </div>
           <app-event-form [group]="isMyGroups ? group : null"></app-event-form>
           <div class="submitDiv">
-            <button  [disabled]="createGroupForm.invalid || !eventFormComponent?.valid" type="submit" class="btn btn-primary">{{isMyGroups ? 'Save' : 'Create'}}</button>
+            <button  [disabled]="createGroupForm.invalid || !eventFormComponent.valid" type="submit" class="btn btn-primary">{{isMyGroups ? 'Save' : 'Create'}}</button>
         </div>
         <!-- <div class="alert alert-danger" *ngIf="createGroupForm.touched && createGroupForm.invalid">
          
@@ -76,7 +76,7 @@
             </div>
             
           </div> -->
-          <!-- <button (click)="showForm()">fwefwef</button>  -->
+          <!-- <p (click)="showForm()">fwefwef</p>  -->
     
         
       </form>

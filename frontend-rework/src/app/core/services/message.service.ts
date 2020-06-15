@@ -19,13 +19,13 @@ export class MessageService extends ResourceService {
       this.results = value;
   }
   );
-  console.log('constructor called');
+  // console.log('constructor called');
   }
 
   getMessages(){
     if(this.accountService.isLoggedIn){
 
-      console.log('get messages');
+      // console.log('get messages');
       let temp = [];
       super.get(
         {'userId': this.accountService.currentUser?._id},

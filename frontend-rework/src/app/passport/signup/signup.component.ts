@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
 
   }
   mustBeUniqueEmail(control: FormControl): Promise<ValidationErrors | null>{
-    console.log("check email is sending: ", control.value);  
+    // console.log("check email is sending: ", control.value);  
     return new Promise((resolve, reject) => {
       
         this.authService.checkEmailNotTaken(control.value).subscribe(res =>{

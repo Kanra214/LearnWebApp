@@ -12,7 +12,7 @@ export class SearchbarComponent implements OnInit {
   universities: string[] = Object.values(University);
 
   onSubmit(f:NgForm){
-    console.log(f);
+    // console.log(f);
     // this.onSearch.emit(f.value);
         this.groupService.search(
           (group) =>{

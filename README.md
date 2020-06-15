@@ -66,4 +66,6 @@
 - [ ] allow owner to remove member
 - [ ] give user sort option on groups create date, group university, subject name, on event start time, event name
 - [ ] upcomming event
+- [x] read only when an event is passed in edit page
 - [ ] make request message pretty
+- [x] only check event overlap for ongoing or future events in my groups

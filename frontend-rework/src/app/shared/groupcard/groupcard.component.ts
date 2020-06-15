@@ -123,7 +123,6 @@ parseTime(date){
     }
     const current = new Date();
     const sorted = this.getSortedEvents();
-    console.log(sorted);
     return sorted.filter((event) =>{
       return this.parseTime(event.dateTime[0]) >= current;
     });

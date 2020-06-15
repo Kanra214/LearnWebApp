@@ -88,8 +88,8 @@ export class GroupFormComponent implements OnInit, AfterViewChecked, AfterViewIn
       if( !Object.keys(mergedForm).includes(key)){
         mergedForm[key] = this.group[key];
       }
-    }
-    console.log('new group', mergedForm);
+    // }
+    // console.log('new group', mergedForm);
     this.groupService.update(mergedForm).subscribe(result => {
       if(result.status === 200){
         alert("Group is saved");
@@ -101,11 +101,13 @@ export class GroupFormComponent implements OnInit, AfterViewChecked, AfterViewIn
   }
     
   }
-  goBack(){
-    this.returned.emit();
-  }
-  showForm(){
-    console.log(this.createGroupForm);
-  }
+ 
+  // showForm(){
+  //   console.log(this.eventFormComponent.valid);
+  // }
 
+}
+goBack(){
+  this.returned.emit();
+}
 }

@@ -48,23 +48,29 @@ ngOnInit():void{
         const componentRef = this.container.createComponent(pickerFactory);
         let form =  componentRef.instance.dtForm;
         form.get('eventName').setValue(event.eventName);
-        form.get('dateTime').setValue(event.dateTime);
+        form.get('dateTime').setValue([new Date(event.dateTime[0]), new Date(event.dateTime[1])]);
+        // console.log('----', form);
         this.pickers.push(componentRef);
-        this.eo.updatePicker(this.pickers);
-        // componentRef.instance.save();
+
+        // if(new Date(event.dateTime[0]) > new Date()){//only check overlap and duplicate name if the event is in th future
+        //   this.eo.addPicker(componentRef);
+        // }
+        this.eo.addPicker(componentRef);
+        componentRef.instance.placeholder = "Event name: " + componentRef.instance.dtForm.get('eventName').value + "; Time: " + componentRef.instance.dtForm.get('dateTime').value[0].toLocaleString() +  " ~ " + componentRef.instance.dtForm.get('dateTime').value[1].toLocaleString();
+        componentRef.instance.edit = false;
       }
     }
   }
   get valid():boolean {
     for(let picker of this.pickers){
       if(!picker.instance.valid){
-        console.log('not valid');
+        // console.log('not valid');
         return false;
 
       }
     }
 
-    console.log('valid');
+    // console.log('valid');
     return true;
   }
   get events(){
@@ -91,7 +97,7 @@ ngOnInit():void{
     const pickerFactory = this.componentFactoryResolver.resolveComponentFactory(TimeAndDatePickerComponent);
     const componentRef = this.container.createComponent(pickerFactory);  
     this.pickers.push(componentRef);
-    this.eo.updatePicker(this.pickers);
+    this.eo.addPicker(componentRef);
   }
   
   removePicker(componentRef: ComponentRef<TimeAndDatePickerComponent>){
@@ -100,7 +106,8 @@ ngOnInit():void{
       this.pickers.splice(componentRefIndex, 1);
       this.container.remove(this.container.indexOf(componentRef.hostView));
     }
-    this.eo.updatePicker(this.pickers);
+    // this.eo.updatePicker(this.pickers);
+    this.eo.removePicker(componentRef);
   }
 
 }
