@@ -20,6 +20,7 @@ export class EventOverlapService {
   }
   }
   addPicker(newPicker){
+    if(newPicker.instance.dtForm.valid && !newPicker.instance.edit)
     this.pickers.push(newPicker);
   }
   checkEventNameDuplicate():Observable<any>{
