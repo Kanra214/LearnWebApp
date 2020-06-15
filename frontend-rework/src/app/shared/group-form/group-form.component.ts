@@ -90,15 +90,16 @@ export class GroupFormComponent implements OnInit, AfterViewChecked, AfterViewIn
       }
     // }
     // console.log('new group', mergedForm);
-    this.groupService.update(mergedForm).subscribe(result => {
-      if(result.status === 200){
-        alert("Group is saved");
-        
-        window.location.reload();
-      }
-    }
-    );
+    
   }
+  this.groupService.update(mergedForm).subscribe(result => {
+    if(result.status === 200){
+      alert("Group is saved");
+      
+      window.location.reload();
+    }
+  }
+  );
     
   }
  
