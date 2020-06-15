@@ -17,21 +17,93 @@ export class SearchbarComponent implements OnInit {
         this.groupService.search(
           (group) =>{
 
-                for (let key of Object.keys(f.value)) {
-                  if(f.value[key] === ""){
-                    continue;
+              //   for (let key of Object.keys(f.value)) {
+              //     if(f.value[key] === ""){
+              //       continue;
+              //     }
+              //     if (group[key] !== f.value[key]){
+              //       console.log('false', key);
+              //       return false;
+              //   }
+                
+                
+              // }
+              // return true;
+              if(f.value.keyword === "" && f.value.university === ""){
+                return true;
+              }
+              if(f.value.keyword.length > 0 && f.value.university.length > 0){
+                if(group.university.toLowerCase() === f.value.university.toLowerCase()){
+                  if(group.subject.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                    return true;
                   }
-                  if (group[key] !== f.value[key]){
-                    console.log('false', key);
-                    return false;
+                  if(group.university.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                    return true;
+                  }
+                  if(group.introduction){
+                    if(group.introduction.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                      return true;
+                    }
+                  }
+                  if(group.location){
+                    if(group.location.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                      return true;
+                    }
+  
+                  }
+                  
+                  if(group.events.length > 0){
+                    if(group.events.some((event) => {return event.eventName.toLowerCase().includes(f.value.keyword.toLowerCase())})){
+                      return true
+                    }
+                  }
+                  if(group.members.some((member) => {return member.username.toLowerCase().includes(f.value.keyword.toLowerCase())})){
+                    return true;
+                  }
+                }
+                return false;
+              }
+              if(f.value.keyword.length > 0){
+                if(group.subject.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                  return true;
+                }
+                if(group.university.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                  return true;
+                }
+                if(group.introduction){
+                  if(group.introduction.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                    return true;
+                  }
+                }
+                if(group.location){
+                  if(group.location.toLowerCase().includes(f.value.keyword.toLowerCase())){
+                    return true;
+                  }
+
                 }
                 
+                if(group.events.length > 0){
+                  if(group.events.some((event) => {return event.eventName.toLowerCase().includes(f.value.keyword.toLowerCase())})){
+                    return true
+                  }
+                }
+                if(group.members.some((member) => {return member.username.toLowerCase().includes(f.value.keyword.toLowerCase())})){
+                  return true;
+                }
                 
+
               }
-              return true;
+              if(f.value.university.length > 0){
+                if(group.university.toLowerCase().includes(f.value.university.toLowerCase())){
+                  return true;
+                }
+              }
+             
+              return false;
               
             
               }
+        
         );
   }
 

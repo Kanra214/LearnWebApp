@@ -18,10 +18,10 @@
 - [x] add event location
 - [x] event schema
 - [ ] come out of a better search bar
-- [ ] search keywork mechanism
+- [x] search keywork mechanism
 - [x] in process / next event in group card
 - [x] click group card to view detail
-- [ ] think of returning user info to frontend
+- [x] think of returning user info to frontend
 - [ ] username link to user profile
 - [x] attachUserInfo for get group middleware
 - [ ] message mechanism
