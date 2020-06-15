@@ -35,8 +35,8 @@ router.post('/',auth, async(req, res) =>{
     debug("a create group request");
     try{
             let doc = req.body;
-            doc['owner'] = req.user;
-            doc['members'] = [req.user];
+            doc['owner'] = req.user._id;
+            doc['members'] = [req.user._id];
             debug("new group ", doc);
             const result = await Group.createGroup(doc);
 
@@ -59,18 +59,21 @@ router.put('/', auth, async(req, res) =>{
     try{
 
         //check if user is the group owner
-        const group = Group.findById(req.body._id);
-        if(group.owner !== req.user){
+        const group = await Group.findById(req.body._id);
+        debug('to update', group);
+        if(group.owner != req.user._id){
             //not a owner
+            debug('owner:', group.owner);
+            debug('user:', req.user);
             res.send(401).send();
 
         }
 
 
-
+        debug('is owner');
         const result = await Group.updateGroup(req.body);
         if(result === 'ok'){
-
+            debug('200');
             res.status(200).send();
         }
         else{

@@ -116,20 +116,22 @@ async function modifyCapacity(groupId, newCapacity){
 }
 async function updateGroup(doc){
     debug('updating group');
-    debug('finding group by id: ', doc._id );
-    let group = await Group.findById(doc._id);
-    debug('find group result: ', group);
-    group.overwrite({
-        university:doc.university,
-        introduction:doc.introduction,
-        // capacity: doc.capacity,
-        events: doc.events,
-        location: doc.location,
-        // members: doc.members,
-        last_update:Date.now,
-    });
-    await group.save();
-    debug('group updated')
+    // debug('finding group by id: ', doc._id );
+    // let group = await Group.findById(doc._id);
+    // debug('find group result: ', group);
+    // group.overwrite({
+    //     university:doc.university,
+    //     introduction:doc.introduction,
+    //     capacity: doc.capacity,
+    //     events: doc.events,
+    //     location: doc.location,
+    //     members: doc.members,
+    //     last_update:Date.now,
+    // });
+    let modified = await Group.findByIdAndUpdate(doc._id, doc);
+    // await modified.save();
+    // await group.save();
+    debug('group updated', modified);
     return 'ok';
 
 

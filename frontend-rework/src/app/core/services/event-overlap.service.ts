@@ -2,9 +2,9 @@ import { Injectable, ComponentRef } from '@angular/core';
 import { TimeAndDatePickerComponent } from '@shared/time-and-date-picker/time-and-date-picker.component';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class EventOverlapService {
   private pickers:ComponentRef<TimeAndDatePickerComponent>[];
   constructor() { }

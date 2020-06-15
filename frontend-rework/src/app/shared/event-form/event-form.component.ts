@@ -1,35 +1,70 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ChangeDetectorRef, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit,ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ChangeDetectorRef, OnChanges, Input, AfterViewChecked  } from '@angular/core';
 import { Event } from '@models/event';
 import { TimeAndDatePickerComponent } from '../time-and-date-picker/time-and-date-picker.component';
 import { EventOverlapService } from '@services/event-overlap.service';
 
-
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.css']
+  styleUrls: ['./event-form.component.css'],
+
+  providers: [EventOverlapService],
 })
-export class EventFormComponent implements OnInit{
+export class EventFormComponent implements OnInit, AfterViewInit, AfterViewChecked{
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
-  
+  @Input() group:any;
   pickers: ComponentRef<TimeAndDatePickerComponent>[] = [];
   
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private eo: EventOverlapService) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private eo: EventOverlapService, private changeDetector: ChangeDetectorRef) {
+
+  }
+  ngAfterViewChecked(){
+    this.changeDetector.detectChanges();
+
+  }
   // this function takes an array of date ranges in this format:
 // [{ start: Date, end: Date}]
 // the array is first sorted, and then checked for any overlap
+ngOnInit():void{
+    //   if(this.group){//in /mygroups
+    //   for(let event of this.group.events){
+    //     const pickerFactory = this.componentFactoryResolver.resolveComponentFactory(TimeAndDatePickerComponent);
+    //     const componentRef = this.container.createComponent(pickerFactory);
+    //     let form =  componentRef.instance.dtForm;
+    //     form.get('eventName').setValue(event.eventName);
+    //     form.get('dateTime').setValue(event.dateTime);
+    //     this.pickers.push(componentRef);
+    //     this.eo.updatePicker(this.pickers);
+    //     componentRef.instance.save();
+    //   }
+    // }
+}
 
 
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    if(this.group){//in /mygroups
+      for(let event of this.group.events){
+        const pickerFactory = this.componentFactoryResolver.resolveComponentFactory(TimeAndDatePickerComponent);
+        const componentRef = this.container.createComponent(pickerFactory);
+        let form =  componentRef.instance.dtForm;
+        form.get('eventName').setValue(event.eventName);
+        form.get('dateTime').setValue(event.dateTime);
+        this.pickers.push(componentRef);
+        this.eo.updatePicker(this.pickers);
+        // componentRef.instance.save();
+      }
+    }
   }
   get valid():boolean {
     for(let picker of this.pickers){
       if(!picker.instance.valid){
+        console.log('not valid');
         return false;
 
       }
     }
+
+    console.log('valid');
     return true;
   }
   get events(){
@@ -54,7 +89,7 @@ export class EventFormComponent implements OnInit{
   }
   addPicker(){
     const pickerFactory = this.componentFactoryResolver.resolveComponentFactory(TimeAndDatePickerComponent);
-    const componentRef = this.container.createComponent(pickerFactory);
+    const componentRef = this.container.createComponent(pickerFactory);  
     this.pickers.push(componentRef);
     this.eo.updatePicker(this.pickers);
   }
