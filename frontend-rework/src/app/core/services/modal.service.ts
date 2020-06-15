@@ -10,7 +10,7 @@ export class ModalService {
     add(modal: any) {
         // add modal to array of active modals
         // console.log('is added')
-        // this.modals.push(modal);
+        this.modals.push(modal);
         // console.log(modal.id);
     }
 
