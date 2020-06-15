@@ -70,7 +70,7 @@ async function addMember(groupId, userId){
     if(group.members.length < group.capacity){
         //add the member
         group.members.push(userId);
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
@@ -88,7 +88,7 @@ async function deleteMember(groupId, userId){
         // group.members.pull(userId);
         let index = group.members.indexOf(userId);
         group.members.splice(index, 1);
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
@@ -105,7 +105,7 @@ async function modifyCapacity(groupId, newCapacity){
     if(group.members.length <= newCapacity ){
         //delete the member
         group.capacity = newCapacity;
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
