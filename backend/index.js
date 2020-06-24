@@ -13,13 +13,21 @@ if(!config.get('jwtPrivateKey')){
     console.error("FATAL ERROR: jwtPrivateKey is not defined");
     process.exit(1);
 }
+if(!config.get('dbUsername')){
+    console.error("FATAL ERROR: dbUsername is not defined");
+    process.exit(1);
+}
+if(!config.get('dbPwd')){
+    console.error("FATAL ERROR: dbPwd is not defined");
+    process.exit(1);
+}
 
 let dbhost = 'localhost';
 if(isDocker()){
     dbhost = 'mongo'
 }
 // const dbport = process.env.DBHOST | 27027
-mongoose.connect('mongodb://' +  dbhost + '/packet_money_database')
+mongoose.connect('mongodb://' + config.get('dbUsername') + ':' +  config.get('dbPwd') + '@' + dbhost + '/packet_money_database')
     .then(()=>{
         console.log('connected to database');
     })

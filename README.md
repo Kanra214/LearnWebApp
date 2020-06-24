@@ -69,3 +69,4 @@
 - [x] read only when an event is passed in edit page
 - [ ] make request message pretty
 - [x] only check event overlap for ongoing or future events in my groups
+- [ ] properly display on iphone 678
