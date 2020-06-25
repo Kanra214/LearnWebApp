@@ -71,3 +71,4 @@
 - [x] only check event overlap for ongoing or future events in my groups
 - [ ] properly display on iphone 678
 - [ ] enable db auth
+- [x] login passenger on one click

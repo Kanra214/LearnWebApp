@@ -43,5 +43,22 @@ export class LoginComponent implements OnInit {
     
 
   }
+  loginPassenger(){
+    this.authService.login({email:'123456@123456.com', password:'123456'}).subscribe(result => {
+      if(result === true){
+        this.authService.messageService.getMessages();
+        this.invalidLogin = false;
+        this.router.navigate([this.returnUrl]);
+        
+      }
+      else{
+        this.invalidLogin = true;
+        this.errorMsg = result;
+
+  
+      }
+    }
+    );
+  }
 
 }
