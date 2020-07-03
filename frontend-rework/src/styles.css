@@ -5,7 +5,7 @@
  }
  .search-sec{
      padding: 2rem;
-     height: 10vh;
+     /* height: 10vh; */
  }
  .search-slt{
      display: block;
@@ -69,4 +69,9 @@ hr.dashed {
     border-top: 3px dashed #bbb;
  
 
+}
+
+.card-footer {
+    background-color:transparent;
+    border: 0;
 }

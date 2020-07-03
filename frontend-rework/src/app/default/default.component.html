@@ -1,6 +1,13 @@
 <div class="default"><app-header></app-header>
-<app-sidebar></app-sidebar>
-<div class="main-container">
-<router-outlet></router-outlet>
+<div class="container-fluid p-0">
+<div class="side-main no-gutters row">
+    <div class="side-container col-3 col-md-2 col-lg-2">
+    <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-container col-9 col-md-10 col-lg-10">
+
+        <router-outlet></router-outlet>
+    </div>
+</div>
 </div>
 </div>

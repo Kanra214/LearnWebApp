@@ -1,10 +1,8 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
         
         
-		<!-- Our Special dropdown has class show-on-hover -->
         <div class="btn-group show-on-hover">
-          <!-- <div class="btn-group"> -->
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             messages <span class="caret"></span>
           </button>
@@ -16,6 +14,11 @@
 
 	</div>
   <br>
+
+</div> -->
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <a *ngIf="messages === null || messages?.length === 0" class="dropdown-item">You don't have any messages</a>
+  <a *ngFor="let message of messages" class="dropdown-item"><span *ngIf="message.to._id === accountService.currentUser._id && !message.read" class="dot"></span><a (click)="openModal(message._id)"> {{ accountService.currentUser._id === message.from._id ? 'You' : message.from.username }} to {{ accountService.currentUser._id === message.to._id ? 'you' : message.to.username }}: {{message.content | abstract:10}} </a></a>
 
 </div>
 
