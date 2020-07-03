@@ -16,11 +16,11 @@
   <br>
 
 </div> -->
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
   <a *ngIf="messages === null || messages?.length === 0" class="dropdown-item">You don't have any messages</a>
   <a *ngFor="let message of messages" class="dropdown-item"><span *ngIf="message.to._id === accountService.currentUser._id && !message.read" class="dot"></span><a (click)="openModal(message._id)"> {{ accountService.currentUser._id === message.from._id ? 'You' : message.from.username }} to {{ accountService.currentUser._id === message.to._id ? 'you' : message.to.username }}: {{message.content | abstract:10}} </a></a>
 
-</div>
+<!-- </div> -->
 
 <div *ngFor="let message of messages">
 <jw-modal [id]="message._id">

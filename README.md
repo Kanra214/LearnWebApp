@@ -57,7 +57,7 @@
 - [x] sidebar text hides if the screen is too narrow
 - [x] header is messed up if the screen is too narrow, worse if message list is shown
 - [ ] create group form (including event form) is messed up if screen is too narrow
-- [ ] group card is messed up (card title and body are not taking 100% width of card)
+- [x] group card is messed up (card title and body are not taking 100% width of card)
 - [x] only display location and events when registered
 - [x] duplicate event name in same group is not allowed
 - [x] move creategroupform component to shared module, reuse it for create group and edit group
@@ -69,6 +69,6 @@
 - [x] read only when an event is passed in edit page
 - [ ] make request message pretty
 - [x] only check event overlap for ongoing or future events in my groups
-- [ ] properly display on iphone 678
-- [ ] enable db auth
+- [x] properly display on iphone 678
+- [x] enable db auth
 - [x] login passenger on one click
