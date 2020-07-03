@@ -4,11 +4,11 @@
 }
 .index-content{
     /* margin-bottom:20px; */
-    padding:50px 0px;
+    padding-top:50px;
     overflow: scroll;
     
 }
-.index-content.dashboard {
+/* .index-content.dashboard {
     height: 90vh;
 }
 @media only screen and (max-width: 767px) {
@@ -21,7 +21,7 @@
 }
 .index-content .row{
     margin-top:20px;
-}
+} */
 .index-content a{
     color: black;
 }

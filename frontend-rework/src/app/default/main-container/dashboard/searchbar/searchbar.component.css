@@ -3,7 +3,7 @@
     padding : 2rem;
     position : relative;
     background : #343A40;
-    height: 10vh;
+    /* height: 10vh; */
 }
 .search-slt{
     /* padding:0; */
@@ -18,15 +18,15 @@
     height: calc(3rem + 2px) !important;
 }
 
-.row {
+/* .row {
     padding:10px;
-}
+} */
 .col {
     padding:2px;
     border: 1px;
 }
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) {
     .search-sec {
         height: 20vh;
     }
@@ -35,4 +35,4 @@
     .search-sec {
         height: 40vh;
     }
-}
+} */

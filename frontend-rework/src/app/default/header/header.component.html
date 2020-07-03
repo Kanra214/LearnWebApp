@@ -3,6 +3,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" (click)="reload()">studybar</a>
       </div>
+      <!-- <div class="col-11"> -->
       <ul class="nav navbar-nav ml-auto">
         <li *ngIf="!accountService.isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/passport/signup"> Signup </a>
@@ -21,5 +22,6 @@
         </li>
   
       </ul>
+    <!-- </div> -->
     </div>
   </nav>
