@@ -1,9 +1,9 @@
-nav a {
-    color : whitesmoke;
+.nav-link, .navbar-brand {
+    color : whitesmoke !important;
 }
-nav a:hover {
-    color :gainsboro;
-    cursor: pointer;
+.nav-link:hover {
+    color :gainsboro !important;
+    cursor: pointer !important;
 }
 /* .nav-item {
     padding: 8px 0px;
