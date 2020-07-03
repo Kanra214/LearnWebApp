@@ -9,7 +9,7 @@ export class SimpleGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.accountService.isLoggedIn) {
       this.router.navigate(['passport/login'], { queryParams: { returnUrl: state.url}});
-      console.log('state', state.url);
+      // console.log('state', state.url);
       return false;
     }
     return true;

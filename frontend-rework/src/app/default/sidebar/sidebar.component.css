@@ -1,21 +1,24 @@
 .sidenav {
   display: inline-block;
-    height: 100vh;
-    width: 25vw;
+  height:100%;
+  width:100%;
+    /* height: 100vh; */
+    /* width: 25vw; */
     /* position: fixed; */
-    z-index: 1;
+    /* z-index: 1; */
     /* top: 56px; */
     /* left: 0; */
     background-color: #343a40;
     overflow-x: hidden;
     padding-top: 20px;
+    padding:3%;
   }
 
-  @media only screen and (min-width: 1200px) {
+  /* @media only screen and (min-width: 1200px) {
     .sidenav {
       width: 300px;
     }
-}
+} */
   
   .sidenav a {
     padding: 50px 15px 50px 15px;
@@ -23,6 +26,7 @@
     font-size: 25px;
     color: #818181;
     display: block;
+    word-wrap: break-word;
   }
 
 @media only screen and (max-width: 767px) {

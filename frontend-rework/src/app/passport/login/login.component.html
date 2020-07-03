@@ -34,11 +34,14 @@
                                 [disabled]="loginForm.invalid" 
                                 type="submit" class="btn btn-primary">Login</button>
                             </div>
-                            
+                            <div class="submitDiv">
+                            <button (click)="loginPassenger()" class="btn btn-primary">Login as a passenger</button>
+                            </div>
                         </form>
                         <div id="register-link" class="text-right">
                             <a routerLink="../signup" class="text-info">Signup here</a>
                         </div>
+                        
                     </div>
                 </div>
             </div>

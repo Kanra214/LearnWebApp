@@ -2,15 +2,26 @@ import { Injectable, ComponentRef } from '@angular/core';
 import { TimeAndDatePickerComponent } from '@shared/time-and-date-picker/time-and-date-picker.component';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class EventOverlapService {
-  private pickers:ComponentRef<TimeAndDatePickerComponent>[];
+  private pickers:ComponentRef<TimeAndDatePickerComponent>[] = [];
   constructor() { }
-  updatePicker(updatedPickers: ComponentRef<TimeAndDatePickerComponent>[]): void{
-    this.pickers = updatedPickers;
+  // updatePicker(updatedPickers: ComponentRef<TimeAndDatePickerComponent>[]): void{
+  //   this.pickers = updatedPickers;
 
+  // }
+  removePicker(picker){
+    const index = this.pickers.indexOf(picker);
+  if (index > -1) {
+    this.pickers.splice(index, 1);
+    console.log('removed picker from eo');
+  }
+  }
+  addPicker(newPicker){
+    if(newPicker.instance.dtForm.valid && !newPicker.instance.edit)
+    this.pickers.push(newPicker);
   }
   checkEventNameDuplicate():Observable<any>{
     const eventNames = this.pickers.map((picker)=> {

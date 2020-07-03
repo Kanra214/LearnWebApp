@@ -18,13 +18,14 @@
     </div>
     <div class="row" *ngIf="!edit">
         <div class="col col-sm-9 form-group">
-            <input class="form-control" [placeholder]="placeholder" readonly (click)="edit=true">
+            <input class="form-control" [placeholder]="placeholder" readonly>
         </div>
         <div class="col col-sm-2">
-            <button class="btn btn-primary" (click)="edit=true">Edit</button>
+            <button class="btn btn-primary" [disabled]="isMyGroups && eventPassed" (click)="edit=true">Edit<span *ngIf="isMyGroups && eventPassed" class="tooltiptext">This event is passed</span></button>
         </div>
+        
 
-        <span class="close col col-sm-1" (click)="close()">x</span>
+        <span *ngIf="isMyGroups && !eventPassed" class="close col col-sm-1" (click)="close()">x</span>
     </div> 
     <div class="alert alert-danger" *ngIf="overlap">
         The time slot of this event overlaps other events

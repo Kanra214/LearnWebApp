@@ -12,16 +12,16 @@
 - [x] time slot validation
 - [x] create group form validation
 - [x] create group backend
-- [ ] edit group config frontend
-- [ ] edit group config backend
+- [x] edit group config frontend
+- [x] edit group config backend
 - [x] mygroups list view
 - [x] add event location
 - [x] event schema
 - [ ] come out of a better search bar
-- [ ] search keywork mechanism
-- [ ] in process / next event in group card
+- [x] search keywork mechanism
+- [x] in process / next event in group card
 - [x] click group card to view detail
-- [ ] think of returning user info to frontend
+- [x] think of returning user info to frontend
 - [ ] username link to user profile
 - [x] attachUserInfo for get group middleware
 - [ ] message mechanism
@@ -46,7 +46,7 @@
 - [x] add getMessage() in authService login pipe argument, learn rxjs operators
 - [x] scollerbar
 - [x] move pagination into scrollable content
-- [ ] owner can edit group config
+- [x] owner can edit group config
 - [x] a no-login user tries to join a group and got You provided 'undefined' where a stream was expected
 - [x] navigate to dashboard and reload when hit 'studdybar'
 - [x] change style for sidebar according to active component
@@ -57,8 +57,18 @@
 - [x] sidebar text hides if the screen is too narrow
 - [x] header is messed up if the screen is too narrow, worse if message list is shown
 - [ ] create group form (including event form) is messed up if screen is too narrow
-- [ ] group card is messed up (card title and body are not taking 100% width of card)
+- [x] group card is messed up (card title and body are not taking 100% width of card)
 - [x] only display location and events when registered
 - [x] duplicate event name in same group is not allowed
 - [x] move creategroupform component to shared module, reuse it for create group and edit group
 - [x] toggle edit and goBack in /mygroups
+- [ ] change all findById and save() to findByIdAndUpdate()
+- [ ] allow owner to remove member
+- [ ] give user sort option on groups create date, group university, subject name, on event start time, event name
+- [ ] upcomming event
+- [x] read only when an event is passed in edit page
+- [ ] make request message pretty
+- [x] only check event overlap for ongoing or future events in my groups
+- [x] properly display on iphone 678
+- [x] enable db auth
+- [x] login passenger on one click

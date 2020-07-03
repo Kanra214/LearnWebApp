@@ -70,7 +70,7 @@ async function addMember(groupId, userId){
     if(group.members.length < group.capacity){
         //add the member
         group.members.push(userId);
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
@@ -88,7 +88,7 @@ async function deleteMember(groupId, userId){
         // group.members.pull(userId);
         let index = group.members.indexOf(userId);
         group.members.splice(index, 1);
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
@@ -105,7 +105,7 @@ async function modifyCapacity(groupId, newCapacity){
     if(group.members.length <= newCapacity ){
         //delete the member
         group.capacity = newCapacity;
-        group.last_update = Date.now;
+        group.last_update = Date.now();
         await group.save();
 
     }
@@ -116,20 +116,22 @@ async function modifyCapacity(groupId, newCapacity){
 }
 async function updateGroup(doc){
     debug('updating group');
-    debug('finding group by id: ', doc._id );
-    let group = await Group.findById(doc._id);
-    debug('find group result: ', group);
-    group.overwrite({
-        university:doc.university,
-        introduction:doc.introduction,
-        // capacity: doc.capacity,
-        events: doc.events,
-        location: doc.location,
-        // members: doc.members,
-        last_update:Date.now,
-    });
-    await group.save();
-    debug('group updated')
+    // debug('finding group by id: ', doc._id );
+    // let group = await Group.findById(doc._id);
+    // debug('find group result: ', group);
+    // group.overwrite({
+    //     university:doc.university,
+    //     introduction:doc.introduction,
+    //     capacity: doc.capacity,
+    //     events: doc.events,
+    //     location: doc.location,
+    //     members: doc.members,
+    //     last_update:Date.now,
+    // });
+    let modified = await Group.findByIdAndUpdate(doc._id, doc);
+    // await modified.save();
+    // await group.save();
+    debug('group updated', modified);
     return 'ok';
 
 

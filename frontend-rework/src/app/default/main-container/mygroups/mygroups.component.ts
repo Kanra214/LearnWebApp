@@ -11,7 +11,7 @@ export class MygroupsComponent implements OnInit {
 
   constructor(private groupService: GroupService, private accountService: AccountService) {
     // this.groupService.
-    console.log('my groups constructor called')
+    // console.log('my groups constructor called')
     this.groupService.getGroups({}, (group) => {
       return group.members.some((member) => {
         return member._id === this.accountService.currentUser._id;
