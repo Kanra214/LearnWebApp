@@ -46,7 +46,7 @@ router.get('/checkemailtaken', async (req, res) => {
 router.get('/', async (req, res) =>{
     try{
         debug("receive query query: ", req.query);
-        const result = await User.getUser(queryParam);
+        const result = await User.getUser(req.query);
         debug("sending the result: ", result);
         res.send(result);
     }
